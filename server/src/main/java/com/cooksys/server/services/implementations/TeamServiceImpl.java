@@ -20,6 +20,7 @@ import com.cooksys.server.models.TeamDto;
 import com.cooksys.server.models.UserDto;
 import com.cooksys.server.repositories.CompanyRepository;
 import com.cooksys.server.repositories.ProjectRepository;
+import com.cooksys.server.repositories.RoleRepository;
 import com.cooksys.server.repositories.TeamRepository;
 import com.cooksys.server.repositories.UserRepository;
 import com.cooksys.server.services.TeamService;
@@ -37,6 +38,7 @@ public class TeamServiceImpl implements TeamService {
 	private ProjectRepository projectRepo;
 	private UserMapper userMapper;
 	private ProjectMapper projectMapper;
+	private RoleRepository roleRepo;
 	
 	// Helper methods
 	public void checkTeamExistsNotDeleted(Long teamId, Optional<Team> optionalTeam) {
@@ -135,6 +137,7 @@ public class TeamServiceImpl implements TeamService {
         
         optionalTeam.get().getMembers().add(optionalUser.get());
         optionalUser.get().setUserTeam(optionalTeam.get());
+        optionalUser.get().setRole(roleRepo.getOne((long) 2));
         
         teamRepo.flush();
         userRepo.flush();
