@@ -29,7 +29,7 @@ public class Team {
 
     private String text;
 
-    private Boolean deleted;
+    private boolean deleted;
 
     @OneToMany(mappedBy = "userTeam")
     private List<User> members = new ArrayList<>();
