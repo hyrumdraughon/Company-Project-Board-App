@@ -43,11 +43,18 @@ public class ProjectServiceImpl implements ProjectService {
 
     }
 
-    // TODO Implement this endpoint. Should return the project specified by projectId
     @Override
     public ProjectDto getProject(Long projectId) {
-        return null;
+
+        Project databaseProject = getProjectById(projectId);
+
+        checkProjectDeletionStatus(databaseProject);
+
+        return projectMapper.entityToDto(databaseProject);
+
     }
+
+
 
     // TODO Implement this endpoint. Updates project with the specified values.
     @Override
@@ -84,5 +91,22 @@ public class ProjectServiceImpl implements ProjectService {
             }
         }
         throw new NotFoundException("Specified team does not exist.");
+    }
+
+    // Returns the project that corresponds to the id passed, or error if not found.
+    private Project getProjectById(Long projectId) {
+        for(Project project : projectRepository.findAll()) {
+            if(project.getId().equals(projectId)) {
+                return project;
+            }
+        }
+        throw new NotFoundException("Requested project does not exist.");
+    }
+
+    // Throws error if passed project is deleted.
+    private void checkProjectDeletionStatus(Project databaseProject) {
+        if(databaseProject.isDeleted()) {
+            throw new NotFoundException("Requested project does not exist.");
+        }
     }
 }
