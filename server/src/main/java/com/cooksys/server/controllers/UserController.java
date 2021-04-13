@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cooksys.server.entities.Role;
+import com.cooksys.server.entities.Team;
 import com.cooksys.server.models.CreateUserDto;
+import com.cooksys.server.models.RoleDto;
+import com.cooksys.server.models.TeamDto;
 import com.cooksys.server.models.UserDto;
 import com.cooksys.server.services.UserService;
 import lombok.AllArgsConstructor;
@@ -52,5 +56,20 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto deleteUser(@PathVariable("userId") Long id) {
 		return us.deleteUser(id);
+	}
+	
+	//Should take a user id, and a request body that will be used to set a role.
+	//This may change from a request body to a Long Variable later.
+	@PatchMapping("/@{userId}/role")
+	@ResponseStatus(HttpStatus.OK)
+	public UserDto addRole(@PathVariable("userId") Long id, @RequestBody RoleDto role) {
+		return us.addRole(id, role);
+	}
+	
+	@PatchMapping("/@{userId}/teams")
+	@ResponseStatus(HttpStatus.OK)
+	public UserDto addTeam(@PathVariable("userId") Long id, @RequestBody TeamDto team) {
+		return us.addTeam(id, team);
+		
 	}
 }

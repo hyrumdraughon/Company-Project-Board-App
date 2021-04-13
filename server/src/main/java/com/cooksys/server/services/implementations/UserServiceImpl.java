@@ -7,15 +7,23 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 
+import com.cooksys.server.entities.Role;
+import com.cooksys.server.entities.Team;
 import com.cooksys.server.entities.User;
 import com.cooksys.server.exceptions.BadRequestException;
 import com.cooksys.server.exceptions.NotFoundException;
 import com.cooksys.server.mappers.CredentialMapper;
 import com.cooksys.server.mappers.ProfileMapper;
+import com.cooksys.server.mappers.RoleMapper;
+import com.cooksys.server.mappers.TeamMapper;
 import com.cooksys.server.mappers.UserMapper;
 import com.cooksys.server.models.CreateUserDto;
+import com.cooksys.server.models.RoleDto;
+import com.cooksys.server.models.TeamDto;
 import com.cooksys.server.models.UserDto;
 import com.cooksys.server.repositories.CompanyRepository;
+import com.cooksys.server.repositories.RoleRepository;
+import com.cooksys.server.repositories.TeamRepository;
 import com.cooksys.server.repositories.UserRepository;
 import com.cooksys.server.services.UserService;
 
@@ -30,6 +38,10 @@ public class UserServiceImpl implements UserService {
 	private CredentialMapper credential;
 	private ProfileMapper profile;
 	private CompanyRepository companies;
+	private TeamRepository teamRepo;
+	private RoleRepository roleRepo;
+	private RoleMapper rm;
+	private TeamMapper tm;
 
 	// Takes an Id and and a User Object. if Optional User is empty the user doesnt
 	// exist
@@ -126,6 +138,41 @@ public class UserServiceImpl implements UserService {
 		optUser.get().setActive(false);
 		userRepo.flush();
 		return userMapper.entityToDto(optUser.get());
+	}
+
+	@Override
+	public UserDto addRole(Long id, RoleDto role) {
+		if (id == null) {
+			throw new NotFoundException("Must Provide a user ID");
+		}
+		Optional<User> optUser = userRepo.findById(id);
+		checkExistsNotDeleted(id, optUser);
+		if (role.getId() != 1 && role.getId() != 2) {
+			throw new BadRequestException("User can only be admin, or user");
+		} else {
+			Optional<Role> newRole = roleRepo.findById(role.getId()); //saveAndFlush(rm.DtoToEntity(role));
+			
+			optUser.get().setRole(newRole.get());
+			System.out.println(role.getName());
+			return userMapper.entityToDto(userRepo.saveAndFlush(optUser.get()));
+		}
+
+	}
+
+	@Override
+	public UserDto addTeam(Long id, TeamDto team) {
+		if (id == null) {
+			throw new NotFoundException("Must Provide a user ID");
+		}
+		Optional<User> optUser = userRepo.findById(id);
+		checkExistsNotDeleted(id, optUser);
+		if (teamRepo.findById(team.getId()).isEmpty()) {
+			throw new NotFoundException("Team Does not Exist");
+		} else {
+			optUser.get().setUserTeam(teamRepo.saveAndFlush(tm.DtoToEntity(team)));
+			return userMapper.entityToDto(userRepo.saveAndFlush(optUser.get()));
+		}
+
 	}
 
 }

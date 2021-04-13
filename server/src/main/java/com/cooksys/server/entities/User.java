@@ -2,6 +2,7 @@ package com.cooksys.server.entities;
 
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,45 +18,41 @@ import org.hibernate.annotations.UpdateTimestamp;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
-    //someone please check this and then get rid of this comment lol
+	// someone please check this and then get rid of this comment lol
 
-    @Id
-    @GeneratedValue
-    private Long id;
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    @ManyToOne
-    @JoinColumn
-    private Company userCompany;
+	@ManyToOne
+	@JoinColumn
+	private Company userCompany;
 
-    @ManyToOne
-    @JoinColumn
-    private Team userTeam;
+	@ManyToOne
+	@JoinColumn
+	private Team userTeam;
 
-    @OneToOne
-    private Role role;
+	@OneToOne(orphanRemoval = true)
+	private Role role;
 
-    @Embedded
-    private Credential credentials;
+	@Embedded
+	private Credential credentials;
 
-    @Embedded
-    private Profile profile;
+	@Embedded
+	private Profile profile;
 
-    @CreationTimestamp
-    private Timestamp created;
+	@CreationTimestamp
+	private Timestamp created;
 
-    @UpdateTimestamp
-    private Timestamp updated;
+	@UpdateTimestamp
+	private Timestamp updated;
 
-    private boolean active;
-
-
-
+	private boolean active;
 
 }
