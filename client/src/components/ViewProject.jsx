@@ -13,26 +13,26 @@ import Button from './Button'
 }
 */
 const ViewProject = (props) => {
-    console.log(props.children)
+    const buttonProps = {label:'Complete'}
     return(
-        <section class = "projectContainer">
+        <section className = "projectContainer">
             <Grid
                 container
                 direction="column"
                 justify="center"
                 alignItems="center"
             >
-                <div class = "projectContainerBox">
+                <div className = "projectContainerBox">
                     <p>{props.children.projectTitle}</p>
                 </div>
-                <div class = "projectContainerBox">
+                <div className = "projectContainerBox">
                     <p>{props.children.teamName}</p>
                 </div>
-                <div class = "projectDescriptionBox">
+                <div className = "projectDescriptionBox">
                     <p>{props.children.projectDescription}</p>
                 </div>
                 <div>
-                    <Button></Button>
+                    <Button>{buttonProps}</Button>
                 </div>
                 
                 

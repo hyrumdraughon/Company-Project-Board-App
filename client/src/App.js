@@ -14,12 +14,13 @@ import ProjectForm from './components/ProjectForm';
 
 function App() {
   const viewTestProps = {projectTitle:'This is a test project',teamName:'This is a test team name',projectDescription:DummyText()}
+  const addProjectProps = {isAdmin:true}
   return (
     <>
       <Button></Button>
       <ProjectCard></ProjectCard>
       <ViewProject>{viewTestProps}</ViewProject>
-      <ProjectForm/>
+      <ProjectForm>{addProjectProps}</ProjectForm>
     </>
 
   );
