@@ -115,14 +115,14 @@ public class UserServiceImpl implements UserService {
 		if (id == null) {
 			throw new NotFoundException("Must Provide a user ID");
 		}
-		//Check user exists and is not deleted
+		// Check user exists and is not deleted
 		Optional<User> optUser = userRepo.findById(id);
-		if(optUser.isEmpty()) {
+		if (optUser.isEmpty()) {
 			throw new NotFoundException("The user with id: " + id + " does not exist");
 		} else if (!optUser.get().isActive()) {
 			throw new BadRequestException("User has already been deleted");
 		}
-		
+
 		optUser.get().setActive(false);
 		userRepo.flush();
 		return userMapper.entityToDto(optUser.get());
