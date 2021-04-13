@@ -1,0 +1,22 @@
+
+
+
+.button{
+  margin: 100px;
+  width: 145px;
+  height: 67px;
+  background-color: #56CCF2;
+  color: #4F4F4F;
+  font-size: 22px;;
+  border-radius: 28.9px;
+  border: 3px solid #E0E0E0;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.button:hover {
+    color: #F8F8FF;
+    background-color: #2D9CDB;
+    border: 2px solid #828282;
+}
