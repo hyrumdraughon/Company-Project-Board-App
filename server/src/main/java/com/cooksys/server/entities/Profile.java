@@ -13,5 +13,9 @@ import lombok.NoArgsConstructor;
 public class Profile {
 
     private String firstName;
+
     private String lastName;
+
+    private String phone;
+
 }
