@@ -1,6 +1,7 @@
 package com.cooksys.server.services.implementations;
 
 import com.cooksys.server.entities.Company;
+import com.cooksys.server.exceptions.NotFoundException;
 import com.cooksys.server.mappers.CompanyMapper;
 import com.cooksys.server.models.CompanyDto;
 import com.cooksys.server.repositories.CompanyRepository;
@@ -21,6 +22,21 @@ public class CompanyServiceImpl implements CompanyService {
     public List<CompanyDto> getAllCompanies() {
         List<Company> companies = companyRepository.findAll();
         return companyMapper.entitiesToDtos(companies);
+    }
+
+    @Override
+    public CompanyDto getCompanyById(Long companyId) {
+        Company company = findCompanyById(companyId);
+        return companyMapper.entityToDto(company);
+    }
+
+    private Company findCompanyById(Long companyId) {
+        for(Company company : companyRepository.findAll()) {
+            if(company.getId().equals(companyId)) {
+                return company;
+            }
+        }
+        throw new NotFoundException("Requested company does not exist.");
     }
 
 }

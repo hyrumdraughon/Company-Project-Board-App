@@ -8,4 +8,5 @@ public interface CompanyService {
 
     List<CompanyDto> getAllCompanies();
 
+    CompanyDto getCompanyById(Long companyId);
 }
