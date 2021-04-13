@@ -8,6 +8,7 @@ import './App.css';
 import './index.css'
 import './styles/Button.css';
 import DummyText from './testData/dummyText'
+import ProjectForm from './components/ProjectForm';
 
 
 
@@ -18,6 +19,7 @@ function App() {
       <Button></Button>
       <ProjectCard></ProjectCard>
       <ViewProject>{viewTestProps}</ViewProject>
+      <ProjectForm/>
     </>
 
   );

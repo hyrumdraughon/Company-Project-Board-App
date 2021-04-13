@@ -31,7 +31,10 @@ const ViewProject = (props) => {
                 <div class = "projectDescriptionBox">
                     <p>{props.children.projectDescription}</p>
                 </div>
-                <Button></Button>
+                <div>
+                    <Button></Button>
+                </div>
+                
                 
             </Grid>
         </section>
