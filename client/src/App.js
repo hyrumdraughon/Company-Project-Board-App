@@ -12,6 +12,7 @@ import './styles/ProjectCard.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DummyText from './testData/dummyText'
 import ProjectForm from './components/ProjectForm';
+import SolidDivider from './components/SolidDivider';
 
 
 
@@ -25,6 +26,7 @@ function App() {
       <ProjectCard></ProjectCard>
       <TeamCard></TeamCard>
       <ViewProject>{viewTestProps}</ViewProject>
+      <SolidDivider></SolidDivider>
       <ProjectForm>{addProjectProps}</ProjectForm>
     </>
 

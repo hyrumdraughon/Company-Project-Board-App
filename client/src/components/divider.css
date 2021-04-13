@@ -1,0 +1,6 @@
+.solidDivider {
+    border-top: 3px solid darkgray;
+    size: 5;
+    width: 80%;
+    margin:15px 10%;
+}
