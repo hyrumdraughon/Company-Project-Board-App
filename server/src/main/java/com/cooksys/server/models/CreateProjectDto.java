@@ -5,10 +5,12 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Data
-public class RoleDto {
+public class CreateProjectDto {
 
-    private Long id;
-    
-    private String name;
+    private String title;
+
+    private String description;
+
+    private Long teamId;
 
 }

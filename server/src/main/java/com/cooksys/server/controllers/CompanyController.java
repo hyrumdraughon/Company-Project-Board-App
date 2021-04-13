@@ -2,7 +2,7 @@ package com.cooksys.server.controllers;
 
 import com.cooksys.server.services.UserService;
 
-import com.cooksys.server.models.CompanyDto;
+import com.cooksys.server.models.*;
 import com.cooksys.server.services.CompanyService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,4 +29,21 @@ public class CompanyController {
         return companyService.getCompanyById(companyId);
     }
 
+    @GetMapping("/@{companyId}/users")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserDto> getUsersInCompany(@PathVariable Long companyId) {
+        return companyService.getUsersInCompany(companyId);
+    }
+
+    @GetMapping("/@{companyId}/teams")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TeamDto> getTeamsInCompany(@PathVariable Long companyId) {
+        return companyService.getTeamsInCompany(companyId);
+    }
+
+    @PatchMapping("/@{companyId}")
+    @ResponseStatus(HttpStatus.OK)
+    public CompanyDto updateCompany(@PathVariable Long companyId, @RequestBody CompanyDto company) {
+        return companyService.updateCompany(companyId, company);
+    }
 }

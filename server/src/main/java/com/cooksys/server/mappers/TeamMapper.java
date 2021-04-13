@@ -13,4 +13,6 @@ public interface TeamMapper {
 
     List<TeamDto> entitiesToDtos(List<Team> teams);
 
+	Team DtoToEntity(TeamDto team);
+
 }
