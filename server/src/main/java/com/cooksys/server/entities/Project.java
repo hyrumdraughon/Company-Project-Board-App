@@ -26,6 +26,8 @@ public class Project {
 
     private String description;
 
-    private Boolean deleted;
+    private boolean deleted;
+
+    private boolean completed;
 
 }
