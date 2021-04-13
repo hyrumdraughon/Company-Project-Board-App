@@ -47,31 +47,6 @@ public class UserServiceImpl implements UserService {
 	private final RoleMapper roleMapper;
 	private final TeamMapper teamMapper;
 
-	// Takes an Id and and a User Object. if Optional User is empty the user doesnt
-	// exist
-	public void checkExistsNotDeleted(Long id, Optional<User> optionalUser) {
-		if (optionalUser.isEmpty()) {
-			throw new NotFoundException("the user with id: " + id + "Does not exist");
-			// If User is found but is NOT active, means the user has been "deleted"
-		} else if (!optionalUser.get().isActive()) {
-			throw new NotFoundException(
-					"The user " + optionalUser.get().getProfile().getFirstName() + " has been deleted");
-		}
-	}
-
-	@Override
-	public UserDto getUser(Long id) {
-		if (id == null) {
-			throw new BadRequestException("ID cannot be empty or null was provided: " + id);
-		}
-		Optional<User> optionalUser = userRepository.findById(id);
-		// User Validation to check to see if the user exists.
-		checkExistsNotDeleted(optionalUser.get().getId(), optionalUser);
-
-		// Return user entity DTO
-		return userMapper.entityToDto(optionalUser.get());
-	}
-
 	@Override
 	public List<UserDto> getAllUsers() {
 		// Returns every active user in the repository. Mostly for testing Purposes.
@@ -106,6 +81,19 @@ public class UserServiceImpl implements UserService {
 
 		return userMapper.entityToDto(createdUser);
 
+	}
+
+	@Override
+	public UserDto getUser(Long id) {
+		if (id == null) {
+			throw new BadRequestException("ID cannot be empty or null was provided: " + id);
+		}
+		Optional<User> optionalUser = userRepository.findById(id);
+		// User Validation to check to see if the user exists.
+		checkExistsNotDeleted(optionalUser.get().getId(), optionalUser);
+
+		// Return user entity DTO
+		return userMapper.entityToDto(optionalUser.get());
 	}
 
 	@Override
@@ -177,6 +165,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	// Helper methods
+
+	// Takes an Id and and a User Object. if Optional User is empty the user doesnt
+	// exist
+	public void checkExistsNotDeleted(Long id, Optional<User> optionalUser) {
+		if (optionalUser.isEmpty()) {
+			throw new NotFoundException("the user with id: " + id + "Does not exist");
+			// If User is found but is NOT active, means the user has been "deleted"
+		} else if (!optionalUser.get().isActive()) {
+			throw new NotFoundException(
+					"The user " + optionalUser.get().getProfile().getFirstName() + " has been deleted");
+		}
+	}
 
 	// Checks for all possible null values when creating a user.
 	private void checkCreateUserDtoForNull(CreateUserDto createUserDto) {

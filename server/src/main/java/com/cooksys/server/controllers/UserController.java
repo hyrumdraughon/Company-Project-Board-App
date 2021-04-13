@@ -26,36 +26,36 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/user")
 @AllArgsConstructor
 public class UserController {
-	private final UserService us;
-	
-	
+
+	private final UserService userService;
+
 	@GetMapping
 	public List<UserDto> getAllUsers(){
-		return us.getAllUsers();
+		return userService.getAllUsers();
 	}
-	
-	@GetMapping("/@{userId}")
-	@ResponseStatus(HttpStatus.OK)
-	public UserDto getUser(@PathVariable("userId") Long id) {
-		return us.getUser(id);
-	}
-	
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public UserDto createUser(@RequestBody CreateUserDto createUserDto) {
-		return us.createUser(createUserDto);
+		return userService.createUser(createUserDto);
+	}
+
+	@GetMapping("/@{userId}")
+	@ResponseStatus(HttpStatus.OK)
+	public UserDto getUser(@PathVariable("userId") Long id) {
+		return userService.getUser(id);
 	}
 
 	@PatchMapping("/@{userId}")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto updateUserProfile(@PathVariable("userId") Long id, @RequestBody CreateUserDto createUserDto) {
-		return us.updateUserProfile(id, createUserDto);
+		return userService.updateUserProfile(id, createUserDto);
 	}
 	
 	@DeleteMapping("/@{userId}")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto deleteUser(@PathVariable("userId") Long id) {
-		return us.deleteUser(id);
+		return userService.deleteUser(id);
 	}
 	
 	//Should take a user id, and a request body that will be used to set a role.
@@ -63,13 +63,13 @@ public class UserController {
 	@PatchMapping("/@{userId}/role")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto addRole(@PathVariable("userId") Long id, @RequestBody RoleDto role) {
-		return us.addRole(id, role);
+		return userService.addRole(id, role);
 	}
 	
 	@PatchMapping("/@{userId}/teams")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto addTeam(@PathVariable("userId") Long id, @RequestBody TeamDto team) {
-		return us.addTeam(id, team);
+		return userService.addTeam(id, team);
 		
 	}
 }
