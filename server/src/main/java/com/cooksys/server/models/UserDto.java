@@ -20,9 +20,9 @@ public class UserDto {
 
     private ProfileDto profile;
 
-    private CompanyDto userCompany;
+    private Long companyId;
 
-    private TeamDto userTeam;
+    private Long teamId;
 
     private Timestamp created;
 

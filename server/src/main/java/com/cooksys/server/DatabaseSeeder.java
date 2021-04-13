@@ -1,8 +1,8 @@
 package com.cooksys.server;
 
-import com.cooksys.server.entities.Credential;
-import com.cooksys.server.entities.Profile;
-import com.cooksys.server.entities.User;
+import com.cooksys.server.entities.*;
+import com.cooksys.server.repositories.CompanyRepository;
+import com.cooksys.server.repositories.TeamRepository;
 import com.cooksys.server.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 public class DatabaseSeeder implements CommandLineRunner {
 
     private final UserRepository userRepository;
+    private final TeamRepository teamRepository;
+    private final CompanyRepository companyRepository;
 
     @Override
     public void run(String... args) {
@@ -26,9 +28,17 @@ public class DatabaseSeeder implements CommandLineRunner {
         credential.setEmail("test@test.com");
         credential.setPassword("password");
 
+        Team team = new Team();
+        team = teamRepository.saveAndFlush(team);
+
+        Company company = new Company();
+        company = companyRepository.saveAndFlush(company);
+
         User user = new User();
         user.setCredentials(credential);
         user.setProfile(profile);
+        user.setUserTeam(team);
+        user.setUserCompany(company);
 
         userRepository.saveAndFlush(user);
 

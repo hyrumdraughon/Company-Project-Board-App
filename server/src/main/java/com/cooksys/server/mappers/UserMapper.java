@@ -15,7 +15,9 @@ public interface UserMapper {
     User dtoToEntity(CreateUserDto createUserDto);
     User dtoTo_get_Entity(UserDto userDto);
 
-    @Mapping(target="email", source="credentials.email")
+    @Mapping(target= "email", source="credentials.email")
+    @Mapping(target = "companyId", source = "userCompany.id")
+    @Mapping(target = "teamId", source = "userTeam.id")
     UserDto entityToDto(User user);
 
     List<UserDto> entitiesToDtos(List<User> users);
