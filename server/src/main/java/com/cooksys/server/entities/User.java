@@ -24,8 +24,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 public class User {
 
-	// someone please check this and then get rid of this comment lol
-
 	@Id
 	@GeneratedValue
 	private Long id;
