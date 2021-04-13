@@ -9,11 +9,20 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserDto {
 
-    private ProfileDto profile;
-
-    private Timestamp joined;
+    private Long id;
 
     private String email;
 
-    
+    private ProfileDto profile;
+
+    private CompanyDto userCompany;
+
+    private TeamDto userTeam;
+
+    private Timestamp created;
+
+    private Timestamp updated;
+
+    // FIXME Serves as admin boolean
+
 }
