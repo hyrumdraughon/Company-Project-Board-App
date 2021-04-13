@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpStatusCodeException;
 
 import com.cooksys.server.entities.User;
 import com.cooksys.server.exceptions.BadRequestException;
@@ -91,6 +92,21 @@ public class UserServiceImpl implements UserService {
 			return userMapper.entityToDto(userRepo.saveAndFlush(user));
 		}
 		throw new NullPointerException("Something went wrong, try again.");
+	}
+
+	@Override
+	public UserDto updateUserProfile(Long id, CreateUserDto createUserDto) {
+		if (id == null) {
+			throw new NotFoundException("Must Provide a user ID");
+			}
+		//check user exists and is not deleted
+		Optional<User> optUser = userRepo.findById(id);
+		checkExistsNotDeleted(id, optUser);
+		
+		//update user's profile, flush, and return UserDto
+		optUser.get().setProfile(profile.dtoToEmbeddable(createUserDto.getProfile()));
+		userRepo.flush();
+		return userMapper.entityToDto(optUser.get());
 	}
 
 }
