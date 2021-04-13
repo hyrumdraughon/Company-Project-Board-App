@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 
 
 
-export default function TeamCard({ label, teamMemberLabel}) {
+export default function TeamCard({ teamLabel, teamMemberLabel}) {
   
 
 
@@ -12,7 +12,7 @@ export default function TeamCard({ label, teamMemberLabel}) {
       <Card.Body>
         <Card.Text className="title">
         Placeholder Team Name { /* placeholder */}
-         { label }
+        { teamLabel }
           <hr className='hr'></hr>
         </Card.Text>
         <Card.Text className='description'>
