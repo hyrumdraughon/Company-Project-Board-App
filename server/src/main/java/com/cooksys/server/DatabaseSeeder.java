@@ -39,6 +39,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         user.setProfile(profile);
         user.setUserTeam(team);
         user.setUserCompany(company);
+        user.setActive(true);
 
         userRepository.saveAndFlush(user);
 

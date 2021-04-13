@@ -24,42 +24,44 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
-	
+
 	private UserRepository userRepo;
 	private UserMapper userMapper;
 	private CredentialMapper credential;
 	private ProfileMapper profile;
 	private CompanyRepository companies;
-	
-	//Takes an Id and and a User Object. if Optional User is empty the user doesnt exist
+
+	// Takes an Id and and a User Object. if Optional User is empty the user doesnt
+	// exist
 	public void checkExistsNotDeleted(Long id, Optional<User> optionalUser) {
-		if(optionalUser.isEmpty()) {
+		if (optionalUser.isEmpty()) {
 			throw new NotFoundException("the user with id: " + id + "Does not exist");
-		  //If User is found but is NOT active, means the user has been "deleted"
-		} else if (optionalUser.get().isActive()) {
-			throw new NotFoundException("The user " + optionalUser.get().getProfile().getFirstName() + " has been deleted");
+			// If User is found but is NOT active, means the user has been "deleted"
+		} else if (!optionalUser.get().isActive()) {
+			throw new NotFoundException(
+					"The user " + optionalUser.get().getProfile().getFirstName() + " has been deleted");
 		}
 	}
-	
+
 	@Override
 	public UserDto getUser(Long id) {
-		if(id == null) {
+		if (id == null) {
 			throw new BadRequestException("ID cannot be empty or null was provided: " + id);
 		}
 		Optional<User> optionalUser = userRepo.findById(id);
-		//User Validation to check to see if the user exists.
+		// User Validation to check to see if the user exists.
 		checkExistsNotDeleted(optionalUser.get().getId(), optionalUser);
-		
-		//Return user entity DTO
+
+		// Return user entity DTO
 		return userMapper.entityToDto(optionalUser.get());
 	}
 
 	@Override
 	public List<UserDto> getAllUsers() {
-		//Returns every active user in the repository. Mostly for testing Purposes.
+		// Returns every active user in the repository. Mostly for testing Purposes.
 		List<UserDto> activeUsers = new ArrayList<>();
 		for (User u : userRepo.findAll()) {
-			if (!u.isActive()) {
+			if (u.isActive()) {
 				activeUsers.add(userMapper.entityToDto(u));
 			}
 		}
@@ -74,7 +76,7 @@ public class UserServiceImpl implements UserService {
 		// deleted user instead of creating a new one.
 		if (userRepo.equals(createUserDto.getCredentials().getEmail())) {
 			User user = userRepo.findByCredentialsEmail(createUserDto.getCredentials().getEmail());
-			if(!user.isActive()) {
+			if (!user.isActive()) {
 				user.setActive(true);
 				return userMapper.entityToDto(user);
 			}
@@ -82,13 +84,12 @@ public class UserServiceImpl implements UserService {
 			throw new BadRequestException("You need to provide both credentials and Profile to create a user");
 		} else {
 			User user = new User();
-			//Save all relevant information. 
+			// Save all relevant information.
 			user.setCredentials(credential.dtoToEmbeddable(createUserDto.getCredentials()));
 			user.setProfile(profile.dtoToEmbeddable(createUserDto.getProfile()));
-			//TODO: Need to set the company by ID, not by company object. since the Request body is
-			//is passing in a company ID.
 			user.setUserCompany(companies.getOne(createUserDto.getCompanyId()));
-			
+			user.setActive(true);
+
 			return userMapper.entityToDto(userRepo.saveAndFlush(user));
 		}
 		throw new NullPointerException("Something went wrong, try again.");
@@ -98,13 +99,31 @@ public class UserServiceImpl implements UserService {
 	public UserDto updateUserProfile(Long id, CreateUserDto createUserDto) {
 		if (id == null) {
 			throw new NotFoundException("Must Provide a user ID");
-			}
-		//check user exists and is not deleted
+		}
+		// check user exists and is not deleted
 		Optional<User> optUser = userRepo.findById(id);
 		checkExistsNotDeleted(id, optUser);
-		
-		//update user's profile, flush, and return UserDto
+
+		// update user's profile, flush, and return UserDto
 		optUser.get().setProfile(profile.dtoToEmbeddable(createUserDto.getProfile()));
+		userRepo.flush();
+		return userMapper.entityToDto(optUser.get());
+	}
+
+	@Override
+	public UserDto deleteUser(Long id) {
+		if (id == null) {
+			throw new NotFoundException("Must Provide a user ID");
+		}
+		//Check user exists and is not deleted
+		Optional<User> optUser = userRepo.findById(id);
+		if(optUser.isEmpty()) {
+			throw new NotFoundException("The user with id: " + id + " does not exist");
+		} else if (!optUser.get().isActive()) {
+			throw new BadRequestException("User has already been deleted");
+		}
+		
+		optUser.get().setActive(false);
 		userRepo.flush();
 		return userMapper.entityToDto(optUser.get());
 	}
