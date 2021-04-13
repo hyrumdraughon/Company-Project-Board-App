@@ -1,48 +1,29 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Card } from 'react-bootstrap'
 
-const useStyles = makeStyles({
-  root: {
-    width: 370,
-    height: 396,
-    textAlign: 'center',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
 
-export default function ProjectCard({label, descriptionLabel, descriptionTextLabel, handleClick}) {
-  const classes = useStyles();
+
+export default function ProjectCard({ label, descriptionTextLabel}) {
   
 
+
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-         Project Name { /* placeholder */}
+    <Card className="cardSize">
+      <Card.Body>
+        <Card.Text className="title">
+        Placeholder Project Name { /* placeholder */}
          { label }
-         <hr></hr>
-        </Typography>
-        <Typography className={classes.description}>
-          Project Description { /* placeholder */}
-          { descriptionLabel }
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-        Project Description Text { /* placeholder */}
-          {descriptionTextLabel}
-        </Typography>
+          <hr className='hr'></hr>
+        </Card.Text>
+        <Card.Text className='description'>
+        Project Description 
+        </Card.Text>
+        <Card.Text className='descriptionText'>
+        PlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholderPlaceholder { /* placeholder */}
+          { descriptionTextLabel }
+        </Card.Text>
         
-      </CardContent>
-      
+      </Card.Body>
     </Card>
   );
 }
