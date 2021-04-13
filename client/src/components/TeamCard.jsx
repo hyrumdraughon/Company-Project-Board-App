@@ -19,11 +19,11 @@ export default function TeamCard({ label, teamMemberLabel}) {
         Team Members 
         </Card.Text>
         <Card.Text className='descriptionText text-center'>
-        <p>Placeholder</p>  { /* placeholder */}
-        <p>Placeholder</p>  { /* placeholder */}
-        <p>Placeholder</p>  { /* placeholder */}
-        <p>Placeholder</p>  { /* placeholder */}
-          { teamMemberLabel }
+        <p>Placeholder{ teamMemberLabel }</p>  { /* placeholder */}
+        <p>Placeholder{ teamMemberLabel }</p>  { /* placeholder */}
+        <p>Placeholder{ teamMemberLabel }</p>  { /* placeholder */}
+        <p>Placeholder{ teamMemberLabel }</p>  { /* placeholder */}
+          
         </Card.Text>
         
       </Card.Body>
