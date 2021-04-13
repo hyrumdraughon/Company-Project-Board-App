@@ -9,4 +9,5 @@ public interface CredentialMapper {
 
     Credential dtoToEmbeddable(CredentialDto credentialDto);
 
+
 }

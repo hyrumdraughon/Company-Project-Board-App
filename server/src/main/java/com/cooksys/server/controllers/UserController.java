@@ -5,16 +5,19 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cooksys.server.models.CreateUserDto;
 import com.cooksys.server.models.UserDto;
 import com.cooksys.server.services.UserService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 @AllArgsConstructor
 public class UserController {
 	private final UserService us;
@@ -29,6 +32,12 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto getUser(@PathVariable("id") Long id) {
 		return us.getUser(id);
+	}
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.OK)
+	public UserDto createUser(@RequestBody CreateUserDto createUserDto) {
+		return us.createUser(createUserDto);
 	}
 
 }

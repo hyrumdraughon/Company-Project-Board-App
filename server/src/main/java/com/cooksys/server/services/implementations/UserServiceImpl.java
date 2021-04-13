@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 import com.cooksys.server.entities.User;
 import com.cooksys.server.exceptions.BadRequestException;
 import com.cooksys.server.exceptions.NotFoundException;
+import com.cooksys.server.mappers.CredentialMapper;
+import com.cooksys.server.mappers.ProfileMapper;
 import com.cooksys.server.mappers.UserMapper;
+import com.cooksys.server.models.CreateUserDto;
 import com.cooksys.server.models.UserDto;
+import com.cooksys.server.repositories.CompanyRepository;
 import com.cooksys.server.repositories.UserRepository;
 import com.cooksys.server.services.UserService;
 
@@ -22,13 +26,16 @@ public class UserServiceImpl implements UserService {
 	
 	private UserRepository userRepo;
 	private UserMapper userMapper;
+	private CredentialMapper credential;
+	private ProfileMapper profile;
+	private CompanyRepository companies;
 	
 	//Takes an Id and and a User Object. if Optional User is empty the user doesnt exist
 	public void checkExistsNotDeleted(Long id, Optional<User> optionalUser) {
 		if(optionalUser.isEmpty()) {
 			throw new NotFoundException("the user with id: " + id + "Does not exist");
 		  //If User is found but is NOT active, means the user has been "deleted"
-		} else if (!optionalUser.get().isActive()) {
+		} else if (optionalUser.get().isActive()) {
 			throw new NotFoundException("The user " + optionalUser.get().getProfile().getFirstName() + " has been deleted");
 		}
 	}
@@ -56,6 +63,34 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		return activeUsers;
+	}
+
+	@Override
+	public UserDto createUser(CreateUserDto createUserDto) {
+		// Creates a new user. If any required fields are missing or the email
+		// provided is already taken, an error should be sent in lieu of a response.
+		// If the given credentials match a previously-deleted user, re-activate the
+		// deleted user instead of creating a new one.
+		if (userRepo.equals(createUserDto.getCredentials().getEmail())) {
+			User user = userRepo.findByCredentialsEmail(createUserDto.getCredentials().getEmail());
+			if(!user.isActive()) {
+				user.setActive(true);
+				return userMapper.entityToDto(user);
+			}
+		} else if (createUserDto.getCredentials() == null || createUserDto.getProfile() == null) {
+			throw new BadRequestException("You need to provide both credentials and Profile to create a user");
+		} else {
+			User user = new User();
+			//Save all relevant information. 
+			user.setCredentials(credential.dtoToEmbeddable(createUserDto.getCredentials()));
+			user.setProfile(profile.dtoToEmbeddable(createUserDto.getProfile()));
+			//TODO: Need to set the company by ID, not by company object. since the Request body is
+			//is passing in a company ID.
+			user.setUserCompany(companies.getOne(createUserDto.getCompanyId()));
+			
+			return userMapper.entityToDto(userRepo.saveAndFlush(user));
+		}
+		throw new NullPointerException("Something went wrong, try again.");
 	}
 
 }

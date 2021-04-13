@@ -11,5 +11,6 @@ public interface ProfileMapper {
     ProfileDto embeddableToDto(Profile profile);
 
     Profile dtoToEmbeddable(ProfileDto profileResponseDto);
+
     
 }
