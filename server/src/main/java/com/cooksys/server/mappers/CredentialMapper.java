@@ -6,5 +6,7 @@ import com.cooksys.server.models.CredentialDto;
 
 @Mapper(componentModel = "spring")
 public interface CredentialMapper {
+
     Credential dtoToEmbeddable(CredentialDto credentialDto);
+
 }
