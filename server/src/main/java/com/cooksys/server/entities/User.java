@@ -1,4 +1,4 @@
-package com.example.demo.entities;
+package com.cooksys.server.entities;
 
 import java.sql.Timestamp;
 

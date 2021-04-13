@@ -1,4 +1,4 @@
-package com.example.demo.entities;
+package com.cooksys.server.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

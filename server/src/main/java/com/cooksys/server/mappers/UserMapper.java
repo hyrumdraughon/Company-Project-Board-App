@@ -1,13 +1,13 @@
-package com.example.demo.mappers;
+package com.cooksys.server.mappers;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import java.util.List;
 
-import com.example.demo.entities.User;
-import com.example.demo.models.CreateUserDto;
-import com.example.demo.models.UserDto;
+import com.cooksys.server.entities.User;
+import com.cooksys.server.models.CreateUserDto;
+import com.cooksys.server.models.UserDto;
 
 @Mapper(componentModel = "spring", uses = {ProfileMapper.class, CredentialMapper.class})
 public interface UserMapper {

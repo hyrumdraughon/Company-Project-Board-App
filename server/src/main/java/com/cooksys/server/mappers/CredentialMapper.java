@@ -1,8 +1,8 @@
-package com.example.demo.mappers;
+package com.cooksys.server.mappers;
 
 import org.mapstruct.Mapper;
-import com.example.demo.entities.Credential;
-import com.example.demo.models.CredentialDto;
+import com.cooksys.server.entities.Credential;
+import com.cooksys.server.models.CredentialDto;
 
 @Mapper(componentModel = "spring")
 public interface CredentialMapper {

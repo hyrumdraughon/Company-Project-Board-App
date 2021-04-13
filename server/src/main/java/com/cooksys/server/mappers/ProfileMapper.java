@@ -1,7 +1,7 @@
-package com.example.demo.mappers;
+package com.cooksys.server.mappers;
 
-import com.example.demo.entities.Profile;
-import com.example.demo.models.ProfileDto;
+import com.cooksys.server.entities.Profile;
+import com.cooksys.server.models.ProfileDto;
 
 import org.mapstruct.Mapper;
 

@@ -1,4 +1,4 @@
-package com.example.demo.models;
+package com.cooksys.server.models;
 
 import java.sql.Timestamp;
 

@@ -1,6 +1,6 @@
-package com.example.demo.repositories;
+package com.cooksys.server.repositories;
 
-import com.example.demo.entities.Team;
+import com.cooksys.server.entities.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
