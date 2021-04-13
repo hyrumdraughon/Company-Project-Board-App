@@ -1,9 +1,5 @@
 package com.cooksys.server.services.implementations;
 
-import com.cooksys.server.services.CompanyService;
-
-public class CompanyServiceImpl implements CompanyService{
-=======
 import com.cooksys.server.entities.Company;
 import com.cooksys.server.mappers.CompanyMapper;
 import com.cooksys.server.models.CompanyDto;

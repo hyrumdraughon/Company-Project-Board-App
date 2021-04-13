@@ -1,12 +1,7 @@
 package com.cooksys.server.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.cooksys.server.services.UserService;
 
-import lombok.AllArgsConstructor;
-=======
 import com.cooksys.server.models.CompanyDto;
 import com.cooksys.server.services.CompanyService;
 import lombok.AllArgsConstructor;
