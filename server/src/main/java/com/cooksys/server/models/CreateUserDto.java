@@ -9,5 +9,8 @@ public class CreateUserDto {
 
     private CredentialDto credentials;
     
-    private ProfileDto profile;   
+    private ProfileDto profile;
+
+    private Long companyId;
+
 }
