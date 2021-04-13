@@ -4,12 +4,12 @@ import React from 'react';
 
 
 
-const Button = ({ handleClick }) => (
+const Button = ({ label, handleClick }) => (
   <button
     className="button"
     onClick={handleClick}
   >
-  
+    { label}
   </button>
 );
 
