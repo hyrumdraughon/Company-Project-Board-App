@@ -30,17 +30,18 @@ public class UserController {
 		return us.getAllUsers();
 	}
 	
-	@GetMapping("/profile/@{id}")
+	@GetMapping("/@{userId}")
 	@ResponseStatus(HttpStatus.OK)
-	public UserDto getUser(@PathVariable("id") Long id) {
+	public UserDto getUser(@PathVariable("userId") Long id) {
 		return us.getUser(id);
 	}
 	
 	@PostMapping
-	@ResponseStatus(HttpStatus.OK)
+	@ResponseStatus(HttpStatus.CREATED)
 	public UserDto createUser(@RequestBody CreateUserDto createUserDto) {
 		return us.createUser(createUserDto);
 	}
+
 	@PatchMapping("/@{userId}")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto updateUserProfile(@PathVariable("userId") Long id, @RequestBody CreateUserDto createUserDto) {
