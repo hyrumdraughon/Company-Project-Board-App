@@ -1,0 +1,35 @@
+
+.cardSize {
+    margin: 100px;
+    width: 370px;
+    height: 396px;
+    text-align: center;
+    background-color: #F8F8FF;
+    border: 3px solid #2F80ED;
+    font-weight: normal !important;
+}
+
+hr.hr {
+    border-top: 1px solid #000000;
+}
+
+.title {
+    font-size: 22px;
+}
+
+.description {
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+.descriptionText {
+    text-align: left;
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+.cardSize:hover{
+    background-color: #DBDBE8;
+    border: 3px solid #2B78DF;
+    box-shadow: 5px 1.5px 5px slategrey;
+}
