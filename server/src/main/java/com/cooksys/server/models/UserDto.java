@@ -9,6 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserDto {
 
+    /*  FIXME
+        Frontend team specified that they wanted companyId, teamId, and role boolean. Currently, objects are returned
+        for those, which contain the information they need, but it's not exactly what they asked for.
+     */
+
     private Long id;
 
     private String email;
@@ -23,6 +28,6 @@ public class UserDto {
 
     private Timestamp updated;
 
-    // FIXME Serves as admin boolean
+    private RoleDto role;
 
 }
