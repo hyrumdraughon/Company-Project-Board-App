@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DummyText from './testData/dummyText'
 import ProjectForm from './components/ProjectForm';
 import SolidDivider from './components/SolidDivider';
+import NavBar from './components/NavBar';
 
 
 
@@ -20,8 +21,10 @@ import SolidDivider from './components/SolidDivider';
 function App() {
   const viewTestProps = {projectTitle:'This is a test project',teamName:'This is a test team name',projectDescription:DummyText()}
   const addProjectProps = {isAdmin:true}
+  const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
   return (
     <>
+      <NavBar>{NavHeader}</NavBar>
       <Button></Button>
       <ProjectCard></ProjectCard>
       <TeamCard></TeamCard>
