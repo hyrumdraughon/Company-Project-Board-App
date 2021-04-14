@@ -9,7 +9,7 @@ function UserProvider(props) {
 
     const initState = {
         user: {},
-        userId: 0,
+        userId: localStorage.getItem("UserId") ||  0, /*If Protected Routes are still accessable with out logging in change 0 to undefined*/
         loggedIn: false
     }
 
@@ -50,3 +50,5 @@ function UserProvider(props) {
     )
 
 }
+
+export default UserProvider
