@@ -1,13 +1,11 @@
 package com.cooksys.server.controllers;
 
 import com.cooksys.server.models.CredentialDto;
+import com.cooksys.server.models.UpdatePasswordDto;
 import com.cooksys.server.models.UserDto;
 import com.cooksys.server.services.ValidateService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
@@ -20,4 +18,10 @@ public class ValidateController {
     public UserDto login(@RequestBody CredentialDto credentialDto) {
         return validateService.login(credentialDto);
     }
+
+    @PatchMapping("/changePassword")
+    public UserDto changePassword(@RequestBody UpdatePasswordDto updatePasswordDto) {
+        return validateService.changePassword(updatePasswordDto);
+    }
+
 }
