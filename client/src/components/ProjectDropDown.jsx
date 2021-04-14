@@ -1,8 +1,6 @@
 import './project.css'
 
 
-//TODO: Handle button handler when endpoint is defined
-//PROPS
 /*
 {
     isAdmin: boolean that is true if it is a company admin calling the component

@@ -14,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DummyText from './testData/dummyText'
 import ProjectForm from './components/ProjectForm';
 import SolidDivider from './components/SolidDivider';
+import NavBar from './components/NavBar';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
@@ -22,12 +23,14 @@ import ProtectedRoute from './shared/ProtectedRoute';
 function App() {
   const viewTestProps = {projectTitle:'This is a test project',teamName:'This is a test team name',projectDescription:DummyText()}
   const addProjectProps = {isAdmin:true}
+  const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
 
   const { userId, logout } = useContext(UserContext)
   return (
     <>
-      <Switch>
+      <NavBar>{NavHeader}</NavBar>
         
+      <Switch>
         <Route extact path="/" render={rProps => userId ? <Redirect to='/Home'/> : <Login {...rProps} />} />
 
         <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" />
@@ -41,11 +44,8 @@ function App() {
       <Button />
       <ProjectCard />
       <TeamCard/>
-      <ViewProject>{viewTestProps}</ViewProject>
-      <SolidDivider />
-      <ProjectForm>{addProjectProps}</ProjectForm>
-    </>
 
+    </>
   );
 }
 
