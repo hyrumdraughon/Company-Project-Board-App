@@ -44,7 +44,9 @@ function UserProvider(props) {
             login: login,
             signup: signup,
             logout: logout    
-        }}
+        }} >
+            { props.children }
+        </UserContext.Provider>
     )
 
 }
