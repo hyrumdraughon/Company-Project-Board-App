@@ -46,8 +46,6 @@ public class CompanyServiceImpl implements CompanyService {
         throw new NotFoundException("Requested company does not exist.");
     }
 
-    //Denise: I still need to test these 
-    
     @Override
     public List<UserDto> getUsersInCompany(Long companyId) {
         Company company = findCompanyById(companyId);
