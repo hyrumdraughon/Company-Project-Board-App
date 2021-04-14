@@ -1,20 +1,23 @@
 import React, {useContext} from 'react'
 
 import Button from './components/Button'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ProjectCard from './components/ProjectCard'
 import TeamCard from './components/TeamCard'
 import ViewProject from './components/ViewProject'
 import Login from './components/Login'
-import './App.css';
-import './index.css'
-import './styles/Button.css';
-import './styles/ProjectCard.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import DummyText from './testData/dummyText'
 import ProjectForm from './components/ProjectForm';
 import SolidDivider from './components/SolidDivider';
 import NavBar from './components/NavBar';
+import AddProject from './components/AddProject'
+import AddTeam from './components/AddTeam'
+
+import './App.css';
+import './index.css'
+import './styles/Button.css';
+import './styles/ProjectCard.css'
+import './styles/addCard.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
@@ -41,6 +44,8 @@ function App() {
         } />
 
       </Switch>
+      <AddProject></AddProject>
+      <AddTeam></AddTeam>
       <Button />
       <ProjectCard />
       <TeamCard/>
