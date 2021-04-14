@@ -54,12 +54,20 @@ public class ProjectServiceImpl implements ProjectService {
 
     }
 
-
-
-    // TODO Implement this endpoint. Updates project with the specified values.
     @Override
     public ProjectDto updateProject(Long projectId, UpdateProjectDto updateProjectDto) {
-        return null;
+
+        checkUpdateProjectDtoForNull(updateProjectDto);
+
+        Project databaseProject = getProjectById(projectId);
+
+        databaseProject.setTitle(updateProjectDto.getTitle());
+        databaseProject.setDescription(updateProjectDto.getDescription());
+
+        projectRepository.save(databaseProject);
+
+        return projectMapper.entityToDto(databaseProject);
+
     }
 
     // Helper methods
@@ -108,5 +116,22 @@ public class ProjectServiceImpl implements ProjectService {
         if(databaseProject.isDeleted()) {
             throw new NotFoundException("Requested project does not exist.");
         }
+    }
+
+    // Checks updateProjectDto for null values and throws errors accordingly.
+    private void checkUpdateProjectDtoForNull(UpdateProjectDto updateProjectDto) {
+
+        if(updateProjectDto == null) {
+            throw new BadRequestException("Request body must be provided.");
+        }
+
+        if(updateProjectDto.getTitle() == null) {
+            throw new BadRequestException("Title must be provided.");
+        }
+
+        if(updateProjectDto.getDescription() == null) {
+            throw new BadRequestException("Description must be provided.");
+        }
+
     }
 }
