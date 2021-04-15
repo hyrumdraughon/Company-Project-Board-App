@@ -62,26 +62,18 @@ public class UserServiceImpl implements UserService {
 	// Endpoint tested.
 	@Override
 	public UserDto createUser(CreateUserDto createUserDto) {
-
 		checkCreateUserDtoForNull(createUserDto);
-
-		Credential credentials = credentialMapper.dtoToEmbeddable(createUserDto.getCredentials());
-		Profile createdProfile = profileMapper.dtoToEmbeddable(createUserDto.getProfile());
-
-		checkEmailAvailability(credentials.getEmail());
-
+		checkEmailAvailability(createUserDto.getCredentials().getEmail());
+		User createdUser = userMapper.dtoToEntity(createUserDto);
 		Company databaseCompany = getCompanyById(createUserDto.getCompanyId());
-
-		User createdUser = new User();
-		createdUser.setCredentials(credentials);
-		createdUser.setProfile(createdProfile);
 		createdUser.setUserCompany(databaseCompany);
 		createdUser.setActive(true);
-		createdUser.setRole(roleRepository.findById((long) 2).get());
+		Optional<Role> role = roleRepository.findById((long) 2);
+		if(role.isPresent()) {
+			createdUser.setRole(role.get());
+		}
 		createdUser = userRepository.saveAndFlush(createdUser);
-
 		return userMapper.entityToDto(createdUser);
-
 	}
 
 	@Override
