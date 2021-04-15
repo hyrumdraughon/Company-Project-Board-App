@@ -31,14 +31,14 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class TeamServiceImpl implements TeamService {
 	
-	private TeamRepository teamRepo;
-	private CompanyRepository companyRepo;
-	private TeamMapper teamMapper;
-	private UserRepository userRepo;
-	private ProjectRepository projectRepo;
-	private UserMapper userMapper;
-	private ProjectMapper projectMapper;
-	private RoleRepository roleRepo;
+	private final TeamRepository teamRepo;
+	private final CompanyRepository companyRepo;
+	private final TeamMapper teamMapper;
+	private final UserRepository userRepo;
+	private final ProjectRepository projectRepo;
+	private final UserMapper userMapper;
+	private final ProjectMapper projectMapper;
+	private final RoleRepository roleRepo;
 	
 	// Helper methods
 	public void checkTeamExistsNotDeleted(Long teamId, Optional<Team> optionalTeam) {
