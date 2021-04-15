@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm'
 
+import '../styles/AuthForm.css'
+
 import { UserContext } from '../context/UserProvider'
 
 function Auth() {
@@ -35,24 +37,20 @@ function Auth() {
 
 
     return (
-        <div>
+        <div className="form_div">
             
             {!toggle ?
                 <>
-
-                    <AuthForm inputs={inputs}  handleChange={handleChange} handleSubmit={handleLogin} btnText="Login" />
-
-                    <button onClick={toggleForms}>Not A Member?</button>
+                    <h2 style={{textAlign: 'center'}}>Login</h2>
+                    <AuthForm inputs={inputs}  handleChange={handleChange} handleSubmit={handleLogin} btnText="Login" toggle={toggleForms} toggleText="Not A Member"/>
 
                 </>
 
             :
 
                 <>
-
-                    <AuthForm inputs={inputs} handleChange={handleChange} handleSubmit={handleSignup} btnText="Signup" />
-
-                    <button onClick={toggleForms}>Already A Member?</button>
+                    <h2 style={{textAlign: 'center'}}>Signup</h2>
+                    <AuthForm inputs={inputs} handleChange={handleChange} handleSubmit={handleSignup} btnText="Signup" toggle={toggleForms} toggleText="Already A Member"/>
 
                 </>
                 
