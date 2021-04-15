@@ -23,25 +23,25 @@ public class CompanyController {
         return companyService.getAllCompanies();
     }
 
-    @GetMapping("/@{companyId}")
+    @GetMapping("/{companyId}")
     @ResponseStatus(HttpStatus.OK)
     public CompanyDto getCompanyById(@PathVariable Long companyId) {
         return companyService.getCompanyById(companyId);
     }
 
-    @GetMapping("/@{companyId}/users")
+    @GetMapping("/{companyId}/users")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> getUsersInCompany(@PathVariable Long companyId) {
         return companyService.getUsersInCompany(companyId);
     }
 
-    @GetMapping("/@{companyId}/teams")
+    @GetMapping("/{companyId}/teams")
     @ResponseStatus(HttpStatus.OK)
     public List<TeamDto> getTeamsInCompany(@PathVariable Long companyId) {
         return companyService.getTeamsInCompany(companyId);
     }
 
-    @PatchMapping("/@{companyId}")
+    @PatchMapping("/{companyId}")
     @ResponseStatus(HttpStatus.OK)
     public CompanyDto updateCompany(@PathVariable Long companyId, @RequestBody CompanyDto company) {
         return companyService.updateCompany(companyId, company);

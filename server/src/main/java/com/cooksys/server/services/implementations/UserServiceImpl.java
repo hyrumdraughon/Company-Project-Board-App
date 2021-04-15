@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService {
 		createdUser.setProfile(createdProfile);
 		createdUser.setUserCompany(databaseCompany);
 		createdUser.setActive(true);
+		createdUser.setRole(roleRepository.findById((long) 2).get());
 		createdUser = userRepository.saveAndFlush(createdUser);
 
 		return userMapper.entityToDto(createdUser);

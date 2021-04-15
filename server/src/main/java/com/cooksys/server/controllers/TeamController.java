@@ -24,31 +24,31 @@ public class TeamController {
         return teamService.createTeam(createTeamDto);
     }
 
-    @GetMapping("/@{teamId}")
+    @GetMapping("/{teamId}")
     @ResponseStatus(HttpStatus.OK)
     public TeamDto getTeam(@PathVariable("teamId") Long teamId) {
         return teamService.getTeam(teamId);
     }
 
-    @PatchMapping("@{teamId}/addUser/@{userId}")
+    @PatchMapping("/{teamId}/addUser/@{userId}")
     @ResponseStatus(HttpStatus.OK)
     public TeamDto addUser(@PathVariable("teamId") Long teamId, @PathVariable("userId") Long userId) {
         return teamService.addUser(teamId, userId);
     }
 
-    @PatchMapping("@{teamId}/addProject/@{projectId}")
+    @PatchMapping("/{teamId}/addProject/@{projectId}")
     @ResponseStatus(HttpStatus.OK)
     public TeamDto addProject(@PathVariable("teamId") Long teamId, @PathVariable("projectId") Long projectId) {
         return teamService.addProject(teamId, projectId);
     }
 
-    @GetMapping("@{teamId}/users")
+    @GetMapping("/{teamId}/users")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> getUsers(@PathVariable("teamId") Long teamId) {
         return teamService.getUsers(teamId);
     }
 
-    @GetMapping("@{teamId}/projects")
+    @GetMapping("/{teamId}/projects")
     @ResponseStatus(HttpStatus.OK)
     public List<ProjectDto> getProjects(@PathVariable("teamId") Long teamId) {
         return teamService.getProjects(teamId);
