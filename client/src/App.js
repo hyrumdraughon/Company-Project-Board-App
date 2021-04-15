@@ -41,15 +41,15 @@ function App() {
       <Switch>
         <Route exact path="/" render={rProps => userId ? <Redirect to='/Home'/> : <Login {...rProps} />} />
 
-        <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" />
+        {/* <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" /> */}
 
-        <Route exact path = "/viewProject" component={ViewProjectPage}/>
+        <ProtectedRoute path="/viewProject" component={ViewProjectPage} redirectTo="/" />
 
-        <Route exact path = "/addProjectUser" component={AddProjectUser}/>
+        <ProtectedRoute path="/addProjectUser" component={AddProjectUser} redirectTo="/"/>
 
-        <Route exact path = "/addProjectAdmin" component={AddProjectAdmin}/>
+        <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/"/>
 
-        <Route exact path = "/profile" component={ViewProfilePage}/>
+        <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
  
         {/* 404 error handling */}
         <Route render={
@@ -57,7 +57,7 @@ function App() {
         } />
 
       </Switch>
-      <UserHome></UserHome>
+      <UserHome />
 
     </>
   );
