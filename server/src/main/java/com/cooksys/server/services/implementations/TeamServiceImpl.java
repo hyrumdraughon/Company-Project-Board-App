@@ -75,10 +75,10 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public TeamDto createTeam(CreateTeamDto createTeamDto) {
     	// check for and throw errors
-        if (createTeamDto.getName().isEmpty()) {
+        if (createTeamDto.getName() == null || createTeamDto.getName().isEmpty()) {
         	throw new BadRequestException("you must provide a team name");
         }
-        if (createTeamDto.getText().isEmpty()) {
+        if (createTeamDto.getText() == null ||createTeamDto.getText().isEmpty()) {
         	throw new BadRequestException("you must provide a team description");
         }
         if (createTeamDto.getCompanyId() == null) {
@@ -87,7 +87,7 @@ public class TeamServiceImpl implements TeamService {
         	throw new NotFoundException("no company exists with the id " + createTeamDto.getCompanyId());
         }
         Optional<Team> optionalTeam = teamRepo.findByTeamName(createTeamDto.getName());
-        if (optionalTeam.isPresent() && optionalTeam.get().getTeamCompany().getId() == createTeamDto.getCompanyId()) {
+        if (optionalTeam.isPresent() && optionalTeam.get().getTeamCompany().getId().equals(createTeamDto.getCompanyId())) {
         	throw new BadRequestException("a team with the name " + createTeamDto.getName() + " already exists in this company");
         }
         // no errors, create new team and add it to company's team list
