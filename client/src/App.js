@@ -14,6 +14,7 @@ import AddTeam from './components/AddTeam'
 import ViewProjectPage from './components/ViewProjectPage'
 import AddProjectUser from './components/AddProjectUser'
 import AddProjectAdmin from './components/AddProjectAdmin'
+import ViewProfilePage from './components/ViewProfilePage'
 
 import './App.css';
 import './index.css'
@@ -43,6 +44,8 @@ function App() {
         <Route exact path = "/addProjectUser" component={AddProjectUser}/>
 
         <Route exact path = "/addProjectAdmin" component={AddProjectAdmin}/>
+
+        <Route exact path = "/profile" component={ViewProfilePage}/>
  
         {/* 404 error handling */}
         <Route render={
