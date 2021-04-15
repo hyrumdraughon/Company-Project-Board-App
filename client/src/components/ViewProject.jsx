@@ -32,7 +32,7 @@ const ViewProject = (props) => {
                     <p>{props.children.projectDescription}</p>
                 </div>
                 <div>
-                    <Button>{buttonProps}</Button>
+                    <Button label="Complete">{buttonProps}</Button>
                 </div>
                 
                 

@@ -11,6 +11,7 @@ import SolidDivider from './components/SolidDivider';
 import NavBar from './components/NavBar';
 import AddProject from './components/AddProject'
 import AddTeam from './components/AddTeam'
+import ViewProjectPage from './components/ViewProjectPage'
 
 import './App.css';
 import './index.css'
@@ -24,19 +25,19 @@ import { UserContext } from './context/UserProvider'
 import ProtectedRoute from './shared/ProtectedRoute';
 
 function App() {
-  const viewTestProps = {projectTitle:'This is a test project',teamName:'This is a test team name',projectDescription:DummyText()}
   const addProjectProps = {isAdmin:true}
   const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
 
   const { userId, logout } = useContext(UserContext)
   return (
     <>
-      <NavBar>{NavHeader}</NavBar>
         
       <Switch>
-        <Route extact path="/" render={rProps => userId ? <Redirect to='/Home'/> : <Login {...rProps} />} />
+        <Route exact path="/" render={rProps => userId ? <Redirect to='/Home'/> : <Login {...rProps} />} />
 
         <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" />
+
+        <Route exact path = "/viewProject" component={ViewProjectPage}/>
  
         {/* 404 error handling */}
         <Route render={
@@ -44,11 +45,7 @@ function App() {
         } />
 
       </Switch>
-      <AddProject></AddProject>
-      <AddTeam></AddTeam>
-      <Button />
-      <ProjectCard />
-      <TeamCard/>
+      
 
     </>
   );
