@@ -1,17 +1,19 @@
 import NavBar from './NavBar'
-import ViewProfile from './ViewProfile'
+import EditProfileFields from './EditProfileFields'
+import DummyText from '../testData/dummyText'
 
-const ViewProfilePage = () => {
+const EditProfileFieldsPage = () => {
     const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
+    const EditProfileProps = {userId:0}
     return(
         <body>
             <div className = 'page-container'>
                 <NavBar>{NavHeader}</NavBar>
-                <ViewProfile>{0}</ViewProfile>
+                <EditProfileFields>{EditProfileProps}</EditProfileFields>
             </div>
         </body>
         
     )
 }
 
-export default ViewProfilePage
+export default EditProfileFieldsPage

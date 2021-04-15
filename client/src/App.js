@@ -12,11 +12,12 @@ import NavBar from './components/NavBar';
 import AddProject from './components/AddProject'
 import AddTeam from './components/AddTeam'
 import ViewProjectPage from './components/ViewProjectPage'
+
+import AddProjectUser from './components/AddProjectUser'
+import AddProjectAdmin from './components/AddProjectAdmin'
+import ViewProfilePage from './components/ViewProfilePage'
 import UserHome from './components/UserHome'
 
-import AddProjectUser from "./components/AddProjectUser"
-import AddProjectAdmin from './components/AddProjectAdmin'
-import ViewProfilePage from './components/ViewProfilePage' 
 
 
 import './App.css';
@@ -29,6 +30,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
 import ProtectedRoute from './shared/ProtectedRoute';
+import EditProfileFieldsPage from './components/EditProfileFieldsPage'
 
 function App() {
   // const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
@@ -51,12 +53,15 @@ function App() {
         <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/"/>
 */}
         <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
+
+        <ProtectedRoute path = "/editProfile" component={EditProfileFieldsPage}/>
         
         <Route path="/viewProject" component={ViewProjectPage} />
 
         <Route path="/addProjectUser" component={AddProjectUser} />
 
         <Route path="/addProjectAdmin" component={AddProjectAdmin} />
+
 
         {/* <Route path="/profile" component={ViewProfilePage} /> */}
 
@@ -69,7 +74,14 @@ function App() {
 
       </Switch>
 
+<<<<<<< HEAD
       
+=======
+
+
+
+      <UserHome />
+>>>>>>> c7a3ea37efa838c670caf7a5af341c59ba4b8465
 
 
     </>

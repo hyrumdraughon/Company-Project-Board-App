@@ -1,19 +1,17 @@
 import { Grid } from "@material-ui/core"
+import { useContext, UseContext } from 'react'
+import { UserContext } from '../context/UserProvider'
+import { Link } from 'react-router-dom';
+
 import './profile.css'
 import Button from './Button'
 
-//TODO: Handle button handler when endpoint is defined
-//PROPS
-/*
-{
-    userId: integer that contains the id of the user
-}
-*/
+
 const ViewProfile = (props) => {
-    //TODO:Query names using userId
-    const name = "Thomas DeSantis"
-    const email = "thomasdesantis22@gmail.com"
-    const phone = "978-000-0000"
+    const {user} = useContext(UserContext)
+    const name = user.firstName + " " + user.lastName
+    const phone = user.phone
+    const email = user.email
     return(
         <section className = "projectContainer">
             <div class = "topMargin"/>
@@ -48,7 +46,8 @@ const ViewProfile = (props) => {
                     </div>
                 </div>   
                 <Button label = "Change password"/>
-                <Button label = "Edit fields"/>
+                <div class = "buttonMargin"/>
+                <Link to='/editProfile'><Button label = "Edit fields"/></Link>
             </Grid>
         </section>
     )

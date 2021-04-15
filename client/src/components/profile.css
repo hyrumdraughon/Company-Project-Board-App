@@ -7,6 +7,10 @@
     margin:50px 0px;
 }
 
+.buttonMargin {
+    margin: 10px 0px;
+}
+
 .fieldContainer {
     border-radius:8px;
     border: 3px solid blue;
