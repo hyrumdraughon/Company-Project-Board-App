@@ -1,0 +1,25 @@
+
+.plusCardSize{
+    margin: 100px;
+    width: 370px;
+    height: 396px;
+    color: #56CCF2;
+    text-align: center;
+    background-color: #F8F8FF;
+    border: 3px solid #2F80ED;
+    font-weight: normal !important;
+    box-shadow: 5px 1.5px 5px #979797;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.plusCardSize:hover{
+    color: #56CCF2;
+    background-color: #001F3D;
+    border: 3px solid #BED8FC;
+    
+}

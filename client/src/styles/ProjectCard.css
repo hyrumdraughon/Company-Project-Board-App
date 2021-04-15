@@ -7,6 +7,7 @@
     background-color: #F8F8FF;
     border: 3px solid #2F80ED;
     font-weight: normal !important;
+    box-shadow: 5px 1.5px 5px #979797;
 }
 
 hr.hr {
@@ -29,7 +30,8 @@ hr.hr {
 }
 
 .cardSize:hover{
-    background-color: #DBDBE8;
-    border: 3px solid #2B78DF;
-    box-shadow: 5px 1.5px 5px slategrey;
+    color: #F8F8FF;
+    background-color: #001F3D;
+    border: 3px solid #BED8FC;
+    box-shadow: 5px 1.5px 5px #979797;
 }
