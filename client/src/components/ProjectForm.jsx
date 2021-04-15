@@ -92,7 +92,7 @@ const ProjectForm = (props) => {
                         <textarea placeholder = 'Enter project description' onChange={descriptionSubmission}/> 
                     </div>
 
-                    <Button type="submit"></Button>
+                    <Button type="submit" label="Submit"></Button>
                     
                 </Grid>
             </form>
