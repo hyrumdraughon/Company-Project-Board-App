@@ -12,6 +12,7 @@ import NavBar from './components/NavBar';
 import AddProject from './components/AddProject'
 import AddTeam from './components/AddTeam'
 import ViewProjectPage from './components/ViewProjectPage'
+import UserHome from './components/UserHome'
 
 import './App.css';
 import './index.css'
@@ -45,7 +46,7 @@ function App() {
         } />
 
       </Switch>
-      
+      <UserHome></UserHome>
 
     </>
   );
