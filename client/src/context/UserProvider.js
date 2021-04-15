@@ -15,11 +15,20 @@ function UserProvider(props) {
 
     const [userState, setUserState] = useState(initState)
 
-    const signup = () => {
-
+    const signup = credentials => {
+        console.log("Signed Up!")
+        localStorage.removeItem("UserId")
+        localStorage.setItem('UserId', credentials.password)
+        setUserState(prevState => ({...prevState, userId: credentials.password}))
     }
-
+    
     const login = credentials => {
+        
+        console.log("Logged In!")
+        localStorage.removeItem("UserId")
+        localStorage.setItem('UserId', credentials.password)
+        setUserState(prevState => ({...prevState, userId: credentials.password}))
+        
         // axios.("/login", {
         //     email: credentials.email,
         //     password: credentials.password
@@ -41,6 +50,7 @@ function UserProvider(props) {
     return (
         <UserContext.Provider value={{
             user: userState.user,
+            userId: userState.userId,
             login: login,
             signup: signup,
             logout: logout    
