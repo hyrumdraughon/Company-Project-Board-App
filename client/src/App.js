@@ -42,14 +42,22 @@ function App() {
         <Route exact path="/" render={rProps => userId ? <Redirect to='/Home'/> : <Login {...rProps} />} />
 
         {/* <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" /> */}
-
+{/* 
         <ProtectedRoute path="/viewProject" component={ViewProjectPage} redirectTo="/" />
 
         <ProtectedRoute path="/addProjectUser" component={AddProjectUser} redirectTo="/"/>
 
         <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/"/>
 
-        <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
+        <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/> */}
+        
+        <Route path="/viewProject" component={ViewProjectPage} />
+
+        <Route path="/addProjectUser" component={AddProjectUser} />
+
+        <Route path="/addProjectAdmin" component={AddProjectAdmin} />
+
+        <Route path="/profile" component={ViewProfilePage} />
  
         {/* 404 error handling */}
         <Route render={
