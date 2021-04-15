@@ -10,7 +10,7 @@ export default function addProject() {
 
     return (
         <>
-            <Link to='/projectPage'>   {/* need to update link */}
+            <Link to='/addProjectUser'>   {/* need to update link */}
                 <Card >
                     <Card.Body className="plusCardSize">
                         <div className='plus '>

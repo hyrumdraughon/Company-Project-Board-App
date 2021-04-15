@@ -1,5 +1,9 @@
 import { Component } from "react";
 import { Card } from 'react-bootstrap'
+import AddProject from './AddProject'
+import { useContext }  from 'react'
+import { UserContext } from '../context/UserProvider'
+
 
 
 
@@ -19,7 +23,7 @@ export class UserHome extends Component{
         };
 
         getCards = () => {
-            let cards = [];
+            let cards = 
             for (let i = 0; i < this.state.cardCount; i++) {
                 cards.push(<Card />);
             }
@@ -28,7 +32,11 @@ export class UserHome extends Component{
 
         render() {
             return (
+
                 <div>
+                <AddProject />
+
+
                     <button onClick={this.addCardHandler}>Click me</button>
                     {this.getCards()}
                 </div>
