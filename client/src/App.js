@@ -53,6 +53,8 @@ function App() {
         <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/"/>
 */}
         <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
+
+        <ProtectedRoute path = "/editProfile" component={EditProfileFieldsPage}/>
         
         <Route path="/viewProject" component={ViewProjectPage} />
 
@@ -60,9 +62,6 @@ function App() {
 
         <Route path="/addProjectAdmin" component={AddProjectAdmin} />
 
-        <Route exact path = "/profile" component={ViewProfilePage}/>
-
-        <Route exact path = "/edit_profile" component={EditProfileFieldsPage}/>
 
         {/* <Route path="/profile" component={ViewProfilePage} /> */}
  

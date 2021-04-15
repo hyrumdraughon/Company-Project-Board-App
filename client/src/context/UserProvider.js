@@ -8,7 +8,7 @@ export const UserContext = React.createContext()
 function UserProvider(props) {
 
     const initState = {
-        user: {},
+        user: {firstName:"John",lastName:"Smith",phone:"978-123-4567",email:"johnsmith@gmail.com"},
         userId: localStorage.getItem("UserId") ||  0, /*If Protected Routes are still accessable with out logging in change 0 to undefined*/
         loggedIn: false
     }
