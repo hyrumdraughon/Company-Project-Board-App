@@ -10,7 +10,8 @@ function UserProvider(props) {
     const initState = {
         user: {firstName:"John",lastName:"Smith",phone:"978-123-4567",email:"johnsmith@gmail.com"},
         userId: localStorage.getItem("UserId") ||  0, /*If Protected Routes are still accessable with out logging in change 0 to undefined*/
-        loggedIn: false
+        loggedIn: false,
+        projects: []
     }
 
     const [userState, setUserState] = useState(initState)
@@ -47,13 +48,47 @@ function UserProvider(props) {
         })
     }
 
+    const getProjects = user => {
+
+        setUserState(prevState => ({...prevState, projects: [
+        {
+            id: 1,
+            title: "test1",
+            description: "this is a test",
+            completed: false
+        },
+        {
+            id: 2,
+            title: "test2",
+            description: "this is a test",
+            completed: false
+        },
+        {
+            id: 3,
+            title: "test3",
+            description: "this is a test",
+            completed: false
+        },
+        {
+            id: 4,
+            title: "test4",
+            description: "this is a test",
+            completed: false
+        }]
+        })
+        )
+
+    }
+
     return (
         <UserContext.Provider value={{
             user: userState.user,
             userId: userState.userId,
+            projects: userState.projects,
             login: login,
             signup: signup,
-            logout: logout    
+            logout: logout,
+            getProjects: getProjects
         }} >
             { props.children }
         </UserContext.Provider>

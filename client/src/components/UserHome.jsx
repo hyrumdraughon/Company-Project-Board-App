@@ -2,7 +2,6 @@ import { Component } from "react";
 import { Card } from 'react-bootstrap'
 
 
-
 export class UserHome extends Component{
     constructor(props) {
         
