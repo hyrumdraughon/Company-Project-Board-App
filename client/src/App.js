@@ -72,12 +72,6 @@ function App() {
 
       </Switch>
 
-
-
-
-      <UserHome />
-
-
     </>
   );
 }

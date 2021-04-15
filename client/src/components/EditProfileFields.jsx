@@ -2,6 +2,10 @@ import { Grid } from "@material-ui/core"
 import './profile.css'
 import Button from './Button'
 
+import { useContext, UseContext } from 'react'
+import { UserContext } from '../context/UserProvider'
+import {useState} from 'react'
+
 //TODO: Handle button handler when endpoint is defined
 //PROPS
 /*
@@ -10,14 +14,46 @@ import Button from './Button'
 }
 */
 const EditProfileFields = (props) => {
-    //TODO:Query names using userId
-    const name = "Thomas DeSantis"
-    const email = "thomasdesantis22@gmail.com"
-    const phone = "978-000-0000"
+    const {user} = useContext(UserContext)
+
+    const [firstName,updateFirstName] = useState()
+
+    const firstNameSubmission = (event) => {
+        updateFirstName(event.target.value)
+        console.log(firstName)
+    }
+
+    const [lastName,updateLastName] = useState()
+
+    const lastNameSubmission = (event) => {
+        updateLastName(event.target.value)
+        console.log(lastName)
+    }
+
+    const [phone,updatePhone] = useState()
+
+    const phoneSubmission = (event) => {
+        updatePhone(event.target.value)
+        console.log(phone)
+    }
+
+    const sendFormRequest = (event) => {
+        event.preventDefault()
+        let firstNameSubmit = firstName
+        let lastNameSubmit = lastName
+        let phoneSubmit = phone
+        if(firstNameSubmit === undefined) firstNameSubmit = user.firstName
+        if(lastNameSubmit === undefined) lastNameSubmit = user.lastName
+        if(phoneSubmit === undefined) phoneSubmit = user.phone
+        console.log(firstNameSubmit) 
+        console.log(lastNameSubmit)
+        console.log(phoneSubmit)
+    }
+
     return(
         <section className = "projectContainer">
             <div class = "topMargin"/>
-            <form>
+            <form class = "formContainer " onSubmit={sendFormRequest}>
                 <Grid
                     container
                     direction="column"
@@ -26,10 +62,18 @@ const EditProfileFields = (props) => {
                 >
                     <div class="flexContainer">
                         <div class="fieldContainer">
-                            <p>Name:</p>
+                            <p>First Name:</p>
                         </div>
                         <div class="fieldContentContainer">
-                            <p>{name}</p>
+                            <input placeholder = {user.firstName} type='text' onChange={firstNameSubmission}/> 
+                        </div>
+                    </div>
+                    <div class="flexContainer">
+                        <div class="fieldContainer">
+                            <p>Last Name:</p>
+                        </div>
+                        <div class="fieldContentContainer">
+                            <input placeholder = {user.lastName} type='text' onChange={lastNameSubmission}/> 
                         </div>
                     </div>
                     <div class="flexContainer">
@@ -37,10 +81,10 @@ const EditProfileFields = (props) => {
                             <p>Phone:</p>
                         </div>
                         <div class="fieldContentContainer">
-                            <p>{phone}</p>
+                            <input placeholder = {user.phone} type='text' onChange={phoneSubmission}/> 
                         </div>
                     </div>   
-                    <Button label = "Submit"/>
+                    <Button type="submit" label = "Submit"/>
                 </Grid>
             </form>
         </section>
