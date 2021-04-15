@@ -33,4 +33,16 @@ public class ProjectController {
         return projectService.updateProject(projectId, updateProjectDto);
     }
 
+    @DeleteMapping("/{projectId}")
+    @ResponseStatus(HttpStatus.OK)
+    public ProjectDto deleteProject(@PathVariable("projectId") Long projectId) {
+        return projectService.deleteProject(projectId);
+    }
+
+    @PatchMapping("/{projectId}/complete")
+    @ResponseStatus(HttpStatus.OK)
+    public ProjectDto completeProject(@PathVariable("projectId") Long projectId) {
+        return projectService.completeProject(projectId);
+    }
+
 }
