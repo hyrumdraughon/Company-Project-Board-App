@@ -36,7 +36,7 @@ public class User {
 	@JoinColumn
 	private Team userTeam;
 
-	@OneToOne(orphanRemoval = true)
+	@OneToOne
 	private Role role;
 
 	@Embedded
