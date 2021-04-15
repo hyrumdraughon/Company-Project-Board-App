@@ -1,7 +1,7 @@
 import NavBar from './NavBar'
 import ViewProfile from './ViewProfile'
 
-const ViewProjectPage = () => {
+const ViewProfilePage = () => {
     const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
     return(
         <body>
@@ -14,4 +14,4 @@ const ViewProjectPage = () => {
     )
 }
 
-export default ViewProjectPage
+export default ViewProfilePage

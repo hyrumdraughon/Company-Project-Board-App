@@ -12,13 +12,12 @@ import NavBar from './components/NavBar';
 import AddProject from './components/AddProject'
 import AddTeam from './components/AddTeam'
 import ViewProjectPage from './components/ViewProjectPage'
-<<<<<<< HEAD
+
 import UserHome from './components/UserHome'
-=======
 import AddProjectUser from './components/AddProjectUser'
 import AddProjectAdmin from './components/AddProjectAdmin'
 import ViewProfilePage from './components/ViewProfilePage'
->>>>>>> 8b700d3a89cf9b4a9de06074e57fd97f4927a8a6
+
 
 import './App.css';
 import './index.css'
@@ -30,6 +29,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
 import ProtectedRoute from './shared/ProtectedRoute';
+import EditProfileFieldsPage from './components/EditProfileFieldsPage'
 
 function App() {
   const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
@@ -50,6 +50,8 @@ function App() {
         <Route exact path = "/addProjectAdmin" component={AddProjectAdmin}/>
 
         <Route exact path = "/profile" component={ViewProfilePage}/>
+
+        <Route exact path = "/edit_profile" component={EditProfileFieldsPage}/>
  
         {/* 404 error handling */}
         <Route render={
@@ -57,7 +59,6 @@ function App() {
         } />
 
       </Switch>
-      <UserHome></UserHome>
 
     </>
   );
