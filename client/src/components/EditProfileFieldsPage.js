@@ -1,22 +1,18 @@
-import './profile.css'
-import EditProfileFields from './EditProfileFieldsPage'
-import NavBar from "./NavBar"
+import NavBar from './NavBar'
+import EditProfileFields from './EditProfileFields'
+import DummyText from '../testData/dummyText'
 
-//PROPS
-/*
-{
-    userId: integer that contains the id of the user
-}
-*/
-const EditProfileFieldsPage = (props) => {
+const EditProfileFieldsPage = () => {
     const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
+    const EditProfileProps = {userId:0}
     return(
         <body>
             <div className = 'page-container'>
                 <NavBar>{NavHeader}</NavBar>
-                <EditProfileFields>{0}</EditProfileFields>
+                <EditProfileFields>{EditProfileProps}</EditProfileFields>
             </div>
         </body>
+        
     )
 }
 
