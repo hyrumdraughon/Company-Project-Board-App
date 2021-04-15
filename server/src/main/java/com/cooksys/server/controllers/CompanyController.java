@@ -41,6 +41,12 @@ public class CompanyController {
         return companyService.getTeamsInCompany(companyId);
     }
 
+    @GetMapping("/{companyId}/projects")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProjectDto> getProjectsInCompany(@PathVariable Long companyId) {
+        return companyService.getProjectsInCompany(companyId);
+    }
+
     @PatchMapping("/{companyId}")
     @ResponseStatus(HttpStatus.OK)
     public CompanyDto updateCompany(@PathVariable Long companyId, @RequestBody CompanyDto company) {
