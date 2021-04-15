@@ -15,11 +15,14 @@ function UserProvider(props) {
 
     const [userState, setUserState] = useState(initState)
 
-    const signup = () => {
-
+    const signup = credentials => {
+        console.log("Signed Up!")
+        localStorage.setItem('UserId', credentials.password)
     }
 
     const login = credentials => {
+
+        console.log("Logged In!")
         // axios.("/login", {
         //     email: credentials.email,
         //     password: credentials.password
