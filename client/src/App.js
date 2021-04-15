@@ -64,6 +64,8 @@ function App() {
 
 
         {/* <Route path="/profile" component={ViewProfilePage} /> */}
+
+        <Route path='/userHome' component={UserHome} />
  
         {/* 404 error handling */}
         <Route render={
