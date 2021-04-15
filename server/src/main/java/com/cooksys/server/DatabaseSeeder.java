@@ -30,15 +30,18 @@ public class DatabaseSeeder implements CommandLineRunner {
         credential.setEmail("test@test.com");
         credential.setPassword("password");
 
+        Company company = new Company();
+        company = companyRepository.saveAndFlush(company);
+
         Team team = new Team();
         team.setTeamName("Alpha");
+        team.setTeamCompany(company);
         team = teamRepository.saveAndFlush(team);
         Team team2 = new Team();
         team2.setTeamName("Beta");
         team2 = teamRepository.saveAndFlush(team2);
 
-        Company company = new Company();
-        company = companyRepository.saveAndFlush(company);
+
 
         User user = new User();
         user.setCredentials(credential);
