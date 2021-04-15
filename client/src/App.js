@@ -4,7 +4,7 @@ import Button from './components/Button'
 import ProjectCard from './components/ProjectCard'
 import TeamCard from './components/TeamCard'
 import ViewProject from './components/ViewProject'
-import Login from './components/Login'
+import Auth from './components/Auth'
 import DummyText from './testData/dummyText'
 import ProjectForm from './components/ProjectForm';
 import SolidDivider from './components/SolidDivider';
@@ -13,10 +13,11 @@ import AddProject from './components/AddProject'
 import AddTeam from './components/AddTeam'
 import ViewProjectPage from './components/ViewProjectPage'
 
-import UserHome from './components/UserHome'
 import AddProjectUser from './components/AddProjectUser'
 import AddProjectAdmin from './components/AddProjectAdmin'
 import ViewProfilePage from './components/ViewProfilePage'
+import UserHome from './components/UserHome'
+
 
 
 import './App.css';
@@ -32,26 +33,38 @@ import ProtectedRoute from './shared/ProtectedRoute';
 import EditProfileFieldsPage from './components/EditProfileFieldsPage'
 
 function App() {
-  const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
+  // const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
 
   const { userId, logout } = useContext(UserContext)
+
+  console.log(userId)
   return (
     <>
         
       <Switch>
-        <Route exact path="/" render={rProps => userId ? <Redirect to='/Home'/> : <Login {...rProps} />} />
+        <Route exact path="/" render={rProps => userId ? <Redirect to='/profile'/> : <Auth {...rProps} />} />
 
-        <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" />
+        {/* <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" /> */}
+{/* 
+        <ProtectedRoute path="/viewProject" component={ViewProjectPage} redirectTo="/" />
 
-        <Route exact path = "/viewProject" component={ViewProjectPage}/>
+        <ProtectedRoute path="/addProjectUser" component={AddProjectUser} redirectTo="/"/>
 
-        <Route exact path = "/addProjectUser" component={AddProjectUser}/>
+        <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/"/>
+*/}
+        <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
+        
+        <Route path="/viewProject" component={ViewProjectPage} />
 
-        <Route exact path = "/addProjectAdmin" component={AddProjectAdmin}/>
+        <Route path="/addProjectUser" component={AddProjectUser} />
+
+        <Route path="/addProjectAdmin" component={AddProjectAdmin} />
 
         <Route exact path = "/profile" component={ViewProfilePage}/>
 
         <Route exact path = "/edit_profile" component={EditProfileFieldsPage}/>
+
+        {/* <Route path="/profile" component={ViewProfilePage} /> */}
  
         {/* 404 error handling */}
         <Route render={
@@ -59,6 +72,12 @@ function App() {
         } />
 
       </Switch>
+
+
+
+
+      <UserHome />
+
 
     </>
   );
