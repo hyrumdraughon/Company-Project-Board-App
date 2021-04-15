@@ -13,7 +13,7 @@ public class ProjectDto {
 
     private String description;
 
-    private TeamDto projectTeam;
+    private Long teamId;
 
     private boolean completed;
 
