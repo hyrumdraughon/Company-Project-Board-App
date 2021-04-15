@@ -16,9 +16,7 @@ const ProjectDropDown = (props) => {
         return (<select class = "projectContainerBox" onLoad = {props.children.submission} onChange={props.children.submission}><option disabled selected value>-- select an option --</option>{props.children.teams.map(team => <option value={team.id}>{team.name}</option>)}</select >)
     }
     else{
-        return(<div class = "projectContainerBox">
-                    <p>{props.teamName}</p>
-                </div>)
+        return (<div/>)
     }
     
 }

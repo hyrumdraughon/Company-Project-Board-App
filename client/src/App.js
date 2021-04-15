@@ -12,7 +12,13 @@ import NavBar from './components/NavBar';
 import AddProject from './components/AddProject'
 import AddTeam from './components/AddTeam'
 import ViewProjectPage from './components/ViewProjectPage'
+<<<<<<< HEAD
 import UserHome from './components/UserHome'
+=======
+import AddProjectUser from './components/AddProjectUser'
+import AddProjectAdmin from './components/AddProjectAdmin'
+import ViewProfilePage from './components/ViewProfilePage'
+>>>>>>> 8b700d3a89cf9b4a9de06074e57fd97f4927a8a6
 
 import './App.css';
 import './index.css'
@@ -26,7 +32,6 @@ import { UserContext } from './context/UserProvider'
 import ProtectedRoute from './shared/ProtectedRoute';
 
 function App() {
-  const addProjectProps = {isAdmin:true}
   const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
 
   const { userId, logout } = useContext(UserContext)
@@ -39,6 +44,12 @@ function App() {
         <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" />
 
         <Route exact path = "/viewProject" component={ViewProjectPage}/>
+
+        <Route exact path = "/addProjectUser" component={AddProjectUser}/>
+
+        <Route exact path = "/addProjectAdmin" component={AddProjectAdmin}/>
+
+        <Route exact path = "/profile" component={ViewProfilePage}/>
  
         {/* 404 error handling */}
         <Route render={
