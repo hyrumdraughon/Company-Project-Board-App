@@ -12,13 +12,10 @@ import NavBar from './components/NavBar';
 import AddProject from './components/AddProject'
 import AddTeam from './components/AddTeam'
 import ViewProjectPage from './components/ViewProjectPage'
-<<<<<<< HEAD
-import UserHome from './components/UserHome'
-=======
+
 import AddProjectUser from './components/AddProjectUser'
 import AddProjectAdmin from './components/AddProjectAdmin'
 import ViewProfilePage from './components/ViewProfilePage'
->>>>>>> 8b700d3a89cf9b4a9de06074e57fd97f4927a8a6
 
 import './App.css';
 import './index.css'
