@@ -13,6 +13,7 @@ import AddProject from './components/AddProject'
 import AddTeam from './components/AddTeam'
 import ViewProjectPage from './components/ViewProjectPage'
 import UserHome from './components/UserHome'
+
 import AddProjectUser from "./components/AddProjectUser"
 import AddProjectAdmin from './components/AddProjectAdmin'
 import ViewProfilePage from './components/ViewProfilePage' 
@@ -66,7 +67,8 @@ function App() {
 
       </Switch>
 
-      {/* <UserHome></UserHome> */}
+
+
 
       <UserHome />
 
