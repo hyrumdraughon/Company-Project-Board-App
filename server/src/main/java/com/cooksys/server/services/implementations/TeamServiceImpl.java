@@ -59,9 +59,9 @@ public class TeamServiceImpl implements TeamService {
 	
 	public void checkProjectExistsNotDeleted(Long projectId, Optional<Project> optionalProject) {
 		if (optionalProject.isEmpty()) {
-			throw new NotFoundException("the user with ID " + projectId + " does not exist");
+			throw new NotFoundException("the project with ID " + projectId + " does not exist");
 		} else if (optionalProject.get().isDeleted()) {
-			throw new NotFoundException("the user with ID " + projectId + " has been deleted");
+			throw new NotFoundException("the project with ID " + projectId + " has been deleted");
 		}
 	}
 	
