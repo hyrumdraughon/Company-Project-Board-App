@@ -40,19 +40,19 @@ public class UserController {
 		return userService.createUser(createUserDto);
 	}
 
-	@GetMapping("/@{userId}")
+	@GetMapping("/{userId}")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto getUser(@PathVariable("userId") Long id) {
 		return userService.getUser(id);
 	}
 
-	@PatchMapping("/@{userId}")
+	@PatchMapping("/{userId}")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto updateUserProfile(@PathVariable("userId") Long id, @RequestBody CreateUserDto createUserDto) {
 		return userService.updateUserProfile(id, createUserDto);
 	}
 	
-	@DeleteMapping("/@{userId}")
+	@DeleteMapping("/{userId}")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto deleteUser(@PathVariable("userId") Long id) {
 		return userService.deleteUser(id);
@@ -60,13 +60,13 @@ public class UserController {
 	
 	//Should take a user id, and a request body that will be used to set a role.
 	//This may change from a request body to a Long Variable later.
-	@PatchMapping("/@{userId}/role")
+	@PatchMapping("/{userId}/role")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto addRole(@PathVariable("userId") Long id, @RequestBody RoleDto role) {
 		return userService.addRole(id, role);
 	}
 	
-	@PatchMapping("/@{userId}/teams")
+	@PatchMapping("/{userId}/teams")
 	@ResponseStatus(HttpStatus.OK)
 	public UserDto addTeam(@PathVariable("userId") Long id, @RequestBody TeamDto team) {
 		return userService.addTeam(id, team);

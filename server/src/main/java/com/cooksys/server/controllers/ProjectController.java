@@ -21,13 +21,13 @@ public class ProjectController {
         return projectService.createProject(createProjectDto);
     }
 
-    @GetMapping("/@{projectId}")
+    @GetMapping("/{projectId}")
     @ResponseStatus(HttpStatus.OK)
     public ProjectDto getProject(@PathVariable("projectId") Long projectId) {
         return projectService.getProject(projectId);
     }
 
-    @PatchMapping("/@{projectId}")
+    @PatchMapping("/{projectId}")
     @ResponseStatus(HttpStatus.OK)
     public ProjectDto updateProject(@PathVariable("projectId") Long projectId, @RequestBody UpdateProjectDto updateProjectDto) {
         return projectService.updateProject(projectId, updateProjectDto);
