@@ -29,14 +29,16 @@ import { UserContext } from './context/UserProvider'
 import ProtectedRoute from './shared/ProtectedRoute';
 
 function App() {
-  const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
+  // const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
 
   const { userId, logout } = useContext(UserContext)
+
+  console.log(userId)
   return (
     <>
         
       <Switch>
-        <Route exact path="/" render={rProps => userId ? <Redirect to='/Home'/> : <Auth {...rProps} />} />
+        <Route exact path="/" render={rProps => userId ? <Redirect to='/profile'/> : <Auth {...rProps} />} />
 
         {/* <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" /> */}
 {/* 
@@ -45,8 +47,8 @@ function App() {
         <ProtectedRoute path="/addProjectUser" component={AddProjectUser} redirectTo="/"/>
 
         <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/"/>
-
-        <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/> */}
+*/}
+        <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
         
         <Route path="/viewProject" component={ViewProjectPage} />
 
@@ -54,7 +56,7 @@ function App() {
 
         <Route path="/addProjectAdmin" component={AddProjectAdmin} />
 
-        <Route path="/profile" component={ViewProfilePage} />
+        {/* <Route path="/profile" component={ViewProfilePage} /> */}
  
         {/* 404 error handling */}
         <Route render={
