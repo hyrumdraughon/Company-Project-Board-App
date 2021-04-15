@@ -12,4 +12,8 @@ public interface ProjectService {
 
     ProjectDto updateProject(Long projectId, UpdateProjectDto updateProjectDto);
 
+    ProjectDto deleteProject(Long projectId);
+
+    ProjectDto completeProject(Long projectId);
+
 }

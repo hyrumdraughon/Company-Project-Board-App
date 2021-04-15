@@ -34,8 +34,6 @@ public class ProjectServiceImpl implements ProjectService {
         createdProject.setTitle(createProjectDto.getTitle());
         createdProject.setDescription(createProjectDto.getDescription());
         createdProject.setProjectTeam(databaseTeam);
-        createdProject.setCompleted(false);
-        createdProject.setDeleted(false);
 
         createdProject = projectRepository.saveAndFlush(createdProject);
 
@@ -68,6 +66,22 @@ public class ProjectServiceImpl implements ProjectService {
 
         return projectMapper.entityToDto(databaseProject);
 
+    }
+
+    @Override
+    public ProjectDto deleteProject(Long projectId) {
+        Project databaseProject = getProjectById(projectId);
+        databaseProject.setDeleted(true);
+        projectRepository.saveAndFlush(databaseProject);
+        return projectMapper.entityToDto(databaseProject);
+    }
+
+    @Override
+    public ProjectDto completeProject(Long projectId) {
+        Project databaseProject = getProjectById(projectId);
+        databaseProject.setCompleted(true);
+        projectRepository.saveAndFlush(databaseProject);
+        return projectMapper.entityToDto(databaseProject);
     }
 
     // Helper methods
