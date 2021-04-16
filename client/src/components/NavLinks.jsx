@@ -1,4 +1,5 @@
 import './navbar.css'
+import { Link } from 'react-router-dom';
 
 /*
 PROPS
@@ -14,8 +15,8 @@ const NavLinks = (props) => {
     if(props.children.isAdmin === true){
         return(
             <div class="header-right">
-                <p class = "headerText">Company Page</p>
-                <p class = "headerText">Profile</p>
+                <Link to='/userHome'><p class = "headerText">Company Page</p></Link>
+                <Link to='/profile'><p class = "headerText">Profile</p></Link>
             </div>
  
         )
@@ -23,8 +24,8 @@ const NavLinks = (props) => {
     if(props.children.isUser === true){
         return(
             <div class="header-right">
-                <p class = "headerText">Team Page</p>
-                <p class = "headerText">Profile</p>
+                 <Link to='/userHome'><p class = "headerText">Team Page</p></Link>
+                 <Link to='/profile'><p class = "headerText">Profile</p></Link>
             </div>
         )
     }

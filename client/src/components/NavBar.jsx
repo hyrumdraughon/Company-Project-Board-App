@@ -12,7 +12,7 @@ const NavBar = (props) => {
     console.log(props)
     return(
         <div class="header">
-            <a href="#default" class="companyName">{props.children.companyName}</a>
+            <p class="companyName">{props.children.companyName}</p>
             <NavLinks>{props.children}</NavLinks>
         </div>
             
