@@ -1,18 +1,13 @@
 import './navbar.css'
 import { Link } from 'react-router-dom';
 
-/*
-PROPS
-companyName : string
-isAdmin: boolean
-isUser : boolean NOTE: isAdmin and isUser should never be true at the same time, but may be false at the same time (not logged in)
-CompanyID: Id of company, will be used for routing
-*/
-/*
-TODO: Links for routing
-*/
-const NavLinks = (props) => {
-    if(props.children.isAdmin === true){
+import { useContext, UseContext } from 'react'
+import { UserContext } from '../context/UserProvider'
+
+
+const NavLinks = () => {
+    const {user} = useContext(UserContext)
+    if(user.isAdmin === true){
         return(
             <div class="header-right">
                 <Link to='/userHome'><p class = "headerText">Company Page</p></Link>
@@ -21,7 +16,7 @@ const NavLinks = (props) => {
  
         )
     }
-    if(props.children.isUser === true){
+    if(user.isUser === true){
         return(
             <div class="header-right">
                  <Link to='/userHome'><p class = "headerText">Team Page</p></Link>

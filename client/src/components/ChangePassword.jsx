@@ -2,8 +2,7 @@ import { Grid } from "@material-ui/core"
 import './profile.css'
 import Button from './Button'
 
-import { useContext, UseContext } from 'react'
-import { UserContext } from '../context/UserProvider'
+
 import {useState} from 'react'
 
 //TODO: Handle button handler when endpoint is defined
@@ -14,7 +13,6 @@ import {useState} from 'react'
 }
 */
 const EditProfileFields = () => {
-    const {user} = useContext(UserContext)
 
     const [oldPassword,updateOldPassword] = useState()
 
