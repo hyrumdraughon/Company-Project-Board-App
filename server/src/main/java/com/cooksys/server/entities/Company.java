@@ -30,4 +30,10 @@ public class Company {
     @OneToMany(mappedBy = "teamCompany")
     private List<Team> teams = new ArrayList<>();
 
+    // Custom constructor to create simple Company
+    public Company(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
 }

@@ -14,57 +14,76 @@ import org.springframework.stereotype.Component;
 public class DatabaseSeeder implements CommandLineRunner {
 
     private final UserRepository userRepository;
-    private final TeamRepository teamRepository;
     private final CompanyRepository companyRepository;
     private final RoleRepository roleRepo;
 
     @Override
     public void run(String... args) {
 
-        Profile profile = new Profile();
-        profile.setFirstName("Michael");
-        profile.setLastName("Degg");
-        profile.setPhone("478-832-2687");
+        initializeRoles();
+        initializeCompanies();
 
+    }
+
+    private void initializeRoles() {
+        Role admin = new Role();
+        admin.setName("Admin");
+        admin.setId((long) 1);
+        roleRepo.saveAndFlush(admin);
+        Role user = new Role();
+        user.setName("User");
+        user.setId((long) 2);
+        roleRepo.saveAndFlush(user);
+    }
+
+    /**
+     * Companies that the application will use should be created and added here. Companies cannot be created by the
+     * application, so these are basically hardcoded.
+     */
+    private void initializeCompanies() {
+
+        Role admin = roleRepo.getOne((long) 1);
+
+        // Creates company Microsoft and user Bill Gates
+        Company microsoft = new Company("Microsoft", "Software company.");
+        microsoft = companyRepository.saveAndFlush(microsoft);
+        initializeAdmin(microsoft, admin, "bgates@microsoft.com", "Bill", "Gates");
+
+        // Creates company Apple and user Steve Jobs
+        Company apple = new Company("Apple", "Software company.");
+        apple = companyRepository.saveAndFlush(apple);
+        initializeAdmin(apple, admin, "sjobs@apple.com", "Steve", "Jobs");
+
+        // Creates company Amazon and user Jeff Bezos
+        Company amazon = new Company("Amazon", "Online shopping company.");
+        amazon = companyRepository.saveAndFlush(amazon);
+        initializeAdmin(amazon, admin, "jbezos@amazon.com", "Jeff", "Bezos");
+
+        // Creates company Facebook and user Mark Zuckerberg
+        Company facebook = new Company("Facebook", "Social media company.");
+        facebook = companyRepository.saveAndFlush(facebook);
+        initializeAdmin(facebook, admin, "mzuckerberg@facebook.com", "Mark", "Zuckerberg");
+
+        // Creates company Google and user Sundar Pichai
+        Company google = new Company("Google", "Search engine company.");
+        google = companyRepository.saveAndFlush(google);
+        initializeAdmin(google, admin, "spichai@google.com", "Sundar", "Pichai");
+
+    }
+
+    private void initializeAdmin(Company company, Role role, String email, String firstName, String lastName) {
         Credential credential = new Credential();
-        credential.setEmail("test@test.com");
+        credential.setEmail(email);
         credential.setPassword("password");
-
-        Company company = new Company();
-        company = companyRepository.saveAndFlush(company);
-
-        Team team = new Team();
-        team.setTeamName("Alpha");
-        team.setTeamCompany(company);
-        team = teamRepository.saveAndFlush(team);
-        Team team2 = new Team();
-        team2.setTeamName("Beta");
-        team2 = teamRepository.saveAndFlush(team2);
-
-
-
+        Profile profile = new Profile();
+        profile.setFirstName(firstName);
+        profile.setLastName(lastName);
         User user = new User();
-        user.setCredentials(credential);
-        user.setProfile(profile);
-        user.setUserTeam(team);
         user.setUserCompany(company);
         user.setActive(true);
-        
-        Role role = new Role();
-        role.setName("Admin");
-        role.setId((long) 1);
-        role = roleRepo.saveAndFlush(role);
-        
-        Role role2 = new Role();
-        role2.setName("User");
-        role2.setId((long) 2);
-        role2 = roleRepo.saveAndFlush(role2);
-        
-        
-        
-        user.setRole(role2);
-
+        user.setCredentials(credential);
+        user.setProfile(profile);
+        user.setRole(role);
         userRepository.saveAndFlush(user);
-
     }
 }
