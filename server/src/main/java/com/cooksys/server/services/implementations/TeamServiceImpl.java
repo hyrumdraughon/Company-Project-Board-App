@@ -137,7 +137,6 @@ public class TeamServiceImpl implements TeamService {
         
         optionalTeam.get().getMembers().add(optionalUser.get());
         optionalUser.get().setUserTeam(optionalTeam.get());
-        optionalUser.get().setRole(roleRepo.getOne((long) 2));
         
         teamRepo.flush();
         userRepo.flush();
