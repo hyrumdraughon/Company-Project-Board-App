@@ -22,6 +22,7 @@ function UserHome(props) {
     };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         getCards = () => {
             let cards = 0 // This is just fixing a syntax error so client can compile. You can remove this for the actual logic during a merge conflict.
             for (let i = 0; i < this.state.cardCount; i++) {
@@ -30,12 +31,19 @@ function UserHome(props) {
             return cards;
         };
 =======
+=======
+
+>>>>>>> iss3
     render(){
         let elements = []
         for (let i = 0; i < x.length; i++) {
             console.log(x[i]);
         }
+<<<<<<< HEAD
 >>>>>>> iss25
+=======
+
+>>>>>>> iss3
 
         return (
 
