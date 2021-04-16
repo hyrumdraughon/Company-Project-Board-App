@@ -6,7 +6,7 @@ import { UserContext } from '../context/UserProvider'
 
 
 function UserHome(props) {
-    const { getProjects, projects } = useContext(UserContext)
+    const { getProjects, projects } = useContext(UserContext);
 
     // const addCardHandler = () => {
     //     useState(prevState => {
@@ -21,41 +21,33 @@ function UserHome(props) {
         return x;
     };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        getCards = () => {
-            let cards = 0 // This is just fixing a syntax error so client can compile. You can remove this for the actual logic during a merge conflict.
-            for (let i = 0; i < this.state.cardCount; i++) {
-                cards.push(<Card />);
-            }
-            return cards;
-        };
-=======
-=======
 
->>>>>>> iss3
-    render(){
-        let elements = []
-        for (let i = 0; i < x.length; i++) {
-            console.log(x[i]);
+    getCards = () => {
+        let cards = 0;
+        for (let i = 0; i < this.state.cardCount; i++) {
+            cards.push(<Card />);
         }
-<<<<<<< HEAD
->>>>>>> iss25
-=======
+        return cards;
+    };
 
->>>>>>> iss3
-
-        return (
-
-            <div>
-                <AddProject />
+    // render(){
+    //     let elements = [];
+    //     for (let i = 0; i < x.length; i++) {
+    //         console.log(x[i]);
+    //     };
 
 
-                {/* <button onClick={getCards()}>Click me</button>
-                {getCards()} */}
-            </div>
-        );
-    }
+    //     return (
+
+    //         <div>
+    //             <AddProject />
+
+
+    //             {/* <button onClick={getCards()}>Click me</button>
+    //             {getCards()} */}
+    //         </div>
+    //     );
+    // }
 
 
 
