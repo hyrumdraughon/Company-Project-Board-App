@@ -1,50 +1,46 @@
 import { Component } from "react";
 import { Card } from 'react-bootstrap'
 import AddProject from './AddProject'
-import { useContext }  from 'react'
+import { useContext, useState } from 'react'
 import { UserContext } from '../context/UserProvider'
 
 
+function UserHome(props) {
+    const { getProjects, projects } = useContext(UserContext)
 
-export class UserHome extends Component{
-    constructor(props) {
-        
-            super(props);
-            this.state = {
-                cardCount: 0
-            };
-        };
+    // const addCardHandler = () => {
+    //     useState(prevState => {
+    //         return { cardCount: prevState.cardCount + 1 };
+    //     });
+    // };
 
-        addCardHandler = () => {
-            this.setState(prevState => {
-                return { cardCount: prevState.cardCount + 1 };
-            });
-        };
+    const getCards = () => {
+        getProjects('')
+        const x = projects.map(project => project);
+        // console.log(x)
+        return x;
+    };
 
-        getCards = () => {
-            let cards = 
-            for (let i = 0; i < this.state.cardCount; i++) {
-                cards.push(<Card />);
-            }
-            return cards;
-        };
+    render(){
+        let elements = []
+        for (let i = 0; i < x.length; i++) {
+            console.log(x[i]);
+        }
 
-        render() {
-            return (
+        return (
 
-                <div>
+            <div>
                 <AddProject />
 
 
-                    <button onClick={this.addCardHandler}>Click me</button>
-                    {this.getCards()}
-                </div>
-            );
-        }
-
-
-
-
+                {/* <button onClick={getCards()}>Click me</button>
+                {getCards()} */}
+            </div>
+        );
     }
 
-    export default UserHome;
+
+
+}
+
+export default UserHome;

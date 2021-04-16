@@ -74,14 +74,6 @@ function App() {
 
       </Switch>
 
-<<<<<<< HEAD
-      
-=======
-
-
-
-      <UserHome />
->>>>>>> c7a3ea37efa838c670caf7a5af341c59ba4b8465
 
 
     </>
