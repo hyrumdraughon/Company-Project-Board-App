@@ -17,4 +17,6 @@ public interface CompanyService {
     List<ProjectDto> getProjectsInCompany(Long companyId);
 
     CompanyDto updateCompany(Long companyId, CompanyDto company);
+
+	List<UserDto> getAdminsInCompany(Long companyId);
 }

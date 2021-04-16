@@ -34,6 +34,12 @@ public class CompanyController {
     public List<UserDto> getUsersInCompany(@PathVariable Long companyId) {
         return companyService.getUsersInCompany(companyId);
     }
+    
+    @GetMapping("/{companyId}/admins")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserDto> getAdminsInCompany(@PathVariable Long companyId) {
+    	return companyService.getAdminsInCompany(companyId);
+    }
 
     @GetMapping("/{companyId}/teams")
     @ResponseStatus(HttpStatus.OK)

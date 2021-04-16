@@ -1,6 +1,7 @@
 package com.cooksys.server.services.implementations;
 
 import com.cooksys.server.entities.*;
+import com.cooksys.server.exceptions.BadRequestException;
 import com.cooksys.server.exceptions.NotFoundException;
 import com.cooksys.server.mappers.*;
 import com.cooksys.server.models.CompanyDto;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -97,6 +99,27 @@ public class CompanyServiceImpl implements CompanyService {
 
         return companyMapper.entityToDto(company_to_change);
     }
+
+	@Override
+	public List<UserDto> getAdminsInCompany(Long companyId) {
+		if (companyId == null) {
+			throw new BadRequestException("you must provide a company ID");
+		}
+		
+		Optional<Company> optionalCompany = companyRepository.findById(companyId);
+		if (optionalCompany.isEmpty()) {
+			throw new NotFoundException("the company with ID " + companyId + " does not exist");
+		}
+		
+		List<User> activeAdmins = new ArrayList<>();
+        for (User u : optionalCompany.get().getEmployees()) {
+        	if (u.isActive() && u.getRole().getId() == 1) {
+        		activeAdmins.add(u);
+        	}
+        }
+        
+        return userMapper.entitiesToDtos(activeAdmins);
+	}
 
 
     
