@@ -17,7 +17,7 @@ import AddProjectUser from './components/AddProjectUser'
 import AddProjectAdmin from './components/AddProjectAdmin'
 import ViewProfilePage from './components/ViewProfilePage'
 import UserHome from './components/UserHome'
-
+import ChangePasswordPage from './components/ChangePasswordPage'
 
 
 import './App.css';
@@ -61,6 +61,8 @@ function App() {
         <Route path="/addProjectUser" component={AddProjectUser} />
 
         <Route path="/addProjectAdmin" component={AddProjectAdmin} />
+
+        <Route path="/changePassword" component={ChangePasswordPage} />
 
 
         {/* <Route path="/profile" component={ViewProfilePage} /> */}

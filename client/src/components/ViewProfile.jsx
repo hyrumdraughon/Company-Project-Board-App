@@ -45,7 +45,7 @@ const ViewProfile = (props) => {
                         <p>{phone}</p>
                     </div>
                 </div>   
-                <Button label = "Change password"/>
+                <Link to='/changePassword'><Button label = "Change password"/></Link>
                 <div class = "buttonMargin"/>
                 <Link to='/editProfile'><Button label = "Edit fields"/></Link>
             </Grid>
