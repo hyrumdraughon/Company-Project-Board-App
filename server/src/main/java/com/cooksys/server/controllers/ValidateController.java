@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/")
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
 public class ValidateController {
 
     private final ValidateService validateService;
