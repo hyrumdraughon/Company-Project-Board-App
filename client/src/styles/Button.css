@@ -17,11 +17,8 @@
 
 .button:hover {
     color: #F8F8FF;
-<<<<<<< HEAD
-    background-color: #001F3D;
-    border: 2px solid #BED8FC;
-=======
+
     background-color: #004488;
     border: 2px solid #828282;
->>>>>>> iss3
+
 }
