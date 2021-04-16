@@ -4,7 +4,7 @@
 
 .projectContainerBox{
     border-radius:8px;
-    border: 3px solid blue;
+    border: 3px solid #00366d;
     background-color:  #F8F8FF;
     width: 20%;
     height: 5%;
@@ -30,7 +30,7 @@
 
 .projectDescriptionBox{
     border-radius:8px;
-    border: 3px solid blue;
+    border: 3px solid #00366d;
     background-color:  #F8F8FF;
     width: 80%;
     margin: 14px 0px;
