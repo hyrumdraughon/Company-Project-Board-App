@@ -15,7 +15,7 @@ export default function addProject() {
                     <Card.Body className="plusCardSize">
                         <div className='plus '>
                             <span >
-                                <BsFillPlusCircleFill size={169} />
+                                <BsFillPlusCircleFill size={109} />
                             </span>
                         </div>
 
