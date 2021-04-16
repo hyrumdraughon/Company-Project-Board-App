@@ -22,7 +22,7 @@ export class UserHome extends Component{
         };
 
         getCards = () => {
-            let cards = 
+            let cards = 0 // This is just fixing a syntax error so client can compile. You can remove this for the actual logic during a merge conflict.
             for (let i = 0; i < this.state.cardCount; i++) {
                 cards.push(<Card />);
             }
