@@ -37,7 +37,7 @@ function App() {
 
   const { userId, logout } = useContext(UserContext)
 
-  console.log(userId)
+  
   return (
     <>
         

@@ -10,12 +10,12 @@ export default function addProject() {
 
     return (
         <>
-            <Link to='/addProjectUser'>   {/* need to update link */}
-                <Card >
+            <Link className='mx-3' to='/addProjectUser'>   {/* need to update link */}
+                <Card className="card">
                     <Card.Body className="plusCardSize">
                         <div className='plus '>
                             <span >
-                                <BsFillPlusCircleFill size={109} />
+                                <BsFillPlusCircleFill size={35} />
                             </span>
                         </div>
 

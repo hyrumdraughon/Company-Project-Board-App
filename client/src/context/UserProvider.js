@@ -7,11 +7,36 @@ export const UserContext = React.createContext()
 
 function UserProvider(props) {
 
+    const proj = {
+        label: 'Hello',
+        descriptionTextLabel: 'hiehe'
+    }
+    const proj2 = {
+        label: 'Goodbye',
+        descriptionTextLabel: 'Oh No Mr Bill'
+    }
+    const proj3 = {
+        label: 'Hello',
+        descriptionTextLabel: 'hiehe'
+    }
+    const proj24 = {
+        label: 'Goodbye',
+        descriptionTextLabel: 'Oh No Mr Bill'
+    }
+    const proj5 = {
+        label: 'Hello',
+        descriptionTextLabel: 'hiehe'
+    }
+    const proj25 = {
+        label: 'Goodbye',
+        descriptionTextLabel: 'Oh No Mr Bill'
+    }
+
     const initState = {
         user: {firstName:"John",lastName:"Smith",phone:"978-123-4567",email:"johnsmith@gmail.com", isAdmin:true, companyName:"Cooksys"},
         userId: localStorage.getItem("UserId") ||  0, /*If Protected Routes are still accessable with out logging in change 0 to undefined*/
         loggedIn: false,
-        projects: []
+        projects: [proj, proj2, proj3, proj24, proj5, proj25]
     }
 
     const [userState, setUserState] = useState(initState)
