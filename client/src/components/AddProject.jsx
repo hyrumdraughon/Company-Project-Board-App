@@ -10,8 +10,9 @@ export default function addProject() {
 
     return (
         <>
-            <Link className='mx-3' to='/addProjectUser'>   {/* need to update link */}
-                <Card className="card">
+        <div className="">
+            <Link className='card m-5' to='/addProjectUser'>   {/* need to update link */}
+                <Card >
                     <Card.Body className="plusCardSize">
                         <div className='plus '>
                             <span >
@@ -22,6 +23,8 @@ export default function addProject() {
                     </Card.Body>
                 </Card>
             </Link>
+
+        </div>
         </>
     );
 }

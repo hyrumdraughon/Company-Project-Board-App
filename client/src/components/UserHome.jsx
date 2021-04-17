@@ -15,7 +15,7 @@ const UserHome = (props) => {
     return (
         <>
             <NavBar>{NavHeader}</NavBar>
-            <Row>
+            <Row className='rowAlign'>
             <AddProject></AddProject>
             <ProjectCard projects={user.projects} />
             </Row>

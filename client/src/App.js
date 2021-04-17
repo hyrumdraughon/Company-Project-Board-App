@@ -1,16 +1,8 @@
 import React, {useContext} from 'react'
 
-import Button from './components/Button'
-import ProjectCard from './components/ProjectCard'
-import TeamCard from './components/TeamCard'
-import ViewProject from './components/ViewProject'
+
 import Auth from './components/Auth'
-import DummyText from './testData/dummyText'
-import ProjectForm from './components/ProjectForm';
-import SolidDivider from './components/SolidDivider';
-import NavBar from './components/NavBar';
-import AddProject from './components/AddProject'
-import AddTeam from './components/AddTeam'
+
 import ViewProjectPage from './components/ViewProjectPage'
 
 import AddProjectUser from './components/AddProjectUser'
