@@ -9,24 +9,24 @@ const NavLinks = () => {
     const {user} = useContext(UserContext)
     if(user.isAdmin === true){
         return(
-            <div class="header-right">
-                <Link to='/userHome'><p class = "headerText">Company Page</p></Link>
-                <Link to='/profile'><p class = "headerText">Profile</p></Link>
+            <div className="header-right">
+                <Link to='/userHome'><p className = "headerText">Company Page</p></Link>
+                <Link to='/profile'><p className = "headerText">Profile</p></Link>
             </div>
  
         )
     }
     if(user.isUser === true){
         return(
-            <div class="header-right">
-                 <Link to='/userHome'><p class = "headerText">Team Page</p></Link>
-                 <Link to='/profile'><p class = "headerText">Profile</p></Link>
+            <div className="header-right">
+                 <Link to='/userHome'><p className = "headerText">Team Page</p></Link>
+                 <Link to='/profile'><p className = "headerText">Profile</p></Link>
             </div>
         )
     }
 
     else return(
-        <div class="header-right">
+        <div className="header-right">
             
         </div>
 

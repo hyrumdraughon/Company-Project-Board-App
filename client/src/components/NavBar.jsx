@@ -8,8 +8,8 @@ import { UserContext } from '../context/UserProvider'
 const NavBar = () => {
     const {user} = useContext(UserContext)
     return(
-        <div class="header">
-            <p class="companyName">{user.companyName}</p>
+        <div className="header">
+            <p className="companyName">{user.companyName}</p>
             <NavLinks></NavLinks>
         </div>
             

@@ -10,7 +10,7 @@ export default function addProject() {
 
     return (
         <>
-        <div className="">
+        <div className="relativeCont">
             <Link className='card m-5' to='/addProjectUser'>   {/* need to update link */}
                 <Card >
                     <Card.Body className="plusCardSize">
