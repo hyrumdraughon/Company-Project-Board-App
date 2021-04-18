@@ -15,8 +15,8 @@ const UserHome = (props) => {
     return (
         <>
             <NavBar>{NavHeader}</NavBar>
-            <Container fluid>
-                <Row className='rowAlign'>
+            <Container fluid className='hoverAlign'>
+                <Row >
                     <AddProject></AddProject>
                     <ProjectCard projects={user.projects} />
                 </Row>
