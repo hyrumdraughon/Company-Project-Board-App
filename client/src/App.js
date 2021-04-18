@@ -1,16 +1,14 @@
 import React, {useContext} from 'react'
-
-
 import Auth from './components/Auth'
-
 import ViewProjectPage from './components/ViewProjectPage'
-
 import AddProjectUser from './components/AddProjectUser'
 import AddProjectAdmin from './components/AddProjectAdmin'
 import ViewProfilePage from './components/ViewProfilePage'
 import UserHome from './components/UserHome'
 import ChangePasswordPage from './components/ChangePasswordPage'
-
+import AdminHomePage from './components/AdminHomePage'
+import ProtectedRoute from './shared/ProtectedRoute';
+import EditProfileFieldsPage from './components/EditProfileFieldsPage'
 
 import './App.css';
 import './index.css'
@@ -21,8 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
-import ProtectedRoute from './shared/ProtectedRoute';
-import EditProfileFieldsPage from './components/EditProfileFieldsPage'
+
 
 function App() {
   // const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
@@ -60,6 +57,7 @@ function App() {
         {/* <Route path="/profile" component={ViewProfilePage} /> */}
 
         <Route path='/userHome' component={UserHome} />
+        <Route path='/adminHomePage' component={AdminHomePage} />
  
         {/* 404 error handling */}
         <Route render={
