@@ -1,7 +1,7 @@
 import NavLinks from './NavLinks'
 import './navbar.css'
 
-import { useContext, UseContext } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../context/UserProvider'
 
 
