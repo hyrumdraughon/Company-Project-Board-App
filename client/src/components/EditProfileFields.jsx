@@ -2,7 +2,7 @@ import { Grid } from "@material-ui/core"
 import './profile.css'
 import Button from './Button'
 
-import { useContext, UseContext } from 'react'
+import { useContext} from 'react'
 import { UserContext } from '../context/UserProvider'
 import {useState} from 'react'
 
