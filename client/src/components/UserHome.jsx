@@ -1,5 +1,5 @@
 
-import { Row } from 'react-bootstrap'
+import { Row, Container } from 'react-bootstrap'
 import AddProject from './AddProject'
 import ProjectCard from './ProjectCard'
 import { useContext } from 'react'
@@ -15,10 +15,12 @@ const UserHome = (props) => {
     return (
         <>
             <NavBar>{NavHeader}</NavBar>
-            <Row className='rowAlign'>
-            <AddProject></AddProject>
-            <ProjectCard projects={user.projects} />
-            </Row>
+            <Container fluid>
+                <Row className='rowAlign'>
+                    <AddProject></AddProject>
+                    <ProjectCard projects={user.projects} />
+                </Row>
+            </Container>
         </>
     )
 
