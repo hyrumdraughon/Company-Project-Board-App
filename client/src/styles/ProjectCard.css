@@ -40,7 +40,7 @@ hr.hr {
 }
 
 .cardSize:hover{
-    color: #56CCF2 !important;
+    color: #f8f8ff !important;
     background-color: #DBDBE8;
     border: 3px solid #004488;
     box-shadow: 5px 1.5px 5px slategrey;
