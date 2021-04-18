@@ -40,42 +40,42 @@ const EditProfileFields = () => {
         console.log(oldPassword) 
         console.log(newPassword)
         console.log(confirmPassword)
-        if(newPassword != confirmPassword){
+        if(newPassword !== confirmPassword){
             console.log("Passwords do not match")
         }
     }
 
     return(
         <section className = "projectContainer">
-            <div class = "topMargin"/>
-            <form class = "formContainer " onSubmit={sendFormRequest}>
+            <div classname = "topMargin"/>
+            <form classname = "formContainer " onSubmit={sendFormRequest}>
                 <Grid
                     container
                     direction="column"
                     justify="center"
                     alignItems="center"
                 >
-                    <div class="flexContainer">
-                        <div class="fieldContainer">
+                    <div classname="flexContainer">
+                        <div classname="fieldContainer">
                             <p>Old Password:</p>
                         </div>
-                        <div class="fieldContentContainer">
+                        <div classname="fieldContentContainer">
                             <input placeholder = "Old password" type='text' onChange={oldPasswordSubmission}/> 
                         </div>
                     </div>
-                    <div class="flexContainer">
-                        <div class="fieldContainer">
+                    <div classname="flexContainer">
+                        <div classname="fieldContainer">
                             <p>New password:</p>
                         </div>
-                        <div class="fieldContentContainer">
+                        <div classname="fieldContentContainer">
                             <input placeholder = "New password" type='text' onChange={newPasswordSubmission}/> 
                         </div>
                     </div>
-                    <div class="flexContainer">
-                        <div class="fieldContainer">
+                    <div classname="flexContainer">
+                        <div classname="fieldContainer">
                             <p>Confirm password:</p>
                         </div>
-                        <div class="fieldContentContainer">
+                        <div classname="fieldContentContainer">
                             <input placeholder = "Confirm password" type='text' onChange={confirmPasswordSubmission}/> 
                         </div>
                     </div>   
