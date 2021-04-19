@@ -52,38 +52,42 @@ const EditProfileFields = (props) => {
 
     return(
         <section className = "projectContainer">
-            <div class = "topMargin"/>
-            <form class = "formContainer " onSubmit={sendFormRequest}>
+            <div className = "topMargin"/>
+            <form className = "formContainer " onSubmit={sendFormRequest}>
                 <Grid
                     container
                     direction="column"
                     justify="center"
                     alignItems="center"
                 >
-                    <div class="flexContainer">
-                        <div class="fieldContainer">
+                    <div className="flexContainer">
+                        <div className="fieldContainer">
                             <p>First Name:</p>
                         </div>
-                        <div class="fieldContentContainer">
+                        <div className="fieldContentContainer">
                             <input placeholder = {user.firstName} type='text' onChange={firstNameSubmission}/> 
                         </div>
+                        <div className = "emptyCenterer"/>
                     </div>
                     <div class="flexContainer">
-                        <div class="fieldContainer">
+                        <div className="fieldContainer">
                             <p>Last Name:</p>
                         </div>
-                        <div class="fieldContentContainer">
+                        <div className="fieldContentContainer">
                             <input placeholder = {user.lastName} type='text' onChange={lastNameSubmission}/> 
                         </div>
+                        <div className = "emptyCenterer"/>
                     </div>
                     <div class="flexContainer">
-                        <div class="fieldContainer">
+                        <div className="fieldContainer">
                             <p>Phone:</p>
                         </div>
-                        <div class="fieldContentContainer">
+                        <div className="fieldContentContainer">
                             <input placeholder = {user.phone} type='text' onChange={phoneSubmission}/> 
                         </div>
+                        <div className = "emptyCenterer"/>
                     </div>   
+                    <div className = "buttonMargin"/>
                     <Button type="submit" label = "Submit"/>
                 </Grid>
             </form>
