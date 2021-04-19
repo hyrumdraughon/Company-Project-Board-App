@@ -10,6 +10,8 @@ function TeamProvider(props) {
 
     const [teamState, setTeamState] = useState(initState)
 
+    axios.defaults.baseURL = 'https://api.juliocorzo.com'
+
     const createTeam = (data) => {
         axios.post('/team', data)
         .then(res => {

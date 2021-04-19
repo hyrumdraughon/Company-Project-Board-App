@@ -63,6 +63,8 @@ const ViewProfile = (props) => {
                     <Link to='/changePassword'><Button label = "Change password"/></Link>
                     <div className = "buttonMargin"/>
                     <Link to='/editProfile'><Button label = "Edit fields"/></Link>
+                    <div className = "buttonMargin"/>
+                    <Link to='/adminHomepage'><Button label = "Admin Homepage"/></Link>
                 </div>
                 
             </Grid>
