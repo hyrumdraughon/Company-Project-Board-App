@@ -16,7 +16,7 @@ function UserProvider(props) {
         projects: []
     }
 
-    axios.defaults.baseURL = 'https://cryptic-eyrie-97093.herokuapp.com/http://97.87.163.218:9999'
+    axios.defaults.baseURL = 'http://97.87.163.218:9999'
     // axios.defaults.baseURL = 'localhost:8080'
 
     const [userState, setUserState] = useState(initState)
@@ -103,48 +103,16 @@ function UserProvider(props) {
         })
     }
 
-    const getProjects = user => {
 
-        setUserState(prevState => ({...prevState, projects: [
-        {
-            id: 1,
-            title: "test1",
-            description: "this is a test",
-            completed: false
-        },
-        {
-            id: 2,
-            title: "test2",
-            description: "this is a test",
-            completed: false
-        },
-        {
-            id: 3,
-            title: "test3",
-            description: "this is a test",
-            completed: false
-        },
-        {
-            id: 4,
-            title: "test4",
-            description: "this is a test",
-            completed: false
-        }]
-        })
-        )
-
-    }
 
     return (
         <UserContext.Provider value={{
             user: userState.user,
             userId: userState.userId,
-            projects: userState.projects,
             isAdmin: userState.isAdmin,
             login: login,
             signup: signup,
-            logout: logout,
-            getProjects: getProjects
+            logout: logout
         }} >
             { props.children }
         </UserContext.Provider>
