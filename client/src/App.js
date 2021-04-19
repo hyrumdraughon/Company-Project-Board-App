@@ -1,24 +1,14 @@
 import React, {useContext} from 'react'
-
-import Button from './components/Button'
-import ProjectCard from './components/ProjectCard'
-import TeamCard from './components/TeamCard'
-import ViewProject from './components/ViewProject'
 import Auth from './components/Auth'
-import DummyText from './testData/dummyText'
-import ProjectForm from './components/ProjectForm';
-import SolidDivider from './components/SolidDivider';
-import NavBar from './components/NavBar';
-import AddProject from './components/AddProject'
-import AddTeam from './components/AddTeam'
 import ViewProjectPage from './components/ViewProjectPage'
-
 import AddProjectUser from './components/AddProjectUser'
 import AddProjectAdmin from './components/AddProjectAdmin'
 import ViewProfilePage from './components/ViewProfilePage'
 import UserHome from './components/UserHome'
-
-
+import ChangePasswordPage from './components/ChangePasswordPage'
+import AdminHomePage from './components/AdminHomePage'
+import ProtectedRoute from './shared/ProtectedRoute';
+import EditProfileFieldsPage from './components/EditProfileFieldsPage'
 
 import './App.css';
 import './index.css'
@@ -29,15 +19,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
-import ProtectedRoute from './shared/ProtectedRoute';
-import EditProfileFieldsPage from './components/EditProfileFieldsPage'
+
 
 function App() {
   // const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
 
   const { userId, logout } = useContext(UserContext)
 
-  console.log(userId)
+  
   return (
     <>
         
@@ -53,6 +42,8 @@ function App() {
         <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/"/>
 */}
         <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
+
+        <ProtectedRoute path = "/editProfile" component={EditProfileFieldsPage}/>
         
         <Route path="/viewProject" component={ViewProjectPage} />
 
@@ -60,11 +51,13 @@ function App() {
 
         <Route path="/addProjectAdmin" component={AddProjectAdmin} />
 
-        <Route exact path = "/profile" component={ViewProfilePage}/>
+        <Route path="/changePassword" component={ChangePasswordPage} />
 
-        <Route exact path = "/edit_profile" component={EditProfileFieldsPage}/>
 
         {/* <Route path="/profile" component={ViewProfilePage} /> */}
+
+        <Route path='/userHome' component={UserHome} />
+        <Route path='/adminHomePage' component={AdminHomePage} />
  
         {/* 404 error handling */}
         <Route render={
@@ -72,6 +65,9 @@ function App() {
         } />
 
       </Switch>
+
+
+
 
 
     </>

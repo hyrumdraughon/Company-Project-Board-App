@@ -7,9 +7,20 @@
     margin:50px 0px;
 }
 
+.buttonMargin {
+    margin: 10px 0px;
+}
+
+.formContainer {
+    margin: 0 0;
+    width:100%;
+    height: 100%;
+    display:block;
+}
+
 .fieldContainer {
     border-radius:8px;
-    border: 3px solid blue;
+    border: 3px solid #004488;
     background-color:  #F8F8FF;
     width: 100px;
     height: 5%;
@@ -25,7 +36,7 @@
 
 .fieldContentContainer {
     border-radius:8px;
-    border: 3px solid blue;
+    border: 3px solid #004488;
     background-color:  #F8F8FF;
     width: 120%;
     height: 5%;

@@ -1,54 +1,53 @@
 import { Grid } from "@material-ui/core"
+import { useContext } from 'react'
+import { UserContext } from '../context/UserProvider'
+import { Link } from 'react-router-dom';
+
 import './profile.css'
 import Button from './Button'
 
-//TODO: Handle button handler when endpoint is defined
-//PROPS
-/*
-{
-    userId: integer that contains the id of the user
-}
-*/
+
 const ViewProfile = (props) => {
-    //TODO:Query names using userId
-    const name = "Thomas DeSantis"
-    const email = "thomasdesantis22@gmail.com"
-    const phone = "978-000-0000"
+    const {user} = useContext(UserContext)
+    const name = user.firstName + " " + user.lastName
+    const phone = user.phone
+    const email = user.email
     return(
         <section className = "projectContainer">
-            <div class = "topMargin"/>
+            <div className = "topMargin"/>
             <Grid
                 container
                 direction="column"
                 justify="center"
                 alignItems="center"
             >
-                <div class="flexContainer">
-                    <div class="fieldContainer">
+                <div className="flexContainer">
+                    <div className="fieldContainer">
                         <p>Name:</p>
                     </div>
-                    <div class="fieldContentContainer">
+                    <div className="fieldContentContainer">
                         <p>{name}</p>
                     </div>
                 </div>   
-                <div class="flexContainer">
-                    <div class="fieldContainer">
+                <div className="flexContainer">
+                    <div className="fieldContainer">
                         <p>E-mail:</p>
                     </div>
-                    <div class="fieldContentContainer">
+                    <div className="fieldContentContainer">
                         <p>{email}</p>
                     </div>
                 </div>   
-                <div class="flexContainer">
-                    <div class="fieldContainer">
+                <div className="flexContainer">
+                    <div className="fieldContainer">
                         <p>Phone:</p>
                     </div>
-                    <div class="fieldContentContainer">
+                    <div className="fieldContentContainer">
                         <p>{phone}</p>
                     </div>
                 </div>   
-                <Button label = "Change password"/>
-                <Button label = "Edit fields"/>
+                <Link to='/changePassword'><Button label = "Change password"/></Link>
+                <div className = "buttonMargin"/>
+                <Link to='/editProfile'><Button label = "Edit fields"/></Link>
             </Grid>
         </section>
     )

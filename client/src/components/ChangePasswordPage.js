@@ -1,18 +1,17 @@
 import NavBar from './NavBar'
-import EditProfileFields from './EditProfileFields'
+import ChangePassword from './ChangePassword'
 
-const EditProfileFieldsPage = () => {
+const ChangePasswordPage = () => {
     const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
-    const EditProfileProps = {userId:0}
     return(
         <body>
             <div className = 'page-container'>
                 <NavBar>{NavHeader}</NavBar>
-                <EditProfileFields>{EditProfileProps}</EditProfileFields>
+                <ChangePassword></ChangePassword>
             </div>
         </body>
         
     )
 }
 
-export default EditProfileFieldsPage
+export default ChangePasswordPage

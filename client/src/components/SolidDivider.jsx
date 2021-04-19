@@ -1,7 +1,7 @@
 import './divider.css'
 
 const SolidDivider = () => {
-    return(<hr class="solidDivider"/>)
+    return(<hr className="solidDivider"/>)
 }
 
 export default SolidDivider
