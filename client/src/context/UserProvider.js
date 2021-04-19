@@ -9,8 +9,8 @@ function UserProvider(props) {
 
 
     const initState = {
-        user: {firstName:"John",lastName:"Smith",phone:"978-123-4567",email:"johnsmith@gmail.com", isAdmin:true, companyName:"Cooksys"},
-        userId: localStorage.getItem("UserId") ||  0, /*If Protected Routes are still accessable with out logging in change 0 to undefined*/
+        user: {firstName: '', lastName: '', phoneNumber: '', email: ''},
+        userId: localStorage.getItem("UserId") ||  0,
         loggedIn: false,
         isAdmin: false,
         projects: []
@@ -39,9 +39,9 @@ function UserProvider(props) {
 
         axios.post("/user", newUser)
         .then( res => {
-            console.log(res)
+            // console.log(res)
 
-            const {profile, role, id} = res.data
+            const {profile, email, role, id} = res.data
             
             // localStorage.setItem("User", JSON.stringify(user))
             localStorage.setItem("UserId", id)
@@ -53,10 +53,13 @@ function UserProvider(props) {
             setUserState(prevState => ({...prevState, user: {
                                                             firstName: profile.firstName,
                                                             lastName: profile.lastName,
-                                                            phoneNumber: profile.phone
+                                                            phoneNumber: profile.phone,
+                                                            email: email
                                                             }
                                                         })
             )
+
+            console.log(userState.user.firstName)
 
         })
         .catch(err => {
@@ -74,8 +77,8 @@ function UserProvider(props) {
         axios.post("/login", loginInfo)
         .then(res => {
 
-            console.log(res)
-            const {profile, role, id} = res.data
+            console.log(res.data)
+            const {profile, email, role, id} = res.data
             
             // localStorage.setItem("User", JSON.stringify(user))
             localStorage.setItem("UserId", id)
@@ -84,12 +87,15 @@ function UserProvider(props) {
                 setUserState(prevState => ({...prevState, isAdmin: true}))
             }
 
-            setUserState(prevState => ({...prevState, user: {
+            setUserState(prevState => ({...prevState, userId: id, user: {
                                                             firstName: profile.firstName,
                                                             lastName: profile.lastName,
-                                                            phoneNumber: profile.phone
+                                                            phoneNumber: profile.phone,
+                                                            email: email
                                                             }
             }))
+
+            console.log(userState.user)
         })
         .catch(err => {
             console.error(err)

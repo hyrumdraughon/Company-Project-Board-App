@@ -6,7 +6,9 @@ export const CompanyContext = React.createContext()
 
 function CompanyProvider(props) {
     const initState = {
-        allCompanies: []
+        allCompanies: [],
+        companyTeams: [],
+        companyProjects: []
     }
 
     const [companyState, setCompanyState] = useState(initState)
@@ -21,10 +23,26 @@ function CompanyProvider(props) {
         })
     }
 
+    const getCompanyTeams = (companyId) => {
+        axios.get(`/company/${companyId}/teams`)
+        .then(res => {
+            setCompanyState(prevState => ({...prevState, companyTeams: res.data}))
+        })
+    }
+
+    const getCompanyProjects = (companyId) => {
+        axios.get(`/company/${companyId}/projects`)
+        .then(res => {
+            setCompanyState(prevState => ({...prevState, companyProjects: res.data}))
+        })
+    }
+
     return (
         <CompanyContext.Provider value={{
             allCompanies: companyState.allCompanies,
-            getCompanies: getCompanies
+            getCompanies: getCompanies,
+            getCompanyTeams: getCompanyTeams,
+            getCompanyProjects: getCompanyProjects
         }} >
         {props.children}
         </CompanyContext.Provider>
