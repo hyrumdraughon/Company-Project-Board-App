@@ -31,13 +31,13 @@ public class TeamController {
         return teamService.getTeam(teamId);
     }
 
-    @PatchMapping("/{teamId}/addUser/@{userId}")
+    @PatchMapping("/{teamId}/addUser/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public TeamDto addUser(@PathVariable("teamId") Long teamId, @PathVariable("userId") Long userId) {
         return teamService.addUser(teamId, userId);
     }
 
-    @PatchMapping("/{teamId}/addProject/@{projectId}")
+    @PatchMapping("/{teamId}/addProject/{projectId}")
     @ResponseStatus(HttpStatus.OK)
     public TeamDto addProject(@PathVariable("teamId") Long teamId, @PathVariable("projectId") Long projectId) {
         return teamService.addProject(teamId, projectId);
