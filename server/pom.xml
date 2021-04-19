@@ -83,11 +83,6 @@
 							<version>1.4.1.Final</version>
 						</path>
 					</annotationProcessorPaths>
-					<archive>
-						<manifest>
-							<mainClass>com.cooksys.server.ServerApplication</mainClass>
-						</manifest>
-					</archive>
 				</configuration>
 			</plugin>
 		</plugins>
