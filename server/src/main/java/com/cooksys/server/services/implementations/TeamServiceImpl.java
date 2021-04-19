@@ -123,13 +123,13 @@ public class TeamServiceImpl implements TeamService {
         checkUserExistsNotDeleted(userId, optionalUser);
         
         if (optionalUser.get().getUserTeam() != null) {
-        	if (optionalUser.get().getUserTeam().getId() == teamId) {
+        	if (optionalUser.get().getUserTeam().getId().equals(teamId)) {
         		throw new BadRequestException("the user is already a member of this team");
         	} else {
         		throw new BadRequestException("the user is already a member of a different team");
         	}
         }
-        if (optionalUser.get().getUserCompany().getId() != optionalTeam.get().getTeamCompany().getId()) {
+        if (!optionalUser.get().getUserCompany().getId().equals(optionalTeam.get().getTeamCompany().getId())) {
         	throw new BadRequestException("the user and team provided do not belong to the same company");
         }
         
@@ -154,7 +154,7 @@ public class TeamServiceImpl implements TeamService {
         checkProjectExistsNotDeleted(projectId, optionalProject);
         
         if (optionalProject.get().getProjectTeam() != null) {
-        	if (optionalProject.get().getProjectTeam().getId() == teamId) {
+        	if (optionalProject.get().getProjectTeam().getId().equals(teamId)) {
         		throw new BadRequestException("the project already belongs to this team");
         	} else {
         		throw new BadRequestException("the project already belongs to a different team");
