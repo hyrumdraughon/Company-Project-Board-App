@@ -16,7 +16,7 @@ function UserProvider(props) {
         projects: []
     }
 
-    axios.defaults.baseURL = 'http://97.87.163.218:9999'
+    axios.defaults.baseURL = 'https://api.juliocorzo.com'
     // axios.defaults.baseURL = 'localhost:8080'
 
     const [userState, setUserState] = useState(initState)
