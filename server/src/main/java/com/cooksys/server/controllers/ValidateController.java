@@ -15,7 +15,7 @@ public class ValidateController {
 
     private final ValidateService validateService;
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public UserDto login(@RequestBody CredentialDto credentialDto) {
         return validateService.login(credentialDto);
     }
