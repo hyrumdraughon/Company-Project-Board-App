@@ -9,7 +9,8 @@ import Button from './Button'
 
 const ViewProfile = (props) => {
     const {user} = useContext(UserContext)
-    const name = user.firstName + " " + user.lastName
+    const firstname = user.firstName
+    const lastname = user.lastName
     const phone = user.phone
     const email = user.email
     return(
@@ -21,21 +22,32 @@ const ViewProfile = (props) => {
                 justify="center"
                 alignItems="center"
             >
-                <div className="flexContainer">
+                <div class="flexContainer">
                     <div className="fieldContainer">
-                        <p>Name:</p>
+                        <p>First Name:</p>
                     </div>
                     <div className="fieldContentContainer">
-                        <p>{name}</p>
+                        <p>{firstname}</p>
                     </div>
+                    <div className = "emptyCenterer"/>
                 </div>   
-                <div className="flexContainer">
+                <div class="flexContainer">
+                    <div className="fieldContainer">
+                        <p>Last Name:</p>
+                    </div>
+                    <div className="fieldContentContainer">
+                        <p>{lastname}</p>
+                    </div>
+                    <div className = "emptyCenterer"/>
+                </div>  
+                <div class="flexContainer">
                     <div className="fieldContainer">
                         <p>E-mail:</p>
                     </div>
                     <div className="fieldContentContainer">
                         <p>{email}</p>
                     </div>
+                    <div className = "emptyCenterer"/>
                 </div>   
                 <div className="flexContainer">
                     <div className="fieldContainer">
@@ -44,10 +56,15 @@ const ViewProfile = (props) => {
                     <div className="fieldContentContainer">
                         <p>{phone}</p>
                     </div>
+                    <div className = "emptyCenterer"/>
                 </div>   
-                <Link to='/changePassword'><Button label = "Change password"/></Link>
                 <div className = "buttonMargin"/>
-                <Link to='/editProfile'><Button label = "Edit fields"/></Link>
+                <div className = "flexContainer">
+                    <Link to='/changePassword'><Button label = "Change password"/></Link>
+                    <div className = "buttonMargin"/>
+                    <Link to='/editProfile'><Button label = "Edit fields"/></Link>
+                </div>
+                
             </Grid>
         </section>
     )

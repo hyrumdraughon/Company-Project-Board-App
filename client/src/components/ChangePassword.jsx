@@ -55,30 +55,34 @@ const EditProfileFields = () => {
                     justify="center"
                     alignItems="center"
                 >
-                    <div classname="flexContainer">
-                        <div classname="fieldContainer">
+                    <div className="flexContainer">
+                        <div className="fieldContainer">
                             <p>Old Password:</p>
                         </div>
-                        <div classname="fieldContentContainer">
+                        <div className="fieldContentContainer">
                             <input placeholder = "Old password" type='text' onChange={oldPasswordSubmission}/> 
                         </div>
+                        <div className = "emptyCenterer"/>
                     </div>
-                    <div classname="flexContainer">
-                        <div classname="fieldContainer">
+                    <div className="flexContainer">
+                        <div className="fieldContainer">
                             <p>New password:</p>
                         </div>
-                        <div classname="fieldContentContainer">
+                        <div className="fieldContentContainer">
                             <input placeholder = "New password" type='text' onChange={newPasswordSubmission}/> 
                         </div>
+                        <div className = "emptyCenterer"/>
                     </div>
-                    <div classname="flexContainer">
-                        <div classname="fieldContainer">
+                    <div className="flexContainer">
+                        <div className="fieldContainer">
                             <p>Confirm password:</p>
                         </div>
-                        <div classname="fieldContentContainer">
+                        <div className="fieldContentContainer">
                             <input placeholder = "Confirm password" type='text' onChange={confirmPasswordSubmission}/> 
                         </div>
-                    </div>   
+                        <div className = "emptyCenterer"/>
+                    </div>
+                    <div className = "buttonMargin"/>   
                     <Button type="submit" label = "Submit"/>
                 </Grid>
             </form>
