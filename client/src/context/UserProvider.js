@@ -50,7 +50,7 @@ function UserProvider(props) {
                 setUserState(prevState => ({...prevState, isAdmin: true}))
             }
 
-            setUserState(prevState => ({...prevState, user: {
+            setUserState(prevState => ({...prevState, userId: id, user: {
                                                             firstName: profile.firstName,
                                                             lastName: profile.lastName,
                                                             phoneNumber: profile.phone,
