@@ -10,18 +10,21 @@ export default function addTeam() {
 
     return (
         <>
-            <Link to='/teamPage'>   {/* need to update link */}
+            <div className="relativeCont">
+            <Link className='card m-5' to='/teamPage'>   {/* need to update link */}
                 <Card >
                     <Card.Body className="plusCardSize">
                         <div className='plus '>
                             <span >
-                                <BsFillPlusCircleFill size={169} />
+                                <BsFillPlusCircleFill size={35} />
                             </span>
                         </div>
 
                     </Card.Body>
                 </Card>
             </Link>
+
+        </div>
         </>
     );
 }

@@ -1,5 +1,5 @@
 import { Grid } from "@material-ui/core"
-import { useContext, UseContext } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../context/UserProvider'
 import { Link } from 'react-router-dom';
 
@@ -14,39 +14,39 @@ const ViewProfile = (props) => {
     const email = user.email
     return(
         <section className = "projectContainer">
-            <div class = "topMargin"/>
+            <div className = "topMargin"/>
             <Grid
                 container
                 direction="column"
                 justify="center"
                 alignItems="center"
             >
-                <div class="flexContainer">
-                    <div class="fieldContainer">
+                <div className="flexContainer">
+                    <div className="fieldContainer">
                         <p>Name:</p>
                     </div>
-                    <div class="fieldContentContainer">
+                    <div className="fieldContentContainer">
                         <p>{name}</p>
                     </div>
                 </div>   
-                <div class="flexContainer">
-                    <div class="fieldContainer">
+                <div className="flexContainer">
+                    <div className="fieldContainer">
                         <p>E-mail:</p>
                     </div>
-                    <div class="fieldContentContainer">
+                    <div className="fieldContentContainer">
                         <p>{email}</p>
                     </div>
                 </div>   
-                <div class="flexContainer">
-                    <div class="fieldContainer">
+                <div className="flexContainer">
+                    <div className="fieldContainer">
                         <p>Phone:</p>
                     </div>
-                    <div class="fieldContentContainer">
+                    <div className="fieldContentContainer">
                         <p>{phone}</p>
                     </div>
                 </div>   
                 <Link to='/changePassword'><Button label = "Change password"/></Link>
-                <div class = "buttonMargin"/>
+                <div className = "buttonMargin"/>
                 <Link to='/editProfile'><Button label = "Edit fields"/></Link>
             </Grid>
         </section>

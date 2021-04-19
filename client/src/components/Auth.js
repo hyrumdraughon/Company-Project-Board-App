@@ -6,7 +6,7 @@ import '../styles/AuthForm.css'
 import { UserContext } from '../context/UserProvider'
 
 function Auth() {
-    const initState = { username: "", password: ""}
+    const initState = { username: "", password: "", firstName: "", lastName: "", phoneNumber: "", companyId: 1}
 
     const { signup, login } = useContext(UserContext)
 
@@ -25,6 +25,7 @@ function Auth() {
     }
 
     const handleLogin = e => {
+        
         e.preventDefault()
         login(inputs)
         setInputs(initState)

@@ -10,18 +10,21 @@ export default function addProject() {
 
     return (
         <>
-            <Link to='/addProjectUser'>   {/* need to update link */}
+        <div className="relativeCont">
+            <Link className='card m-5' to='/addProjectUser'>   {/* need to update link */}
                 <Card >
                     <Card.Body className="plusCardSize">
                         <div className='plus '>
                             <span >
-                                <BsFillPlusCircleFill size={109} />
+                                <BsFillPlusCircleFill size={35} />
                             </span>
                         </div>
 
                     </Card.Body>
                 </Card>
             </Link>
+
+        </div>
         </>
     );
 }

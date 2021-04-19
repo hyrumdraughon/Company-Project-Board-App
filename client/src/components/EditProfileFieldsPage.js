@@ -1,6 +1,5 @@
 import NavBar from './NavBar'
 import EditProfileFields from './EditProfileFields'
-import DummyText from '../testData/dummyText'
 
 const EditProfileFieldsPage = () => {
     const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
