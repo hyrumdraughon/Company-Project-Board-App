@@ -9,7 +9,7 @@ const NavBar = () => {
     const {user} = useContext(UserContext)
     return(
         <div className="header">
-            <p className="companyName">{user.companyName}</p>
+            <p className="companyName"></p>
             <NavLinks></NavLinks>
         </div>
             

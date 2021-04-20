@@ -7,7 +7,7 @@ const AddProjectAdmin = () => {
     return(
         <body>
             <div className = 'page-container'>
-                <NavBar>{NavHeader}</NavBar>
+                <NavBar></NavBar>
                 <ProjectForm>{addProjectProps}</ProjectForm>
             </div>
         </body>
