@@ -20,8 +20,15 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-//        initializeRoles();
-//        initializeCompanies();
+        /*
+         This is a bad fix for the problem, because if the database is empty, these two functions do need to run.
+         They are disabled currently so that there are no conflicts, but if deploying a server to a brand new
+         database is what we're trying to do, uncomment these two functions and change `none` to `create-drop` on
+         application.properties JUST for the first run, following that, change the values again.
+
+                initializeRoles();
+                initializeCompanies();
+        */
 
     }
 
