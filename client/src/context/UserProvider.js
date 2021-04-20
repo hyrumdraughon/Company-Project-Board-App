@@ -125,6 +125,13 @@ function UserProvider(props) {
             .catch( err => {console.error(err)})
     }
 
+    const patchPassword = (newPassword) => {
+        axios.patch('/changePassword',newPassword).then(res=>{
+            console.log(res.data)
+        })
+        .catch(err => {console.error(err)})
+    }
+
 
     return (
         <UserContext.Provider value={{
@@ -134,7 +141,8 @@ function UserProvider(props) {
             login: login,
             signup: signup,
             logout: logout,
-            patchUserFields: patchUserFields
+            patchUserFields: patchUserFields,
+            patchPassword : patchPassword
         }} >
             { props.children }
         </UserContext.Provider>

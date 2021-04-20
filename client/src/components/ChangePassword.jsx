@@ -1,4 +1,7 @@
 import { Grid } from "@material-ui/core"
+
+import { useContext } from 'react'
+import { UserContext } from '../context/UserProvider'
 import './profile.css'
 import Button from './Button'
 
@@ -13,6 +16,8 @@ import {useState} from 'react'
 }
 */
 const EditProfileFields = () => {
+
+    const {user,patchPassword} = useContext(UserContext)
 
     const [oldPassword,updateOldPassword] = useState()
 
@@ -43,6 +48,13 @@ const EditProfileFields = () => {
         if(newPassword !== confirmPassword){
             console.log("Passwords do not match")
         }
+        const requestBody = {
+            email : user.email,
+            password : oldPassword,
+            newPassword : newPassword
+        }
+        console.log(requestBody)
+        patchPassword(requestBody)
     }
 
     return(

@@ -2,12 +2,11 @@ import NavBar from './NavBar'
 import EditProfileFields from './EditProfileFields'
 
 const EditProfileFieldsPage = () => {
-    const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
     const EditProfileProps = {userId:0}
     return(
         <body>
             <div className = 'page-container'>
-                <NavBar>{NavHeader}</NavBar>
+                <NavBar></NavBar>
                 <EditProfileFields>{EditProfileProps}</EditProfileFields>
             </div>
         </body>
