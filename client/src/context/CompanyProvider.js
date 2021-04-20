@@ -13,7 +13,7 @@ function CompanyProvider(props) {
 
     const [companyState, setCompanyState] = useState(initState)
 
-    axios.defaults.baseURL = 'http://97.87.163.218:9999'
+    axios.defaults.baseURL = 'https://api.juliocorzo.com'
 
 
     const getCompanies = () => {

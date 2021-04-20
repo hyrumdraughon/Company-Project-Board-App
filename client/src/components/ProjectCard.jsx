@@ -12,14 +12,14 @@ export default function ProjectCard({ projects }) {
       <Card className="cardSize mx-3" style={{ width: '15%', heigth: '15%' }}>
         <Card.Body>
           <Card.Text className="title">
-            {project.label}
+            {project.title}
             <hr className='hr'></hr>
           </Card.Text>
           <Card.Text className='description'>
             Project Description
         </Card.Text>
           <Card.Text className='descriptionText'>
-            {project.descriptionTextLabel}
+            {project.description}
           </Card.Text>
         </Card.Body>
       </Card>

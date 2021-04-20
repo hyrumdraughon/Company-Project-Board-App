@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom"
 import UserProvider from './context/UserProvider'
+import TeamProvider from './context/TeamProvider'
 import reportWebVitals from './reportWebVitals';
 import CompanyProvider from './context/CompanyProvider';
-import TeamProvider from './context/TeamProvider'
 
 ReactDOM.render(
   <BrowserRouter>
