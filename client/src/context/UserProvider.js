@@ -108,6 +108,14 @@ function UserProvider(props) {
         })
     }
 
+    const patchUserFields = (newFields) => {
+        axios.patch('user/'+userState.userId,newFields).then(res => {
+            console.log(res.data)
+            //TODO: Update state
+        }
+            )
+            .catch( err => {console.error(err)})
+    }
 
 
     return (
@@ -117,7 +125,8 @@ function UserProvider(props) {
             isAdmin: userState.isAdmin,
             login: login,
             signup: signup,
-            logout: logout
+            logout: logout,
+            patchUserFields: patchUserFields
         }} >
             { props.children }
         </UserContext.Provider>

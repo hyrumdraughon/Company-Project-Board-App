@@ -14,7 +14,9 @@ import {useState} from 'react'
 }
 */
 const EditProfileFields = (props) => {
-    const {user} = useContext(UserContext)
+    const {user,patchUserFields} = useContext(UserContext)
+
+    console.log(patchUserFields)
 
     const [firstName,updateFirstName] = useState()
 
@@ -42,12 +44,26 @@ const EditProfileFields = (props) => {
         let firstNameSubmit = firstName
         let lastNameSubmit = lastName
         let phoneSubmit = phone
-        if(firstNameSubmit === undefined) firstNameSubmit = user.firstName
-        if(lastNameSubmit === undefined) lastNameSubmit = user.lastName
-        if(phoneSubmit === undefined) phoneSubmit = user.phone
+        if(firstNameSubmit === undefined){
+            firstNameSubmit = user.firstName
+        }
+        if(lastNameSubmit === undefined){
+            lastNameSubmit = user.lastName
+        }
+        if(phoneSubmit === undefined){
+            phoneSubmit = user.phoneNumber
+        } 
         console.log(firstNameSubmit) 
         console.log(lastNameSubmit)
         console.log(phoneSubmit)
+        const request = {
+            profile:{
+                firstName: firstNameSubmit,
+                lastName: lastNameSubmit,
+                phone: phoneSubmit
+            }
+        }
+        patchUserFields(request)
     }
 
     return(
@@ -83,7 +99,7 @@ const EditProfileFields = (props) => {
                             <p>Phone:</p>
                         </div>
                         <div className="fieldContentContainer">
-                            <input placeholder = {user.phone} type='text' onChange={phoneSubmission}/> 
+                            <input placeholder = {user.phoneNumber} type='text' onChange={phoneSubmission}/> 
                         </div>
                         <div className = "emptyCenterer"/>
                     </div>   

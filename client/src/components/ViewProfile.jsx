@@ -11,7 +11,7 @@ const ViewProfile = (props) => {
     const {user} = useContext(UserContext)
     const firstname = user.firstName
     const lastname = user.lastName
-    const phone = user.phone
+    const phone = user.phoneNumber
     const email = user.email
     return(
         <section className = "projectContainer">

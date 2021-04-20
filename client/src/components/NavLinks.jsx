@@ -18,7 +18,7 @@ const NavLinks = () => {
  
         )
     }
-    if(isAdmin === false){
+    else{
         return(
             <div className="header-right">
                  <Link to='/userHome'><p className = "headerText">Team Page</p></Link>
@@ -27,14 +27,6 @@ const NavLinks = () => {
             </div>
         )
     }
-
-    else return(
-        <div className="header-right">
-            
-        </div>
-
-            
-    )
 }
 
 export default NavLinks
