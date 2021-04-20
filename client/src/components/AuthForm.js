@@ -1,15 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import '../styles/AuthForm.css'
 
 
+import { CompanyContext } from '../context/CompanyProvider'
+
 function AuthForm(props) {
     const {handleChange, handleSubmit, inputs: {email, password, firstName, lastName, phoneNumber, companyId}, btnText, toggle, toggleText } = props
+
+    const { getCompanies, allCompanies } = useContext(CompanyContext)
 
     let isSignup = false
 
     if(btnText === "Signup") {
         isSignup = true
     }
+
+    if(allCompanies.length === 0) {
+        getCompanies()
+    }
+
+    const mappedCompanies = allCompanies.map(company => <option value={company.id}>{company.name}</option>)
+
 
     return (
         <div>
@@ -23,6 +34,9 @@ function AuthForm(props) {
                     <input type="text" name="firstName" value={firstName} onChange={handleChange} placeholder="First Name" />
                     <input type="text" name="lastName" value={lastName} onChange={handleChange} placeholder="Last Name" />
                     <input type="text" name="phoneNumber" value={phoneNumber} onChange={handleChange} placeholder="Phone Number" />
+                    <select className="companyDropdown" onChange={handleChange} name="companyId" id="company">
+                        {mappedCompanies}
+                    </select>
                 </>
                 :
                 <div></div>

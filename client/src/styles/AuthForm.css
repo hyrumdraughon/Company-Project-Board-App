@@ -108,3 +108,13 @@ input:focus ~ .form_label {
       border: 2px solid #BED8FC;
   }
  
+  .companyDropdown {
+      grid-column: 2/4;
+      border-color: #828282;
+      padding-top: 5px;
+      margin-top: 10px;
+  }
+
+  .companyDropdown:hover {
+      
+  }

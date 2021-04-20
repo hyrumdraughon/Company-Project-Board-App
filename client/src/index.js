@@ -5,11 +5,17 @@ import App from './App';
 import { BrowserRouter } from "react-router-dom"
 import UserProvider from './context/UserProvider'
 import reportWebVitals from './reportWebVitals';
+import CompanyProvider from './context/CompanyProvider';
+import TeamProvider from './context/TeamProvider'
 
 ReactDOM.render(
   <BrowserRouter>
     <UserProvider>
-      <App />
+      <CompanyProvider>
+        <TeamProvider>
+          <App />
+        </TeamProvider>
+      </CompanyProvider>
     </UserProvider>
   </BrowserRouter>,
   document.getElementById('root')
