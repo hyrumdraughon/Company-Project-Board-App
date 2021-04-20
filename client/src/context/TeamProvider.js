@@ -1,4 +1,5 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
+import { UserContext } from '../context/UserProvider'
 
 import axios from 'axios'
 
@@ -13,6 +14,9 @@ function TeamProvider(props) {
         users: []
     }
 
+    const {user} = useContext(UserContext)
+    const teamId = user.teamId
+
     const [teamState, setTeamState] = useState(initState)
 
     axios.defaults.baseURL = 'https://api.juliocorzo.com'
@@ -26,13 +30,13 @@ function TeamProvider(props) {
     //     })
     // }
 
-    const getTeam = id => {
+    
 
-        axios.get(`/team/${id}`)
+    const getTeam = () => {
+        axios.get(`/team/${teamId}`)
             .then( res => {
-                console.log(res.data)
                 const {teamName, text, projects, id, members} = res.data
-                localStorage.setItem("TeamId", id)
+                // localStorage.setItem("TeamId", id)
                 setTeamState(prevState => ({
                     ...prevState,
                     team: {
@@ -43,13 +47,11 @@ function TeamProvider(props) {
                     projects: projects,
                     users: members
                 }))
-                console.log(teamState.team.name)
             })
-
     }
 
-    const getProject = id => {
-        axios.get(`/team/${id}/projects`)
+    const getProject = () => {
+        axios.get(`/team/${teamId}/projects`)
             .then( res => res.data)
             .then(listOfProjects => setTeamState(
                     prevState => ({

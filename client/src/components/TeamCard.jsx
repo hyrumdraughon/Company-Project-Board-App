@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card } from 'react-bootstrap'
+import UserCard from './UserCard'
 
 
 
-export default function TeamCard({ teamLabel, teamMemberLabel}) {
+export default function TeamCard({team}) {
   
 
 
@@ -11,21 +12,17 @@ export default function TeamCard({ teamLabel, teamMemberLabel}) {
     <Card className="cardSize">
       <Card.Body>
         <Card.Text className="title">
-        Placeholder Team Name { /* placeholder */}
-        { teamLabel }
+        Placeholder Team Name 
+        { team.teamName }
           <hr className='hr'></hr>
+          {team.text}
         </Card.Text>
         <Card.Text className='description'>
         Team Members 
         </Card.Text>
         <Card.Text className='descriptionText text-center'>
-        <p>Placeholder{ teamMemberLabel }</p>  { /* placeholder */}
-        <p>Placeholder{ teamMemberLabel }</p>  { /* placeholder */}
-        <p>Placeholder{ teamMemberLabel }</p>  { /* placeholder */}
-        <p>Placeholder{ teamMemberLabel }</p>  { /* placeholder */}
-          
+          <UserCard users={team.users}></UserCard>    
         </Card.Text>
-        
       </Card.Body>
     </Card>
   );

@@ -1,5 +1,5 @@
 import { Row, Container } from 'react-bootstrap'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { UserContext } from '../context/UserProvider'
 import { TeamContext } from '../context/TeamProvider'
 import AddProject from './AddProject'
@@ -12,16 +12,26 @@ import TeamCard from './TeamCard'
 
 const UserHome = (props) => {
     const {user} = useContext(UserContext)
-    const {getProjects, projects} = useContext(TeamContext)
-    getProjects(user.teamId)
+    const {getProjects, projects, getTeams, team, users} = useContext(TeamContext)
+
+    if(projects.length === 0) {
+        getProjects()
+    }
+    
+    if(team.name === ''){
+        getTeams()
+
+    }
+    
+    const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:user.companyId}
     
     return (
-        <>
-            <NavBar></NavBar>
+        <section>
+            <NavBar>{NavHeader}</NavBar>
             <Container fluid className='hoverAlign'>
                 <Row >
                     <AddTeam></AddTeam>
-                    <TeamCard projects={projects} />
+                    <TeamCard team = {{teamName: team.name, text: team.text, users: users}} />
                 </Row>
             </Container>
             <SolidDivider></SolidDivider>
@@ -33,7 +43,7 @@ const UserHome = (props) => {
             </Container>
             
            
-        </>
+        </section>
     )
 
 };

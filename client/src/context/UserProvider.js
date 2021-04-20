@@ -77,7 +77,7 @@ function UserProvider(props) {
         .then(res => {
 
             console.log(res.data)
-            const {profile, email, teamId, role, id} = res.data
+            const {profile, email, teamId, role, id, companyId} = res.data
             
             // localStorage.setItem("User", JSON.stringify(user))
             localStorage.setItem("UserId", id)
@@ -91,7 +91,8 @@ function UserProvider(props) {
                                                             lastName: profile.lastName,
                                                             phoneNumber: profile.phone,
                                                             email: email,
-                                                            teamId: teamId
+                                                            teamId: teamId,
+                                                            companyId:companyId
                                                             }
             }))
             console.log(userState.user)
