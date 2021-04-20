@@ -8,7 +8,7 @@
     background-color:  #F8F8FF;
     width: 20%;
     height: 5%;
-    margin: 14px 0px;
+    margin: 10px 0px;
 }
 
 .projectContainerBox p {
@@ -53,4 +53,8 @@
     resize: vertical;
     overflow:auto;
     min-height: 300px;
+}
+
+.buttonMargin {
+    margin: 5px 10px;
 }

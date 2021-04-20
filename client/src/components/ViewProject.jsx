@@ -31,6 +31,7 @@ const ViewProject = (props) => {
                 <div className = "projectDescriptionBox">
                     <p>{props.children.projectDescription}</p>
                 </div>
+                <div className = "buttonMargin"/>
                 <div>
                     <Button label="Complete">{buttonProps}</Button>
                 </div>
