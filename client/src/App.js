@@ -31,7 +31,7 @@ function App() {
     <>
         
       <Switch>
-        <Route exact path="/" render={rProps => userId ? <Redirect to='/profile'/> : <Auth {...rProps} />} />
+        <Route exact path="/" render={rProps => userId ? <Redirect to='/adminHomePage'/> : <Auth {...rProps} />} />
 
         {/* <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" /> */}
 {/* 
@@ -43,21 +43,21 @@ function App() {
 */}
         <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
 
-        <ProtectedRoute path = "/editProfile" component={EditProfileFieldsPage}/>
+        <ProtectedRoute path = "/editProfile" component={EditProfileFieldsPage} redirectTo="/"/>
         
-        <Route path="/viewProject" component={ViewProjectPage} />
+        <ProtectedRoute path="/viewProject" component={ViewProjectPage} redirectTo="/"/>
 
-        <Route path="/addProjectUser" component={AddProjectUser} />
+        <ProtectedRoute path="/addProjectUser" component={AddProjectUser} redirectTo="/" />
 
-        <Route path="/addProjectAdmin" component={AddProjectAdmin} />
+        <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/" />
 
-        <Route path="/changePassword" component={ChangePasswordPage} />
+        <ProtectedRoute path="/changePassword" component={ChangePasswordPage} redirectTo="/" />
 
 
         {/* <Route path="/profile" component={ViewProfilePage} /> */}
 
-        <Route path='/userHome' component={UserHome} />
-        <Route path='/adminHomePage' component={AdminHomePage} />
+        <ProtectedRoute path='/userHome' component={UserHome} redirectTo="/"/>
+        <ProtectedRoute path='/adminHomePage' component={AdminHomePage} />
  
         {/* 404 error handling */}
         <Route render={
