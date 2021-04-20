@@ -17,8 +17,6 @@ import { Redirect } from "react-router"
 const EditProfileFields = (props) => {
     const {user,patchUserFields} = useContext(UserContext)
 
-    console.log(patchUserFields)
-
     const [firstName,updateFirstName] = useState()
 
     const firstNameSubmission = (event) => {

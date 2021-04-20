@@ -10,11 +10,10 @@ import NavBar from './NavBar'
 const UserHome = (props) => {
     const user = useContext(UserContext)
 
-    const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
     
     return (
         <>
-            <NavBar>{NavHeader}</NavBar>
+            <NavBar></NavBar>
             <Container fluid className='hoverAlign'>
                 <Row >
                     <AddProject></AddProject>

@@ -14,11 +14,10 @@ const UserHome = (props) => {
     const {user} = useContext(UserContext)
     const {getProjects, projects} = useContext(TeamContext)
     getProjects(user.teamId)
-    const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
     
     return (
         <>
-            <NavBar>{NavHeader}</NavBar>
+            <NavBar></NavBar>
             <Container fluid className='hoverAlign'>
                 <Row >
                     <AddTeam></AddTeam>
