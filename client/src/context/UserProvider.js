@@ -111,7 +111,14 @@ function UserProvider(props) {
     const patchUserFields = (newFields) => {
         axios.patch('user/'+userState.userId,newFields).then(res => {
             console.log(res.data)
-            //TODO: Update state
+            setUserState(prevState => ({...prevState, user: {
+                firstName: res.data.profile.firstName,
+                lastName: res.data.profile.lastName,
+                phoneNumber: res.data.profile.phone,
+                email: res.data.email,
+                teamId: res.data.teamId
+                }
+}))
         }
             )
             .catch( err => {console.error(err)})

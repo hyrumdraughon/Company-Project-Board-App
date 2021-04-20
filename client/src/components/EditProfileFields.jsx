@@ -5,6 +5,7 @@ import Button from './Button'
 import { useContext} from 'react'
 import { UserContext } from '../context/UserProvider'
 import {useState} from 'react'
+import { Redirect } from "react-router"
 
 //TODO: Handle button handler when endpoint is defined
 //PROPS
