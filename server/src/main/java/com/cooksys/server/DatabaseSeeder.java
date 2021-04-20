@@ -20,8 +20,8 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-//        initializeRoles();
-//        initializeCompanies();
+        initializeRoles();
+        initializeCompanies();
 
     }
 
