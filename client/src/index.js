@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom"
 import UserProvider from './context/UserProvider'
+import TeamProvider from './context/TeamProvider'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <BrowserRouter>
     <UserProvider>
-      <App />
+      <TeamProvider>
+        <App />
+      </TeamProvider>
     </UserProvider>
   </BrowserRouter>,
   document.getElementById('root')

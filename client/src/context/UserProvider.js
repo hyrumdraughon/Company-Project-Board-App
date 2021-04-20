@@ -39,7 +39,6 @@ function UserProvider(props) {
 
         axios.post("/user", newUser)
         .then( res => {
-            // console.log(res)
 
             const {profile, email, role, id} = res.data
             
@@ -78,7 +77,7 @@ function UserProvider(props) {
         .then(res => {
 
             console.log(res.data)
-            const {profile, email, role, id} = res.data
+            const {profile, email, teamId, role, id} = res.data
             
             // localStorage.setItem("User", JSON.stringify(user))
             localStorage.setItem("UserId", id)
@@ -91,10 +90,10 @@ function UserProvider(props) {
                                                             firstName: profile.firstName,
                                                             lastName: profile.lastName,
                                                             phoneNumber: profile.phone,
-                                                            email: email
+                                                            email: email,
+                                                            teamId: teamId
                                                             }
             }))
-
             console.log(userState.user)
         })
         .catch(err => {
