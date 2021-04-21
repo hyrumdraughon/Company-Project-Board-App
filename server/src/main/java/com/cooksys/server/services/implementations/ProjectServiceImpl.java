@@ -71,6 +71,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public ProjectDto deleteProject(Long projectId) {
         Project databaseProject = getProjectById(projectId);
+        checkProjectDeletionStatus(databaseProject);
         databaseProject.setDeleted(true);
         projectRepository.saveAndFlush(databaseProject);
         return projectMapper.entityToDto(databaseProject);
@@ -79,9 +80,17 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public ProjectDto completeProject(Long projectId) {
         Project databaseProject = getProjectById(projectId);
+        checkProjectDeletionStatus(databaseProject);
+        checkProjectCompletionStatus(databaseProject);
         databaseProject.setCompleted(true);
         projectRepository.saveAndFlush(databaseProject);
         return projectMapper.entityToDto(databaseProject);
+    }
+
+    private void checkProjectCompletionStatus(Project databaseProject) {
+        if(databaseProject.isCompleted()) {
+            throw new BadRequestException("Requested project is already completed.");
+        }
     }
 
     // Helper methods
