@@ -70,7 +70,8 @@ function TeamProvider(props) {
             projects: teamState.projects,
             users: teamState.users,
             getTeams: getTeam,
-            getProjects: getProject
+            getProjects: getProject,
+            createTeam: createTeam
         }} >
             {props.children}
         </TeamContext.Provider>

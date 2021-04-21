@@ -41,7 +41,6 @@ function App() {
 
         <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/"/>
 */}
-        <ProtectedRoute path="/teamPage" component={TeamCard} redirectTo="/" />
         <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
 
         <ProtectedRoute path = "/editProfile" component={EditProfileFieldsPage} redirectTo="/"/>
@@ -57,7 +56,7 @@ function App() {
 
         <ProtectedRoute path='/userHome' component={UserHome} redirectTo="/"/>
         <ProtectedRoute path='/adminHomePage' component={AdminHomePage} />
-        <Route path='/teamPage' component={PostTeamFormPage} />
+        <ProtectedRoute path='/teamPage' component={PostTeamFormPage} />
  
         {/* 404 error handling */}
         <Route render={

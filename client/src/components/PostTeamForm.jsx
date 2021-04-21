@@ -6,6 +6,7 @@ import { useContext} from 'react'
 import { UserContext } from '../context/UserProvider'
 import {useState} from 'react'
 import { Redirect } from "react-router"
+import {TeamContext} from "../context/TeamProvider"
 
 //TODO: Handle button handler when endpoint is defined
 //PROPS
@@ -16,6 +17,7 @@ import { Redirect } from "react-router"
 */
 const PostTeamForm = (props) => {
     const {user} = useContext(UserContext)
+    const {createTeam} = useContext(TeamContext)
 
     const [name,updateName] = useState()
 
@@ -33,8 +35,6 @@ const PostTeamForm = (props) => {
 
     const sendFormRequest = (event) => {
         event.preventDefault()
-
-        let nameSubmit = name
         if(name !==  undefined || user.companyId !== undefined){
             const request = {
                 name: name,
@@ -42,10 +42,8 @@ const PostTeamForm = (props) => {
                 companyId: user.companyId
             }
             console.log(request)
-            //Put POST function here sending request
+            createTeam(request)
         }
-
-        
     }
 
     return(
