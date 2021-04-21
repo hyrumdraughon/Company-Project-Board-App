@@ -63,6 +63,13 @@ function TeamProvider(props) {
             )
     }
 
+    const getTeamUsers = () => {
+        axios.get(`/team/${teamId}/users`)
+        .then(res => {
+            setTeamState(prevState => ({...prevState, users: res.data}))
+        })
+    }
+
     return (
         <TeamContext.Provider value={{
             team: teamState.team,
