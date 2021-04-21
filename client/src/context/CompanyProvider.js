@@ -40,9 +40,10 @@ function CompanyProvider(props) {
     return (
         <CompanyContext.Provider value={{
             allCompanies: companyState.allCompanies,
+            companyTeams: companyState.companyTeams,
             getCompanies: getCompanies,
             getCompanyTeams: getCompanyTeams,
-            getCompanyProjects: getCompanyProjects
+            getCompanyProjects: getCompanyProjects,
         }} >
         {props.children}
         </CompanyContext.Provider>

@@ -2,28 +2,32 @@ import { Grid } from "@material-ui/core"
 import './project.css'
 import Button from './Button'
 import ProjectDropDown from "./ProjectDropDown"
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
+
+import { useContext } from 'react'
+import { UserContext } from '../context/UserProvider'
+
+import { CompanyContext } from "../context/CompanyProvider"
 
 
-//TODO: Handle button handler when endpoint is defined
-//PROPS
-/*
-{
-    projectTitle: string that contains the name of the project
-    teamName: string that contains the name of the team
-    projectDescription: string that contains the description of the project
-    projectID: id of the project, used for complete button
-}
-*/
-const ProjectForm = (props) => {
+const ProjectForm = () => {
+
+
+
+    const {user,isAdmin} = useContext(UserContext)
+    const {companyTeams,getCompanyTeams} = useContext(CompanyContext)
+    if(companyTeams.length  == 0){
+        getCompanyTeams(user.companyId)
+        console.log(companyTeams)
+    }
+    
+    const [teamId,updateTeam] = useState()
 
     
-    const [team,updateTeam] = useState()
-
 
     const teamSubmission = (event) => {
         updateTeam(event.target.value)
-        console.log(team)
+        console.log(teamId)
     }
 
     const [name,updateName] = useState()
@@ -45,36 +49,27 @@ const ProjectForm = (props) => {
         if(name === undefined) updateName('')
         if(description === undefined) updateDescription('')
         try{
-            if(team === undefined) throw Error;
+            if(teamId === undefined) throw Error;
         }
         catch{
             console.log('No team defined, error')
         }
-        console.log(name)
-        console.log(team)
-        console.log(description)
+        const request = {
+            title: name,
+            description: description,
+            teamId: teamId
+        }
+        console.log(request)
     }
     
 
-    const getAllTeams = () => {
-        return [
-            {
-                id: 1,
-                name:  "Team Alpha"
-            },
-            {
-                id: 2,
-                name: "Team Beta"
-            },
-            {
-                id: 3,
-                name: "Team Delta"
-            }
-        ]
-    }
+    
 
 
-    const dropDownProps = {isAdmin:props.children.isAdmin,teams:getAllTeams(),submission:teamSubmission}
+
+    console.log(isAdmin)
+
+    const dropDownProps = {isAdmin:isAdmin,teams:companyTeams,submission:teamSubmission,companyId:user.companyId}
     return(
         <section class = "projectContainer">
             <form onSubmit={sendFormRequest}>

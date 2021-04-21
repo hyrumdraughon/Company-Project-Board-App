@@ -1,6 +1,9 @@
 import './project.css'
+import { CompanyContext } from "../context/CompanyProvider"
+import { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 
-
+import { UserContext } from '../context/UserProvider'
 /*
 {
     isAdmin: boolean that is true if it is a company admin calling the component
@@ -11,9 +14,11 @@ import './project.css'
 */
 const ProjectDropDown = (props) => {
 
+    
 
     if(props.children.isAdmin){
-        return (<select class = "projectContainerBox" onLoad = {props.children.submission} onChange={props.children.submission}><option disabled selected value>-- select an option --</option>{props.children.teams.map(team => <option value={team.id}>{team.name}</option>)}</select >)
+        return (<select class = "projectContainerBox" onLoad = {props.children.submission} onChange={props.children.submission}><option disabled selected value>-- select an option --</option>{props.children.teams.map(team => <option value={team.id}>{team.teamName}</option>)}</select >)
+
     }
     else{
         return (<div/>)

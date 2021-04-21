@@ -7,6 +7,7 @@ import { UserContext } from '../context/UserProvider'
 
 const NavLinks = () => {
     const {isAdmin,logout} = useContext(UserContext)
+    console.log(isAdmin)
     if(isAdmin === true){
         return(
             <div className="header-right">

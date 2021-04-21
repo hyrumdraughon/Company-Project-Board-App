@@ -2,7 +2,6 @@ import React, {useContext} from 'react'
 import Auth from './components/Auth'
 import ViewProjectPage from './components/ViewProjectPage'
 import AddProjectUser from './components/AddProjectUser'
-import AddProjectAdmin from './components/AddProjectAdmin'
 import ViewProfilePage from './components/ViewProfilePage'
 import UserHome from './components/UserHome'
 import ChangePasswordPage from './components/ChangePasswordPage'
@@ -22,7 +21,6 @@ import { UserContext } from './context/UserProvider'
 
 
 function App() {
-  // const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:0}
 
   const { userId, logout } = useContext(UserContext)
 
@@ -48,8 +46,6 @@ function App() {
         <ProtectedRoute path="/viewProject" component={ViewProjectPage} redirectTo="/"/>
 
         <ProtectedRoute path="/addProjectUser" component={AddProjectUser} redirectTo="/" />
-
-        <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/" />
 
         <ProtectedRoute path="/changePassword" component={ChangePasswordPage} redirectTo="/" />
 
