@@ -4,10 +4,13 @@ import Button from './Button'
 import ProjectDropDown from "./ProjectDropDown"
 import {useState,useEffect} from 'react'
 
+import axios from 'axios'
+
 import { useContext } from 'react'
 import { UserContext } from '../context/UserProvider'
 
 import { CompanyContext } from "../context/CompanyProvider"
+import { TeamContext } from "../context/TeamProvider"
 
 
 const ProjectForm = () => {
@@ -16,6 +19,7 @@ const ProjectForm = () => {
 
     const {user,isAdmin} = useContext(UserContext)
     const {companyTeams,getCompanyTeams} = useContext(CompanyContext)
+    const {getProjects} = useContext(TeamContext)
     if(companyTeams.length  == 0){
         getCompanyTeams(user.companyId)
         console.log(companyTeams)
@@ -48,6 +52,7 @@ const ProjectForm = () => {
         event.preventDefault()
         if(name === undefined) updateName('')
         if(description === undefined) updateDescription('')
+        if(isAdmin === false) teamId = user.teamId
         try{
             if(teamId === undefined) throw Error;
         }
@@ -60,6 +65,17 @@ const ProjectForm = () => {
             teamId: teamId
         }
         console.log(request)
+        axios.post('/project',request)
+        .then(res => {
+            console.log(res)
+            const data = {
+                name: res.data.title,
+                description: res.data.description,
+                projectId: res
+            }
+            console.log(data)
+            getProjects()
+        }).catch( err => {console.error(err)})
     }
     
 
