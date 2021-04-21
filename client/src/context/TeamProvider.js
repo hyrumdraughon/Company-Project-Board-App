@@ -46,6 +46,8 @@ function TeamProvider(props) {
       }));
     });
   };
+
+
   const getTeamUsers = () => {
       return JSON.parse(axios.get(`/team/${teamState.teamid}/users`))
   }
@@ -68,43 +70,6 @@ function TeamProvider(props) {
         }))
       );
   };
-
-    const getTeam = () => {
-        axios.get(`/team/${teamId}`)
-            .then( res => {
-                const {teamName, text, projects, id, members} = res.data
-                // localStorage.setItem("TeamId", id)
-                setTeamState(prevState => ({
-                    ...prevState,
-                    team: {
-                        name: teamName,
-                        text: text
-                    },
-                    teamId: id,
-                    projects: projects,
-                    users: members
-                }))
-            })
-    }
-
-    const getProject = () => {
-        axios.get(`/team/${teamId}/projects`)
-            .then( res => res.data)
-            .then(listOfProjects => setTeamState(
-                    prevState => ({
-                        ...prevState, projects: listOfProjects
-                    })
-                )
-            )
-    }
-
-    const getTeamUsers = () => {
-        axios.get(`/team/${teamId}/users`)
-        .then(res => {
-            setTeamState(prevState => ({...prevState, users: res.data}))
-        })
-    }
-
     return (
         <TeamContext.Provider value={{
             team: teamState.team,
