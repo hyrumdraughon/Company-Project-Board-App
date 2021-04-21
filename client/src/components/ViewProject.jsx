@@ -13,6 +13,7 @@ import Button from './Button'
 }
 */
 const ViewProject = (props) => {
+    console.log(props)
     const buttonProps = {label:'Complete'}
     return(
         <section className = "projectContainer">
