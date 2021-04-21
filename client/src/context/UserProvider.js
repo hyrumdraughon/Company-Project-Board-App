@@ -139,6 +139,13 @@ function UserProvider(props) {
         })
     }
 
+    const deleteUser = (userId) => {
+        axios.delete(`/user/${userId}`)
+        .then(res => {
+            return res.data
+        })
+    }
+
     return (
         <UserContext.Provider value={{
             user: userState.user,
@@ -148,7 +155,9 @@ function UserProvider(props) {
             signup: signup,
             logout: logout,
             patchUserFields: patchUserFields,
-            patchPassword : patchPassword
+            patchPassword : patchPassword,
+            getUser: getUser,
+            deleteUser: deleteUser
         }} >
             { props.children }
         </UserContext.Provider>
