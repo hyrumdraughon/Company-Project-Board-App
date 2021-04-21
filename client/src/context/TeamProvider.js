@@ -46,6 +46,8 @@ function TeamProvider(props) {
       }));
     });
   };
+
+
   const getTeamUsers = () => {
       return JSON.parse(axios.get(`/team/${teamState.teamid}/users`))
   }
