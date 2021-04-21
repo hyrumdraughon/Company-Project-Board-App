@@ -9,7 +9,8 @@ function CompanyProvider(props) {
         allCompanies: [],
         companyTeams: [],
         companyProjects: [],
-        company: undefined
+        company: undefined,
+        admins: []
     }
 
     const [companyState, setCompanyState] = useState(initState)
@@ -46,15 +47,24 @@ function CompanyProvider(props) {
         })
     }
 
+    const getAdmins = (companyId) => {
+        axios.get(`/company/${companyId}/admins`)
+        .then(res => {
+            setCompanyState(prevState => ({...prevState, admins: res.data}))
+        })
+    }
+
     return (
         <CompanyContext.Provider value={{
             allCompanies: companyState.allCompanies,
             companyTeams: companyState.companyTeams,
+            admins: companyState.admins,
             getCompanies: getCompanies,
             getCompanyTeams: getCompanyTeams,
             getCompanyProjects: getCompanyProjects,
             company: companyState.company,
-            getCompany: getCompany
+            getCompany: getCompany,
+            getAdmins: getAdmins
         }} >
         {props.children}
         </CompanyContext.Provider>
