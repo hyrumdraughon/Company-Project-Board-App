@@ -8,6 +8,7 @@ import ChangePasswordPage from './components/ChangePasswordPage'
 import AdminHomePage from './components/AdminHomePage'
 import ProtectedRoute from './shared/ProtectedRoute';
 import EditProfileFieldsPage from './components/EditProfileFieldsPage'
+import PostTeamFormPage from './components/PostTeamFormPage'
 
 import './App.css';
 import './index.css'
@@ -56,6 +57,7 @@ function App() {
 
         <ProtectedRoute path='/userHome' component={UserHome} redirectTo="/"/>
         <ProtectedRoute path='/adminHomePage' component={AdminHomePage} />
+        <Route path='/teamPage' component={PostTeamFormPage} />
  
         {/* 404 error handling */}
         <Route render={
