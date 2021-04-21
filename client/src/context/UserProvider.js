@@ -132,6 +132,12 @@ function UserProvider(props) {
         .catch(err => {console.error(err)})
     }
 
+    const getUser = (userId) => {
+        axios.get(`/user/${userId}`)
+        .then (res => {
+            return res.data
+        })
+    }
 
     return (
         <UserContext.Provider value={{
