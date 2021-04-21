@@ -38,7 +38,7 @@ const UserHome = (props) => {
             <Container fluid className='hoverAlign'>
                 <Row >
                     <AddProject></AddProject>
-                    <ProjectCard projects={projects} />
+                    <ProjectCard projects={projects} team={{teamName: team.name}} />
                 </Row>
             </Container>
             
