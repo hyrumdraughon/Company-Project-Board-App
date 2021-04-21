@@ -52,12 +52,15 @@ function TeamProvider(props) {
       return JSON.parse(axios.get(`/team/${teamState.teamid}/users`))
   }
 
-  const updateTeamProjects = (project) => {
+  const updateTeamProjects = (project,teamId) => {
       let data = {
           name: project.name,
-          description: project.text,
+          description: project.description,
+          teamId: teamId
       }
-      return JSON.parse(axios.patch(`team/${teamState.teamId}/addProject/${project.projectId}`, data))
+      axios.patch(`team/${teamId}/addProject/${project.id}`, data).then((res) => {
+        console.log(res)
+      })
   }
 
   const updateTeamMembers = (user) => {
