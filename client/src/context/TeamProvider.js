@@ -23,12 +23,14 @@ function TeamProvider(props) {
 
     // console.log(teamState)
 
-    // const createTeam = (data) => {
-    //     axios.post('/team', data)
-    //     .then(res => {
-            
-    //     })
-    // }
+    const createTeam = (data) => {
+        const newTeam = {
+            name: data.name,
+            text: data.text,
+            companyId: data.companyId
+        }
+        axios.post("/team", newTeam)
+    }
 
     
 

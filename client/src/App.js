@@ -18,6 +18,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { UserContext } from './context/UserProvider'
+import TeamCard from './components/TeamCard'
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
 
         <ProtectedRoute path="/addProjectAdmin" component={AddProjectAdmin} redirectTo="/"/>
 */}
+        <ProtectedRoute path="/teamPage" component={TeamCard} redirectTo="/" />
         <ProtectedRoute path="/profile" component={ViewProfilePage} redirectTo="/"/>
 
         <ProtectedRoute path = "/editProfile" component={EditProfileFieldsPage} redirectTo="/"/>
