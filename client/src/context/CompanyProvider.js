@@ -37,6 +37,7 @@ function CompanyProvider(props) {
     const getCompanyTeams = (companyId) => {
         axios.get(`/company/${companyId}/teams`)
         .then(res => {
+            console.log(res.data)
             setCompanyState(prevState => ({...prevState, companyTeams: res.data}))
         })
     }
