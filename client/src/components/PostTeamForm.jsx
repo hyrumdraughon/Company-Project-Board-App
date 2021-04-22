@@ -48,7 +48,7 @@ const PostTeamForm = (props) => {
 
     return(
         <section className = "projectContainer">
-            <div className = "topMargin"/>
+            <h1 className="widthContainer">Create new team</h1>
             <form className = "formContainer " onSubmit={sendFormRequest}>
                 <Grid
                     container
