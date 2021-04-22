@@ -26,7 +26,7 @@ function UserProvider(props) {
 
         const newUser = {
             credentials: {
-                email: credentials.email,
+                email: credentials.email.toLowerCase(),
                 password: credentials.password
             },
             profile: {
