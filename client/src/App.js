@@ -24,9 +24,7 @@ import TeamCard from './components/TeamCard'
 
 function App() {
 
-  const { userId, logout, user } = useContext(UserContext)
-  
-  // console.log(user.role.id)
+  const { userId, logout, user, isAdmin } = useContext(UserContext)
   
   
   return (
@@ -34,7 +32,7 @@ function App() {
         
       <Switch>
         {/* <Route exact path="/" render={rProps => userId ? <Redirect to='/adminHomePage'/> : <Auth {...rProps} />} /> */}
-        <Route exact path="/" render={rProps => userId ? (user.role.id == 2 ? <Redirect to='/userHome'/> : <Redirect to='/adminHomePage'/>) : <Auth {...rProps} />} />
+        <Route exact path="/" render={rProps => userId ? (isAdmin ?  <Redirect to='/adminHomePage'/> : <Redirect to='/userHome'/>) : <Auth {...rProps} />} />
 
         {/* <ProtectedRoute path="/Home" components={ViewProject} redirectTo="/" /> */}
 {/* 
