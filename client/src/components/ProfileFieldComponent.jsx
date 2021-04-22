@@ -2,7 +2,6 @@ import './profile.css'
 
 const ProfileFieldComponent = ({ label, content }) => {
 
-    console.log(content)
 
     if(content != undefined){
         return(

@@ -10,11 +10,25 @@ import Button from './Button'
 
 
 const ViewProfile = (props) => {
-    const { user } = useContext(UserContext)
+    const { user,isAdmin } = useContext(UserContext)
     const firstname = user.firstName
     const lastname = user.lastName
     const phone = user.phoneNumber
     const email = user.email
+
+    const button = () =>{
+        console.log('here')
+        if(isAdmin){
+            return (
+                <Link to='/AdminHomePage'><Button label="Admin Homepage" /></Link>
+            )
+        }
+        else{
+            return (
+                <Link to='/UserHome'><Button label="User Homepage" /></Link>
+            )
+        }
+    }
     
     return (
         <section className="projectContainer">
@@ -35,7 +49,7 @@ const ViewProfile = (props) => {
                     <div className="buttonMargin" />
                     <Link to='/editProfile'><Button label="Edit fields" /></Link>
                     <div className="buttonMargin" />
-                    <Link to='/userHome'><Button label="User Homepage" /></Link>
+                    {button()}
                 </div>
 
             </Grid>
