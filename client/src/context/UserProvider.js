@@ -40,7 +40,7 @@ function UserProvider(props) {
         axios.post("/user", newUser)
         .then( res => {
 
-            const {profile, email, role, id} = res.data
+            const {profile, email, role, id,companyId} = res.data
             
             // localStorage.setItem("User", JSON.stringify(user))
             // localStorage.setItem("UserId", id)
@@ -49,12 +49,16 @@ function UserProvider(props) {
             if(role.id === 1){
                 setUserState(prevState => ({...prevState, isAdmin: true}))
             }
+            else{
+                setUserState(prevState => ({...prevState, isAdmin: false}))
+            }
 
             setUserState(prevState => ({...prevState, userId: id, user: {
                                                             firstName: profile.firstName,
                                                             lastName: profile.lastName,
                                                             phoneNumber: profile.phone,
-                                                            email: email
+                                                            email: email,
+                                                            companyId:companyId
                                                             }
                                                         })
             )
@@ -86,6 +90,9 @@ function UserProvider(props) {
 
             if(role.id === 1){
                 setUserState(prevState => ({...prevState, isAdmin: true}))
+            }
+            else{
+                setUserState(prevState => ({...prevState, isAdmin: false}))
             }
 
             setUserState(prevState => ({...prevState, userId: id, user: {
@@ -120,7 +127,8 @@ function UserProvider(props) {
                 lastName: res.data.profile.lastName,
                 phoneNumber: res.data.profile.phone,
                 email: res.data.email,
-                teamId: res.data.teamId
+                teamId: res.data.teamId,
+                companyId: res.data.companyId
                 }
 }))
         }
@@ -149,6 +157,25 @@ function UserProvider(props) {
         })
     }
 
+   
+    //Used to refresh user data fields
+    const refreshUserFields = (userId) => {
+        axios.get(`/user/${userId}`).then(res => {
+            console.log(res.data)
+            setUserState(prevState => ({...prevState, user: {
+                firstName: res.data.profile.firstName,
+                lastName: res.data.profile.lastName,
+                phoneNumber: res.data.profile.phone,
+                email: res.data.email,
+                teamId: res.data.teamId,
+                companyId: res.data.companyId
+                }
+            }))
+        }
+            ).catch( err => {console.error(err)})
+    }
+
+
     return (
         <UserContext.Provider value={{
             user: userState.user,
@@ -161,7 +188,8 @@ function UserProvider(props) {
             patchPassword : patchPassword,
             getUser: getUser,
             deleteUser: deleteUser,
-            role: userState.role
+            role: userState.role,
+            refreshUserFields: refreshUserFields
         }} >
             { props.children }
         </UserContext.Provider>

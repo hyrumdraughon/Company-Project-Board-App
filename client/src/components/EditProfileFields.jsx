@@ -7,15 +7,13 @@ import { UserContext } from '../context/UserProvider'
 import {useState} from 'react'
 import { Redirect } from "react-router"
 
-//TODO: Handle button handler when endpoint is defined
-//PROPS
-/*
-{
-    userId: integer that contains the id of the user
-}
-*/
+
+import { useHistory } from "react-router-dom"
+
 const EditProfileFields = (props) => {
     const {user,patchUserFields} = useContext(UserContext)
+    
+    let history = useHistory();
 
     const [firstName,updateFirstName] = useState()
 
@@ -63,6 +61,7 @@ const EditProfileFields = (props) => {
             }
         }
         patchUserFields(request)
+        history.push('/profile')//Redirect to admin home page
     }
 
     return(

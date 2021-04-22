@@ -5,32 +5,30 @@ import Button from './Button'
 import { useContext} from 'react'
 import { UserContext } from '../context/UserProvider'
 import {useState} from 'react'
-import { Redirect } from "react-router"
-import {TeamContext} from "../context/TeamProvider"
 
-//TODO: Handle button handler when endpoint is defined
-//PROPS
-/*
-{
-    userId: integer that contains the id of the user
-}
-*/
+import { useHistory } from "react-router-dom"
+import {TeamContext} from "../context/TeamProvider"
+import { CompanyContext } from "../context/CompanyProvider"
+
+
 const PostTeamForm = (props) => {
     const {user} = useContext(UserContext)
     const {createTeam} = useContext(TeamContext)
+    const {getCompanyTeams} = useContext(CompanyContext)
+
+    
+    let history = useHistory();
 
     const [name,updateName] = useState()
 
     const nameSubmission = (event) => {
         updateName(event.target.value)
-        console.log(name)
     }
 
     const [text,updateText] = useState()
 
     const textSubmission = (event) => {
         updateText(event.target.value)
-        console.log(text)
     }
 
     const sendFormRequest = (event) => {
@@ -41,8 +39,9 @@ const PostTeamForm = (props) => {
                 text: text,
                 companyId: user.companyId
             }
-            console.log(request)
             createTeam(request)
+            getCompanyTeams(user.companyId)//Update the list of company teams
+            history.push('/adminHomePage')//Redirect to admin home page
         }
     }
 
