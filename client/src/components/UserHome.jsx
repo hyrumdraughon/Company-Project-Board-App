@@ -33,8 +33,8 @@ const UserHome = (props) => {
             <NavBar></NavBar>
             <Container fluid className='hoverAlign'>
                 <Row >
-                    <AddTeam></AddTeam>
-                    {user.teamId !== null ? <TeamCard companyTeams = {teamList} /> : <p style={{color: "blue"}}>No Team Found</p> }
+                    {/* <AddTeam></AddTeam> */}
+                    {user.teamId !== null ? <TeamCard companyTeams = {teamList} /> : <p style={{color: "blue", paddingLeft: "5%"}}>No Team Found</p> }
                     {/* <TeamCard team = {{teamName: team.name, text: team.text, users: users}} /> */}
                 </Row>
             </Container>
