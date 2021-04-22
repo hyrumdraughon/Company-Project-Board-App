@@ -8,9 +8,9 @@ import { CompanyContext } from '../context/CompanyProvider'
 
 const NavBar = () => {
     const {user} = useContext(UserContext)
-    // console.log(user)
-    const {company,getCompany} = useContext(CompanyContext)
-    if(company == undefined){
+    const {company, getCompany} = useContext(CompanyContext)
+
+    if(company == undefined || (user.companyId != company.id)){
         getCompany(user.companyId)
     }
     let companyName = ''
