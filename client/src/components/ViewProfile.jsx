@@ -3,6 +3,8 @@ import { useContext } from 'react'
 import { UserContext } from '../context/UserProvider'
 import { Link } from 'react-router-dom';
 
+import ProfileFieldComponent from './ProfileFieldComponent'
+
 import './profile.css'
 import Button from './Button'
 
@@ -13,6 +15,7 @@ const ViewProfile = (props) => {
     const lastname = user.lastName
     const phone = user.phoneNumber
     const email = user.email
+    
     return (
         <section className="projectContainer">
             <div className="topMargin" />
@@ -22,42 +25,10 @@ const ViewProfile = (props) => {
                 justify="center"
                 alignItems="center"
             >
-                <div class="flexContainer">
-                    <div className="fieldContainer">
-                        <p>First Name:</p>
-                    </div>
-                    <div className="fieldContentContainer">
-                        <p>{firstname}</p>
-                    </div>
-                    <div className="emptyCenterer" />
-                </div>
-                <div class="flexContainer">
-                    <div className="fieldContainer">
-                        <p>Last Name:</p>
-                    </div>
-                    <div className="fieldContentContainer">
-                        <p>{lastname}</p>
-                    </div>
-                    <div className="emptyCenterer" />
-                </div>
-                <div class="flexContainer">
-                    <div className="fieldContainer">
-                        <p>E-mail:</p>
-                    </div>
-                    <div className="fieldContentContainer">
-                        <p>{email}</p>
-                    </div>
-                    <div className="emptyCenterer" />
-                </div>
-                <div className="flexContainer">
-                    <div className="fieldContainer">
-                        <p>Phone:</p>
-                    </div>
-                    <div className="fieldContentContainer">
-                        <p>{phone}</p>
-                    </div>
-                    <div className="emptyCenterer" />
-                </div>
+                <ProfileFieldComponent label = 'First name:' content = {firstname}/>
+                <ProfileFieldComponent label = 'Last name:' content = {lastname}/>
+                <ProfileFieldComponent label = 'Email:' content ={email}/>
+                <ProfileFieldComponent label = 'Phone:' content = {phone}/>
                 <div className="buttonMargin" />
                 <div className="flexContainer">
                     <Link to='/changePassword'><Button label="Change password" /></Link>
