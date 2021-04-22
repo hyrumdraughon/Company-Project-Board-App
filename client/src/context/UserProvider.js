@@ -92,10 +92,11 @@ function UserProvider(props) {
                                                             phoneNumber: profile.phone,
                                                             email: email,
                                                             teamId: teamId,
-                                                            companyId:companyId
+                                                            companyId:companyId,
+                                                            role: role
                                                             }
             }))
-            console.log(userState.user)
+            console.log(role.id)
         })
         .catch(err => {
             console.error(err)
@@ -157,7 +158,8 @@ function UserProvider(props) {
             patchUserFields: patchUserFields,
             patchPassword : patchPassword,
             getUser: getUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            role: userState.role
         }} >
             { props.children }
         </UserContext.Provider>

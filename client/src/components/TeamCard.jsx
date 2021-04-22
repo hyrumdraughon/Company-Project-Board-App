@@ -5,20 +5,22 @@ import UserCard from './UserCard'
 
 
 export default function TeamCard({ companyTeams }) {
-  console.log(companyTeams)
+  // console.log(companyTeams)
 
 
   return companyTeams.map(teams =>  (
-    <Card className="cardSize">
+    <Card className="cardSize mx-3">
       <Card.Body>
         <Card.Text className="title">
-          Placeholder Team Name
+        <b>Team Name</b><br/>
         {teams.teamName}
           <hr className='hr'></hr>
+          <b>Team Description</b><br/>
           {teams.text}
+          <hr className='hr'></hr>
         </Card.Text>
         <Card.Text className='description'>
-          Team Members
+          <b>Team Members</b>
         </Card.Text>
         <Card.Text className='descriptionText text-center'>
           <UserCard users={teams.members}></UserCard>

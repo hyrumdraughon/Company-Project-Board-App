@@ -14,7 +14,7 @@ import TeamCard from './TeamCard'
 const UserHome = (props) => {
     const {user} = useContext(UserContext)
     const {getProjects, projects, getTeams, team, users} = useContext(TeamContext)
-    const { companyTeams, getCompanyTeams } = useContext(CompanyContext)
+    const { companyTeams, getCompanyTeams, getCompanyProjects, companyProjects } = useContext(CompanyContext)
 
     if(projects.length === 0) {
         getProjects()
@@ -29,16 +29,19 @@ const UserHome = (props) => {
         getCompanyTeams(user.companyId)
        
     }
-    console.log(companyTeams.length)
-    const NavHeader = {companyName:"Cooksys",isAdmin:true,isUser:false,companyID:user.companyId}
+
+    if(companyProjects.length === 0) {
+        getCompanyProjects(user.companyId)
+    }
     
     return (
         <section>
-            <NavBar>{NavHeader}</NavBar>
+            <NavBar></NavBar>
             <Container fluid className='hoverAlign'>
                 <Row >
                     <AddTeam></AddTeam>
-                    <TeamCard companyTeams = {companyTeams} />
+                    {user.teamId !== null ? <TeamCard companyTeams = {companyTeams} /> : <p style={{color: "blue"}}>No Team Found</p> }
+                    {/* <TeamCard companyTeams = {companyTeams} /> */}
                     {/* <TeamCard team = {{teamName: team.name, text: team.text, users: users}} /> */}
                 </Row>
             </Container>
@@ -46,7 +49,8 @@ const UserHome = (props) => {
             <Container fluid className='hoverAlign'>
                 <Row >
                     <AddProject></AddProject>
-                    <ProjectCard projects={projects} team={{teamName: team.name}} />
+                    {projects.length !== 0 ? <ProjectCard projects={companyProjects} team={{teamName: team.name}} /> : <p style={{color: "blue"}}>No Projects Found</p> }
+                    {/* <ProjectCard projects={companyProjects} team={{teamName: team.name}} /> */}
                 </Row>
             </Container>
             

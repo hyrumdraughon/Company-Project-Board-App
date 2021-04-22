@@ -10,24 +10,25 @@ export default function ProjectCard({ projects, team }) {
 
   return projects.map(project => (
     <>
-      <div className="cardSize mx-3" >
+      {/* <div > */}
 
-        <Card className="cardSize mx-3" >
-          <Link style={{ width: '15%', heigth: '15%' }} to={{
+        <Card  className="cardSize mx-3">
+          <Link to={{
             pathname: '/viewProject',
             state: {
               projectTitle: project.title,
               teamName: team.teamName,
               projectDescription: project.description
             }
-          }}>{project.name}
+          }}>
+             <b>Project Title</b>
             <Card.Body>
               <Card.Text className="title">
                 {project.title}
-                <hr className='hr'></hr>
               </Card.Text>
+              <hr className='hr'></hr>
               <Card.Text className='description'>
-                Project Description
+              <b>Project Description</b><br/>
               </Card.Text>
               <Card.Text className='descriptionText'>
                 {project.description}
@@ -36,7 +37,7 @@ export default function ProjectCard({ projects, team }) {
           </Link>
         </Card>
 
-      </div>
+      {/* </div> */}
     </>
   )
   );

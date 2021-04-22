@@ -67,6 +67,7 @@ function CompanyProvider(props) {
         <CompanyContext.Provider value={{
             allCompanies: companyState.allCompanies,
             companyTeams: companyState.companyTeams,
+            companyProjects: companyState.companyProjects,
             admins: companyState.admins,
             users: companyState.users,
             getCompanies: getCompanies,

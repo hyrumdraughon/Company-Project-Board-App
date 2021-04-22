@@ -1,6 +1,6 @@
 
 .cardSize {
-    margin: 2.5% 0;
+    margin: 2.5% 10%;
     width: 15%;
     height: 15%;
     text-align: center;
@@ -11,6 +11,7 @@
     overflow: hidden;
     font-family: 'Roboto', sans-serif;
     color: #010203 !important;
+    flex-direction: row;
 }
 
 
