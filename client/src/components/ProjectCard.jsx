@@ -18,6 +18,7 @@ export default function ProjectCard({ projects, team }) {
             state: {
               projectTitle: project.title,
               teamName: team.teamName,
+              projectId: project.id,
               projectDescription: project.description
             }
           }}>
