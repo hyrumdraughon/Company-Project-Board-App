@@ -8,14 +8,14 @@ import Button from './Button'
 
 
 const ViewProfile = (props) => {
-    const {user} = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const firstname = user.firstName
     const lastname = user.lastName
     const phone = user.phoneNumber
     const email = user.email
-    return(
-        <section className = "projectContainer">
-            <div className = "topMargin"/>
+    return (
+        <section className="projectContainer">
+            <div className="topMargin" />
             <Grid
                 container
                 direction="column"
@@ -29,8 +29,8 @@ const ViewProfile = (props) => {
                     <div className="fieldContentContainer">
                         <p>{firstname}</p>
                     </div>
-                    <div className = "emptyCenterer"/>
-                </div>   
+                    <div className="emptyCenterer" />
+                </div>
                 <div class="flexContainer">
                     <div className="fieldContainer">
                         <p>Last Name:</p>
@@ -38,8 +38,8 @@ const ViewProfile = (props) => {
                     <div className="fieldContentContainer">
                         <p>{lastname}</p>
                     </div>
-                    <div className = "emptyCenterer"/>
-                </div>  
+                    <div className="emptyCenterer" />
+                </div>
                 <div class="flexContainer">
                     <div className="fieldContainer">
                         <p>E-mail:</p>
@@ -47,8 +47,8 @@ const ViewProfile = (props) => {
                     <div className="fieldContentContainer">
                         <p>{email}</p>
                     </div>
-                    <div className = "emptyCenterer"/>
-                </div>   
+                    <div className="emptyCenterer" />
+                </div>
                 <div className="flexContainer">
                     <div className="fieldContainer">
                         <p>Phone:</p>
@@ -56,17 +56,17 @@ const ViewProfile = (props) => {
                     <div className="fieldContentContainer">
                         <p>{phone}</p>
                     </div>
-                    <div className = "emptyCenterer"/>
-                </div>   
-                <div className = "buttonMargin"/>
-                <div className = "flexContainer">
-                    <Link to='/changePassword'><Button label = "Change password"/></Link>
-                    <div className = "buttonMargin"/>
-                    <Link to='/editProfile'><Button label = "Edit fields"/></Link>
-                    <div className = "buttonMargin"/>
-                    <Link to='/adminHomepage'><Button label = "Admin Homepage"/></Link>
+                    <div className="emptyCenterer" />
                 </div>
-                
+                <div className="buttonMargin" />
+                <div className="flexContainer">
+                    <Link to='/changePassword'><Button label="Change password" /></Link>
+                    <div className="buttonMargin" />
+                    <Link to='/editProfile'><Button label="Edit fields" /></Link>
+                    <div className="buttonMargin" />
+                    <Link to='/userHome'><Button label="User Homepage" /></Link>
+                </div>
+
             </Grid>
         </section>
     )
