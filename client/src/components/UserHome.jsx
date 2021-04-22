@@ -41,7 +41,7 @@ const UserHome = (props) => {
             <SolidDivider></SolidDivider>
             <Container fluid className='hoverAlign'>
                 <Row >
-                    <AddProject></AddProject>
+                    {user.teamId !== null ? <AddProject></AddProject> : <div></div>}
                     {projects.length !== 0 && user.teamId !== null ? <ProjectCard projects={projects} team={{teamName: team.name}} /> : <p style={{color: "blue"}}>No Projects Found</p> }
                     {/* <ProjectCard projects={projects} team={{teamName: team.name}} /> */}
                 </Row>
