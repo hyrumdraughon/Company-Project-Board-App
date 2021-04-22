@@ -33,14 +33,6 @@ const UserHome = (props) => {
             <NavBar></NavBar>
             <Container fluid className='hoverAlign'>
                 <Row >
-                    {/* <AddTeam></AddTeam> */}
-                    {user.teamId !== null ? <TeamCard companyTeams = {teamList} /> : <p style={{color: "blue", paddingLeft: "5%"}}>No Team Found</p> }
-                    {/* <TeamCard team = {{teamName: team.name, text: team.text, users: users}} /> */}
-                </Row>
-            </Container>
-            <SolidDivider></SolidDivider>
-            <Container fluid className='hoverAlign'>
-                <Row >
                     {user.teamId !== null ? <AddProject></AddProject> : <div></div>}
                     {projects.length !== 0 && user.teamId !== null ? <ProjectCard projects={projects} team={{teamName: team.name}} /> : <p style={{color: "blue"}}>No Projects Found</p> }
                     {/* <ProjectCard projects={projects} team={{teamName: team.name}} /> */}
