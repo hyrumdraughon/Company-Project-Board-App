@@ -43,7 +43,8 @@ function UserProvider(props) {
             const {profile, email, role, id} = res.data
             
             // localStorage.setItem("User", JSON.stringify(user))
-            localStorage.setItem("UserId", id)
+            // localStorage.setItem("UserId", id)
+            sessionStorage.setItem("UserId", id)
 
             if(role.id === 1){
                 setUserState(prevState => ({...prevState, isAdmin: true}))
@@ -80,7 +81,8 @@ function UserProvider(props) {
             const {profile, email, teamId, role, id, companyId} = res.data
             
             // localStorage.setItem("User", JSON.stringify(user))
-            localStorage.setItem("UserId", id)
+            sessionStorage.setItem("UserId", id)
+            // localStorage.setItem("UserId", id)
 
             if(role.id === 1){
                 setUserState(prevState => ({...prevState, isAdmin: true}))
@@ -104,7 +106,7 @@ function UserProvider(props) {
     }
 
     const logout = () => {
-        localStorage.removeItem("UserId")
+        sessionStorage.removeItem("UserID")
         setUserState({
             user: {}
         })
