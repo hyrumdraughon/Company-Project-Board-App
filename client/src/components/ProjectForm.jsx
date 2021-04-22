@@ -12,14 +12,19 @@ import { UserContext } from '../context/UserProvider'
 import { CompanyContext } from "../context/CompanyProvider"
 import { TeamContext } from "../context/TeamProvider"
 
+import { useHistory } from "react-router-dom"
 
 const ProjectForm = () => {
 
 
 
-    const {user,isAdmin} = useContext(UserContext)
+    const {user,userId,isAdmin,getUser,refreshUserFields} = useContext(UserContext)
     const {companyTeams,getCompanyTeams,getCompanyProjects} = useContext(CompanyContext)
     const {getProjects} = useContext(TeamContext)
+
+    let history = useHistory();
+    
+
     if(companyTeams.length  == 0){
         getCompanyTeams(user.companyId)
         console.log(companyTeams)
@@ -31,52 +36,47 @@ const ProjectForm = () => {
 
     const teamSubmission = (event) => {
         updateTeam(event.target.value)
-        console.log(teamId)
     }
 
     const [name,updateName] = useState()
 
     const nameSubmission = (event) => {
         updateName(event.target.value)
-        console.log(name)
     }
 
     const [description,updateDescription] = useState()
 
     const descriptionSubmission = (event) => {
         updateDescription(event.target.value)
-        console.log(description)
     }
 
     const sendFormRequest = (event) => {
         event.preventDefault()
         let teamIdSubmit = teamId;
-        if(name === undefined) updateName('')
-        if(description === undefined) updateDescription('')
-        if(isAdmin === false) teamIdSubmit = user.teamId
-        try{
-            if(teamIdSubmit === undefined) throw Error;
-        }
-        catch{
-            console.log('No team defined, error')
+        let descriptionSubmit = description
+        let nameSubmit  = name
+
+        if(nameSubmit === undefined) nameSubmit = ''
+        if(descriptionSubmit === undefined) descriptionSubmit = ''
+        if(isAdmin == false){
+            teamIdSubmit = user.teamId
         }
         const request = {
-            title: name,
-            description: description,
+            title: nameSubmit,
+            description: descriptionSubmit,
             teamId: teamIdSubmit
         }
-        console.log(request)
         axios.post('/project',request)
         .then(res => {
-            console.log(res)
-            const data = {
-                name: res.data.title,
-                description: res.data.description,
-                projectId: res
-            }
-            console.log(data)
             getProjects()
             getCompanyProjects(user.companyId)
+            if(isAdmin){
+                history.push('/adminHomePage')//Redirect to admin home page if admin
+            }
+            else{
+                history.push('/userHome')//Redirect to user home page if user
+            }
+
         }).catch( err => {console.error(err)})
     }
     
@@ -85,7 +85,6 @@ const ProjectForm = () => {
 
 
 
-    console.log(isAdmin)
 
     const dropDownProps = {isAdmin:isAdmin,teams:companyTeams,submission:teamSubmission,companyId:user.companyId}
     return(
