@@ -18,7 +18,7 @@ const ProjectForm = () => {
 
 
     const {user,isAdmin} = useContext(UserContext)
-    const {companyTeams,getCompanyTeams} = useContext(CompanyContext)
+    const {companyTeams,getCompanyTeams,getCompanyProjects} = useContext(CompanyContext)
     const {getProjects} = useContext(TeamContext)
     if(companyTeams.length  == 0){
         getCompanyTeams(user.companyId)
@@ -50,11 +50,12 @@ const ProjectForm = () => {
 
     const sendFormRequest = (event) => {
         event.preventDefault()
+        let teamIdSubmit = teamId;
         if(name === undefined) updateName('')
         if(description === undefined) updateDescription('')
-        if(isAdmin === false) teamId = user.teamId
+        if(isAdmin === false) teamIdSubmit = user.teamId
         try{
-            if(teamId === undefined) throw Error;
+            if(teamIdSubmit === undefined) throw Error;
         }
         catch{
             console.log('No team defined, error')
@@ -62,7 +63,7 @@ const ProjectForm = () => {
         const request = {
             title: name,
             description: description,
-            teamId: teamId
+            teamId: teamIdSubmit
         }
         console.log(request)
         axios.post('/project',request)
@@ -75,6 +76,7 @@ const ProjectForm = () => {
             }
             console.log(data)
             getProjects()
+            getCompanyProjects(user.companyId)
         }).catch( err => {console.error(err)})
     }
     
