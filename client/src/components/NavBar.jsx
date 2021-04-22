@@ -8,12 +8,15 @@ import { TeamContext } from '../context/TeamProvider'
 
 
 const NavBar = () => {
-    const {user} = useContext(UserContext)
+    const {user,isAdmin} = useContext(UserContext)
     const {company, getCompany} = useContext(CompanyContext)
-    const {team, getTeam} = useContext(TeamContext)
+    const {team,teamId, getTeams} = useContext(TeamContext)
 
     if(team == undefined){
-        getTeam()
+        getTeams()
+    }
+    else if(teamId != user.teamId){
+        getTeams()
     }
 
 
@@ -25,7 +28,13 @@ const NavBar = () => {
         companyName = company.name
     }
     
-    const header = companyName + " - " + team.name;
+    let header = ''
+    if(isAdmin || user.teamId == undefined){
+        header = companyName
+    }
+    else {
+        header = companyName + " - " + team.name;
+    }
     return(
         <div className="header">
             <p className="companyName">{header}</p>
