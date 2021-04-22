@@ -44,9 +44,11 @@ const ViewProject = (props) => {
                 alignItems="center"
             >
                 <div className = "projectContainerBox">
+                   <u><p><b>Project Name</b></p></u>
                     <p>{props.children.projectTitle}</p>
                 </div>
                 <div className = "projectDescriptionBox">
+                    <u><p><b>Project Description</b></p></u>
                     <p>{props.children.projectDescription}</p>
                 </div>
                 <div className = "buttonMargin"/>
