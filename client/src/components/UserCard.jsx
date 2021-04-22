@@ -3,16 +3,16 @@ import { Card } from 'react-bootstrap'
 
 
 
-export default function UserCard({users}) {
-
-
-
-  return users.map(user => (
+const UserCard = ({users}) => {
+  return(users !== undefined ? users.map(user => (
     <>
         <p className='descriptionText text-center'>
             {user.profile.firstName}
         </p>
-    </>
+    </> 
   )
-  );
-}
+  ) : <div></div>
+)};
+
+
+export default UserCard

@@ -4,11 +4,11 @@ import UserCard from './UserCard'
 
 
 
-export default function TeamCard({ companyTeams }) {
-  // console.log(companyTeams)
+const TeamCard = ({ companyTeams }) => {
+  console.log(companyTeams)
 
 
-  return companyTeams.map(teams =>  (
+  return (companyTeams.teamName != "" ? companyTeams.map(teams =>  (
     <Card className="cardSize mx-3">
       <Card.Body>
         <Card.Text className="title">
@@ -28,5 +28,8 @@ export default function TeamCard({ companyTeams }) {
       </Card.Body>
     </Card>
   )
-  )
+  ) : <div></div>)
 }
+
+
+export default TeamCard;
