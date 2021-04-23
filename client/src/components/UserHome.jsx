@@ -27,7 +27,7 @@ const UserHome = (props) => {
         teamList.push(team)
 
     }
-    
+    console.log(user);
     return (
         <>
             <NavBar></NavBar>

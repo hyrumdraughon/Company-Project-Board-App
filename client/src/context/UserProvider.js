@@ -162,6 +162,7 @@ function UserProvider(props) {
             getUser: getUser,
             deleteUser: deleteUser,
             role: userState.role
+            // company: userState.companyId
         }} >
             { props.children }
         </UserContext.Provider>
