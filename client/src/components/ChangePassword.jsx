@@ -8,36 +8,31 @@ import Button from './Button'
 
 import {useState} from 'react'
 
-//TODO: Handle button handler when endpoint is defined
-//PROPS
-/*
-{
-    userId: integer that contains the id of the user
-}
-*/
+import { useHistory } from "react-router-dom"
+
+
 const EditProfileFields = () => {
 
     const {user,patchPassword} = useContext(UserContext)
+
+    let history = useHistory();
 
     const [oldPassword,updateOldPassword] = useState()
 
     const oldPasswordSubmission = (event) => {
         updateOldPassword(event.target.value)
-        console.log(oldPassword)
     }
 
     const [newPassword,updateNewPassword] = useState()
 
     const newPasswordSubmission = (event) => {
         updateNewPassword(event.target.value)
-        console.log(newPassword)
     }
 
     const [confirmPassword,updateConfirmPassword] = useState()
 
     const confirmPasswordSubmission = (event) => {
         updateConfirmPassword(event.target.value)
-        console.log(confirmPassword)
     }
 
     const sendFormRequest = (event) => {
@@ -53,8 +48,8 @@ const EditProfileFields = () => {
             password : oldPassword,
             newPassword : newPassword
         }
-        console.log(requestBody)
         patchPassword(requestBody)
+        history.push('/profile')//Redirect to admin home page
     }
 
     return(

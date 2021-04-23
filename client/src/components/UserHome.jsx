@@ -35,7 +35,6 @@ const UserHome = (props) => {
                 <Row >
                     {user.teamId !== null ? <AddProject></AddProject> : <div></div>}
                     {projects.length !== 0 && user.teamId !== null ? <ProjectCard projects={projects} team={{teamName: team.name}} /> : <p style={{color: "blue"}}>No Projects Found</p> }
-                    {/* <ProjectCard projects={projects} team={{teamName: team.name}} /> */}
                 </Row>
             </Container>
         </>

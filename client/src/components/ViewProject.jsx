@@ -1,6 +1,11 @@
 import { Grid } from "@material-ui/core"
 import './project.css'
 import Button from './Button'
+import axios from 'axios'
+import { UserContext } from '../context/UserProvider'
+import { useHistory } from "react-router-dom"
+import { useContext } from 'react'
+
 
 //TODO: Handle button handler when endpoint is defined
 //PROPS
@@ -14,7 +19,22 @@ import Button from './Button'
 */
 const ViewProject = (props) => {
     console.log(props)
+    const {isAdmin} = useContext(UserContext)
     const buttonProps = {label:'Complete'}
+    let history = useHistory();
+
+    const complete = () => {
+        axios.patch('project/'+props.children.projectId+'/complete').then(res =>{
+            console.log('res')
+            
+            if(isAdmin){
+                history.push('/adminHomePage')//Redirect to admin home page if admin
+            }
+            else{
+                history.push('/userHome')//Redirect to user home page if user
+            }
+        })
+    }
     return(
         <section className = "projectContainer">
             <Grid
@@ -24,17 +44,16 @@ const ViewProject = (props) => {
                 alignItems="center"
             >
                 <div className = "projectContainerBox">
+                   <u><p><b>Project Name</b></p></u>
                     <p>{props.children.projectTitle}</p>
                 </div>
-                <div className = "projectContainerBox">
-                    <p>{props.children.teamName}</p>
-                </div>
                 <div className = "projectDescriptionBox">
+                    <u><p><b>Project Description</b></p></u>
                     <p>{props.children.projectDescription}</p>
                 </div>
                 <div className = "buttonMargin"/>
                 <div>
-                    <Button label="Complete">{buttonProps}</Button>
+                    <Button label="Complete" handleClick={complete}>{buttonProps}</Button>
                 </div>
                 
                 

@@ -4,23 +4,22 @@ import UserCard from './UserCard'
 
 
 
-const TeamCard = ({ companyTeams }) => {
-  console.log(companyTeams)
-
+export default function TeamCard({ companyTeams }) {
 
   return (companyTeams.teamName != "" ? companyTeams.map(teams =>  (
     <Card className="cardSize mx-3">
       <Card.Body>
         <Card.Text className="title">
         <b>Team Name</b><br/>
-        {teams.teamName}
+        <hr className='hr'></hr>
+        {teams.teamName}<br/><br/>
+          <b>Team Description</b>
           <hr className='hr'></hr>
-          <b>Team Description</b><br/>
           {teams.text}
-          <hr className='hr'></hr>
         </Card.Text>
         <Card.Text className='description'>
           <b>Team Members</b>
+          <hr className='hr'></hr>
         </Card.Text>
         <Card.Text className='descriptionText text-center'>
           <UserCard users={teams.members}></UserCard>
@@ -30,6 +29,3 @@ const TeamCard = ({ companyTeams }) => {
   )
   ) : <div></div>)
 }
-
-
-export default TeamCard;

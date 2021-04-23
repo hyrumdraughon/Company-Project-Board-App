@@ -20,7 +20,7 @@ const UserHome = (props) => {
         getProjects()
     }
     
-    if(team.name === ''){
+    if(team.name === '' && user.teamId !== null){
         getTeams()
 
     }
@@ -41,8 +41,6 @@ const UserHome = (props) => {
                 <Row >
                     <AddTeam></AddTeam>
                     {user.teamId !== null ? <TeamCard companyTeams = {companyTeams} /> : <p style={{color: "blue"}}>No Team Found</p> }
-                    {/* <TeamCard companyTeams = {companyTeams} /> */}
-                    {/* <TeamCard team = {{teamName: team.name, text: team.text, users: users}} /> */}
                 </Row>
             </Container>
             <SolidDivider></SolidDivider>
@@ -50,7 +48,6 @@ const UserHome = (props) => {
                 <Row >
                     <AddProject></AddProject>
                     {projects.length !== 0 ? <ProjectCard projects={companyProjects} team={{teamName: team.name}} /> : <p style={{color: "blue"}}>No Projects Found</p> }
-                    {/* <ProjectCard projects={companyProjects} team={{teamName: team.name}} /> */}
                 </Row>
             </Container>
             

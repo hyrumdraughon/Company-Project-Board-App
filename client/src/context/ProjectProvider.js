@@ -21,11 +21,20 @@ function ProjectProvider(props) {
         })
     }
 
+    const completeProject = (projectId) => {
+        axios.patch('project/'+projectId+'/complete').then(res =>{
+            console.log('res')
+        })
+    }
+
     return (
         <ProjectContext.Provider value={{
-            createProject: createProject
+            createProject: createProject,
+            completeProject: completeProject
         }} >
             {props.children}
         </ProjectContext.Provider>
     )
 }
+
+export default ProjectProvider
